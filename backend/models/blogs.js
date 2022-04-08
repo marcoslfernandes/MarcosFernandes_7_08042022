@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const User = require('./user');
 const sequelize = new Sequelize('Groupomania', 'marcos', '12345', {
   host: '127.0.0.1',
   port: 3306,
@@ -28,11 +29,19 @@ const Post = sequelize.define('Blogs', {
   },
   imageUrl: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
     
   },
 
+  user_id: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    references: { model: 'utilisateurs', key: 'id'},
+    
+  }
+
 });
+
 
 // Post.sync({force: true});
 

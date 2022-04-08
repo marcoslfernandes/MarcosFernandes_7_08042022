@@ -1,0 +1,19 @@
+{
+  "name": "p7_fernandes_marcos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcoslfernandes/MarcosFernandes_7_08042022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcoslfernandes/MarcosFernandes_7_08042022/issues"
+  },
+  "homepage": "https://github.com/marcoslfernandes/MarcosFernandes_7_08042022#readme"
+}

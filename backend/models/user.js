@@ -16,6 +16,14 @@ console.error('Unable to connect to the database:', err);
 
 const User = sequelize.define('Utilisateurs', {
 
+  id: {
+
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    primaryKey: true
+
+  }, 
+
   prénom: {
     type: Sequelize.STRING,
     allowNull: false
@@ -33,6 +41,7 @@ const User = sequelize.define('Utilisateurs', {
     type: Sequelize.STRING,
     allowNull: false
   },
+
   
 });
 
