@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-const User = require('./user');
 const sequelize = new Sequelize('Groupomania', 'marcos', '12345', {
   host: '127.0.0.1',
   port: 3306,
@@ -15,17 +14,12 @@ console.log('Connection has been established successfully.');
 console.error('Unable to connect to the database:', err);
 });
 
-const Post = sequelize.define('Blogs', {
+const Comment = sequelize.define('Commentaires', {
 
-  titre: {
+  Texte: {
     type: Sequelize.STRING,
     allowNull: false
    
-  },
-  texte: {
-    type: Sequelize.STRING,
-    allowNull: false
-    
   },
   imageUrl: {
     type: Sequelize.STRING,
@@ -33,30 +27,10 @@ const Post = sequelize.define('Blogs', {
     
   },
 
-  user_id: {
+  utilisateurs_id: {
     type: Sequelize.INTEGER,
     allowNull: false,
     
   }
 
 });
-
-Post.associate = models => {
-
-  Post.belongsTo(models.user, {
-    foreingKey: {
-      allowNull: false
-    }
-  })
-  
-  };
-
-
-// Post.sync({force: true});
-
-// Post.create({
-//   titre: 'Test',
-//   texte: 'Texte texte texte',
-//   imageUrl: 'Test image',
-//   user_id: '1'
-// });
