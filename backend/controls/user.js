@@ -56,34 +56,7 @@ exports.signup = (req, res, next) => {
   };
 
 
-// module.exports = {
 
-// async signup(req, res){
-
-//   function generateHash(user) {
-//     if (user === null) {
-//         throw new Error('No found employee');
-//     }
-//     else if (!user.changed('password')) return user.password;
-//     else {
-//         let salt = bcrypt.genSaltSync();
-//         return user.password = bcrypt.hashSync(user.password, salt);
-//     }
-//   }
-  
-//   User.beforeCreate(generateHash);
-//   User.beforeUpdate(generateHash);
-  
-//   const prénom = req.body.prenom;
-//   const nom = req.body.nom;
-//   const email = req.body.email;
-//   const password = req.body.password;
-
-//   const user = await User.create({prénom, nom, email, password});
-
-//   return res.json(user)
-
-// }};
   
     // module.exports = {
 
