@@ -43,10 +43,9 @@ const Post = sequelize.define('Blogs', {
 
 Post.associate = models => {
 
-  Post.belongsTo(models.user, {
-    foreingKey: {
-      allowNull: false
-    }
+  Post.belongsTo(models.User, {
+    foreingKey: "user_id",
+    as: "user"
   })
   
   };

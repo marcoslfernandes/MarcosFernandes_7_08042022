@@ -56,7 +56,30 @@ exports.signup = (req, res, next) => {
   };
 
 
+  exports.delete = (req, res, next) => {
 
+    User.destroy({
+      where: {
+          id: req.params.id
+      }
+  })
+  .then(function (deletedRecord) {
+      if(deletedRecord === 1){
+          res.status(200).json({message:"Profil supprimé"});          
+      }
+      else
+      {
+          res.status(404).json({message:"Profil non trouvé"})
+      }
+  })
+  .catch(function (error){
+      res.status(500).json(error);
+  });
+
+  }
+
+  
+    
   
     // module.exports = {
 

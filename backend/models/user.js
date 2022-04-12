@@ -1,4 +1,6 @@
 const Sequelize = require('sequelize');
+const Blogs = require('../models/blogs')
+const { INTEGER } = require('sequelize/lib/data-types');
 const sequelize = new Sequelize('Groupomania', 'marcos', '12345', {
   host: '127.0.0.1',
   port: 3306,
@@ -15,6 +17,8 @@ console.error('Unable to connect to the database:', err);
 });
 
 const User = sequelize.define('Utilisateurs', {
+
+  
   prénom: {
     type: Sequelize.STRING,
     allowNull: false
@@ -37,7 +41,7 @@ const User = sequelize.define('Utilisateurs', {
 
 User.associate = models => {
 
-User.hasMany(models.blogs, {
+User.hasMany(models.Blogs, {
   onDelete: "cascade"
 })
 
