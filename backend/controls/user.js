@@ -1,9 +1,12 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const passwordSchema = require('../models/validator-password');
 
 exports.signup = (req, res, next) => {
-
+  if (!passwordSchema.validate(req.body.password)) {
+    return res.status(400).json({ message: 'Le mot de passe doit contenir au moins 8 caractères, avec une majuscule, une miniscule et un chiffre au moins.' });
+ }
   function generateHash(user) {
     if (user === null) {
         throw new Error('No found employee');
