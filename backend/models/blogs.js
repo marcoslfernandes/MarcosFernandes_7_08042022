@@ -16,46 +16,27 @@ console.error('Unable to connect to the database:', err);
 });
 
 const Post = sequelize.define('Blogs', {
-
   titre: {
     type: Sequelize.STRING,
     allowNull: false
-   
   },
   texte: {
     type: Sequelize.STRING,
-    allowNull: false
-    
+    allowNull: false 
   },
   imageUrl: {
     type: Sequelize.STRING,
     allowNull: true
-    
   },
-
   user_id: {
     type: Sequelize.INTEGER,
     allowNull: false,
-    
-  }
+  }});
 
-});
+// Post.associate = models => {
+//   Post.belongsTo(models.User, {
+//     foreingKey: "user_id",
+//     as: "utilisateurs"
+//   })};
 
-Post.associate = models => {
-
-  Post.belongsTo(models.User, {
-    foreingKey: "user_id",
-    as: "user"
-  })
-  
-  };
-
-
-// Post.sync({force: true});
-
-// Post.create({
-//   titre: 'Test',
-//   texte: 'Texte texte texte',
-//   imageUrl: 'Test image',
-//   user_id: '1'
-// });
+  module.exports = Post;

@@ -1,6 +1,5 @@
 const passwordValidator = require('password-validator');
 const passwordSchema = new passwordValidator();
-
 passwordSchema
 .is().min(8)                                    
 .is().max(50)                                  
@@ -8,5 +7,4 @@ passwordSchema
 .has().lowercase()                             
 .has().digits()                                
 .has().not().spaces()                    
-
 module.exports = passwordSchema;

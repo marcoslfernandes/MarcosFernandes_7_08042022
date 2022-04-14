@@ -17,21 +17,22 @@ exports.signup = (req, res, next) => {
         return user.password = bcrypt.hashSync(user.password, salt);
     }
   }
-  
   User.beforeCreate(generateHash);
   User.beforeUpdate(generateHash);
-  
   const prénom = req.body.prenom;
   const nom = req.body.nom;
   const email = req.body.email;
   const password = req.body.password;
-
-  const user = User.create({prénom, nom, email, password});
-
-  return res.json(user)
-  
+  const user = User.create({prenom, nom, email, password});
+  res.status(200).json({
+    userId: user._id,
+    token: jwt.sign(
+      { userId: user._id },
+      'RANDOM_TOKEN_SECRET',
+      { expiresIn: '24h' }
+    )
+  });
 }
-
 
     exports.login = (req, res, next) => {
     User.findOne({ where: {email: req.body.email }})
@@ -60,12 +61,10 @@ exports.signup = (req, res, next) => {
 
 
   exports.delete = (req, res, next) => {
-
     User.destroy({
       where: {
           id: req.params.id
-      }
-  })
+      }})
   .then(function (deletedRecord) {
       if(deletedRecord === 1){
           res.status(200).json({message:"Profil supprimé"});          
@@ -78,77 +77,37 @@ exports.signup = (req, res, next) => {
   .catch(function (error){
       res.status(500).json(error);
   });
-
   }
 
-  
+  exports.updateUser = async (req, res, next) => {
+    try {
+      let user = await User.findOne({ where: { id: req.params.id } })
+      if (req.body.prenom) {
+        user.prenom = req.body.prenom
+        console.log("Ancien prénom : ", user.prenom)
+      }
+      if (req.body.nom) {
+        user.nom = req.body.nom
+        console.log("Ancien nom : ", user.nom)
+      }
+      if (req.body.email) {
+        user.email = req.body.email
+        console.log("Ancien email : ", user.email)
+      }
+      try {
+        user.save({})
+        console.log("New userInfo : ", user)
+        res.status(200).json({
+          user: user,
+          messageRetour: "Votre profil a bien été modifié",
+        })
+      } catch (error) {
+        return res
+          .status(500)
+          .send({ error: "Erreur lors de la mise à jour de votre proifl" })
+      }
+    } catch (error) {
+      return res.status(500).send({ error: "Erreur serveur" })
+    }};
     
   
-    // module.exports = {
-
-//    async sign(req, res){
-//     User.findOne({ email: req.body.email })
-//       .then(user => {
-//         if (!user) {
-//           return res.status(401).json({ error: 'Utilisateur non trouvé !' });
-//         }
-//         bcrypt.compare(req.body.password, user.password)
-//           .then(valid => {
-//             if (!valid) {
-//               return res.status(401).json({ error: 'Mot de passe incorrect !' });
-//             }
-//             res.status(200).json({
-//               userId: user._id,
-//               token: jwt.sign(
-//                 { userId: user._id },
-//                 'RANDOM_TOKEN_SECRET',
-//                 { expiresIn: '24h' }
-//               )
-//             });
-//           })
-//           .catch(error => res.status(500).json({ error }));
-//       })
-//       .catch(error => res.status(500).json({ error }));
-//   } 
-
-// };
-  
-
-// exports.signup = (req, res, next) => {
-//     bcrypt.hash(req.body.password, 10)
-//       .then(hash => {
-//         const user = new User({
-//           email: req.body.email,
-//           password: hash
-//         });
-//         user.save()
-//           .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-//           .catch(error => res.status(400).json({ error }));
-//       })
-//       .catch(error => res.status(500).json({ error }));
-//   };
-
-  // exports.login = (req, res, next) => {
-  //   User.findOne({ email: req.body.email })
-  //     .then(user => {
-  //       if (!user) {
-  //         return res.status(401).json({ error: 'Utilisateur non trouvé !' });
-  //       }
-  //       bcrypt.compare(req.body.password, user.password)
-  //         .then(valid => {
-  //           if (!valid) {
-  //             return res.status(401).json({ error: 'Mot de passe incorrect !' });
-  //           }
-  //           res.status(200).json({
-  //             userId: user._id,
-  //             token: jwt.sign(
-  //               { userId: user._id },
-  //               'RANDOM_TOKEN_SECRET',
-  //               { expiresIn: '24h' }
-  //             )
-  //           });
-  //         })
-  //         .catch(error => res.status(500).json({ error }));
-  //     })
-  //     .catch(error => res.status(500).json({ error }));
-  // };

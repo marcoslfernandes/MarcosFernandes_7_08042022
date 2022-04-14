@@ -6,7 +6,6 @@ app.use(express.json());
 const Blog = require('./models/blogs');
 const User = require('./models/user');
 
-
 const blogsRoutes = require('./routes/blogs');
 const userRoutes = require('./routes/user');
 
@@ -17,7 +16,6 @@ const sequelize = new Sequelize('Groupomania', 'marcos', '12345', {
     port: 3306,
     dialect: 'mysql'
   });
-
   sequelize
 .authenticate()
 .then(() => {
@@ -36,7 +34,6 @@ app.use((req, res, next) => {
 
 app.use('/api/blogs', blogsRoutes);
 app.use('/api/auth', userRoutes);
-
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;
