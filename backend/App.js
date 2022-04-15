@@ -8,6 +8,7 @@ const User = require('./models/user');
 
 const blogsRoutes = require('./routes/blogs');
 const userRoutes = require('./routes/user');
+const commentRoutes = require('./routes/commentaires');
 
 const path = require('path');
 
@@ -34,6 +35,7 @@ app.use((req, res, next) => {
 
 app.use('/api/blogs', blogsRoutes);
 app.use('/api/auth', userRoutes);
+app.use('/api/comment', commentRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;

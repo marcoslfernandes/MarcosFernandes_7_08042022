@@ -63,8 +63,8 @@ const fs = require('fs');
           //   },
           // ],
           }).then(posts => {
-          posts.map(post => {
-          if(post.imageUrl) post.imageUrl = `http://localhost:4200/images/${post.imageUrl}`
+          posts.map(posts => {
+          // if(post.imageUrl) post.imageUrl = `http://localhost:4200/images/${post.imageUrl}`
           // if(post.User.avatar) post.User.avatar = `http://localhost:4200/images/${post.User.avatar}`
           });
           res.json(posts)

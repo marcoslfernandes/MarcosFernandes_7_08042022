@@ -79,12 +79,14 @@ exports.signup = (req, res, next) => {
   });
   }
 
+  
+
   exports.updateUser = async (req, res, next) => {
     try {
       let user = await User.findOne({ where: { id: req.params.id } })
-      if (req.body.prenom) {
-        user.prenom = req.body.prenom
-        console.log("Ancien prénom : ", user.prenom)
+      if (req.body.prénom) {
+        user.prénom = req.body.prénom
+        console.log("Ancien prénom : ", user.prénom)
       }
       if (req.body.nom) {
         user.nom = req.body.nom
@@ -93,6 +95,22 @@ exports.signup = (req, res, next) => {
       if (req.body.email) {
         user.email = req.body.email
         console.log("Ancien email : ", user.email)
+      }
+     
+      if (req.body.password) {
+        function generateHash(user) {
+          if (user === null) {
+              throw new Error('No found employee');
+          }
+          else if (!user.changed('password')) return user.password;
+          else {
+              let salt = bcrypt.genSaltSync();
+              return user.password = bcrypt.hashSync(user.password, salt);
+          }
+        }
+        User.beforeUpdate(generateHash);
+        user.password = req.body.password
+        console.log("Ancien password : ", user.password)
       }
       try {
         user.save({})
@@ -109,5 +127,23 @@ exports.signup = (req, res, next) => {
     } catch (error) {
       return res.status(500).send({ error: "Erreur serveur" })
     }};
+
+    exports.findAll = async (req, res, next) => {
+
+      try {
+        User.findAll({
+          attributes: ["prénom", "nom", "email"],
+          }).then(users => {
+          users.map(users => {
+          // if(post.imageUrl) post.imageUrl = `http://localhost:4200/images/${post.imageUrl}`
+          // if(post.User.avatar) post.User.avatar = `http://localhost:4200/images/${post.User.avatar}`
+          });
+          res.json(users)
+        })
+      } catch (error) {
+        return res.status(500).send({
+          error: "Une erreur est survenue lors de la récupération des utilisateurs",
+        })
+      }};
     
   
