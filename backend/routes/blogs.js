@@ -8,7 +8,9 @@ const publiCtrl = require('../controls/blogs');
 
 // router.get('/', auth, publiCtrl.getAllPubli);
 
-router.post('/signup/:id', publiCtrl.blogs);
+router.post('/signup/:id', publiCtrl.createPost);
+router.delete('/del/:id', publiCtrl.deletePost);
+router.get('/posts/', publiCtrl.findAll);
 
 // router.get('/:id', auth, publiCtrl.getOnePubli);
 // router.put('/:id', auth, multer, publiCtrl.modifyPubli);
