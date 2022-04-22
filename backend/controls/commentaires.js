@@ -1,6 +1,7 @@
+const sequelize = require('../models');
 const Comment = require('../models/commentaires');
 const Post = require('../models/blogs');
-const User = require('../models/user');
+const User = sequelize.User;
 
 // création d'un commentaire
 // exports.createComment = async (req, res, next) => {
@@ -31,15 +32,16 @@ exports.createComment = async (req, res, next) => {
       })
       console.log("utilisateur trouvé", user.dataValues)
       const comment = await Comment.create({
-        Texte: req.body.Texte,
-        utilisateurs_id: req.params.id,
-        blogs_id: req.params.id,
+        texte: req.body.texte,
+        user_id: req.params.id,
+        post_id: req.body.post_id,
       })
       comment.dataValues.User = user.dataValues
       console.log("commentaire créé", comment.dataValues)
       res.status(201).json({comment: comment})
-    } catch {
-      res.status(500).send({error: "Erreur serveur"})
+    } catch(erreur) {
+      
+      res.status(500).send({error: erreur.message})
     }
   }
 

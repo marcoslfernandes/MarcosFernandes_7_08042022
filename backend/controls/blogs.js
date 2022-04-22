@@ -1,21 +1,8 @@
 const User = require('../models/user');
 const Post = require('../models/blogs');
 const Comments = require('../models/commentaires');
-const fs = require('fs');
 
 
-// module.exports = {
-//   async blogs(req, res){
-//     const titre = req.body.titre;
-//     const texte = req.body.texte;
-//     const imageUrl = req.body.imageUrl;
-//     const user_id = req.params.id;
-//     const user = await User.findByPk(user_id);
-//     if (!user) {
-//       return res.status(400).json({error: 'User not found'});
-//     }
-//     const publi = await Post.create({titre, texte, imageUrl, user_id});
-//     return res.json(publi);}};
 
     exports.createPost = async (req, res, next) => {
 
@@ -31,6 +18,39 @@ const fs = require('fs');
       return res.json(publi);
 
     }
+
+    // exports.createPost = async (req, res, next) => {
+//   try {
+//     const user = await User.findOne({
+//       attributes: ["prenom", "nom", "email"],
+//       where: {id: req.params.id},
+//     })
+
+//     if (user !== null) {
+//       console.log("user :", user)
+//       let imageUrl
+//       if (req.file) {
+//         console.log("filename", req.file.filename)
+//         imageUrl = `${req.file.filename}`
+//       } else {
+//         imageUrl = null
+//       }
+//       const post = await Post.create({
+//         titre: req.body.titre,
+//         texte: req.body.texte,
+//         imageUrl: imageUrl,
+//         users_id: req.params.users_id
+//       })
+//       post.dataValues.user = user.dataValues
+//       console.log("Post créé :", post.dataValues)
+//       res.status(201).json({post: post})
+//     } else {
+//       res.status(400).json({réponse: "L'utilisateur n'existe pas"})
+//     }
+//   } catch (error) {
+//     return res.status(500).send({error: "Erreur serveur"})
+//   }
+// };
 
 
    exports.deletePost = async (req, res, next) => {

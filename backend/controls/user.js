@@ -1,4 +1,5 @@
-const User = require('../models/user');
+const sequelize = require('../models');
+const User = sequelize.User;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const passwordSchema = require('../models/validator-password');
@@ -23,7 +24,7 @@ exports.signup = (req, res, next) => {
   const nom = req.body.nom;
   const email = req.body.email;
   const password = req.body.password;
-  const user = User.create({prenom, nom, email, password});
+  const user = User.create({prénom, nom, email, password});
   res.status(200).json({
     userId: user._id,
     token: jwt.sign(

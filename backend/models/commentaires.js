@@ -14,15 +14,15 @@ console.error('Unable to connect to the database:', err);
 });
 
 const Comment = sequelize.define('Commentaires', {
-  Texte: {
+  texte: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  utilisateurs_id: {
+  user_id: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
-  blogs_id: {
+  post_id: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
@@ -31,3 +31,5 @@ const Comment = sequelize.define('Commentaires', {
   );
 
   module.exports = Comment;
+
+  

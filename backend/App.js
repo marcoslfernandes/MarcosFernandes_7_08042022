@@ -1,30 +1,13 @@
-const Sequelize = require('sequelize');
+const sequelize = require('./models');
 const express = require('express');
 const app = express();
 app.use(express.json());
-
-const Blog = require('./models/blogs');
-const User = require('./models/user');
 
 const blogsRoutes = require('./routes/blogs');
 const userRoutes = require('./routes/user');
 const commentRoutes = require('./routes/commentaires');
 
 const path = require('path');
-
-const sequelize = new Sequelize('Groupomania', 'marcos', '12345', {
-    host: '127.0.0.1',
-    port: 3306,
-    dialect: 'mysql'
-  });
-  sequelize
-.authenticate()
-.then(() => {
-  console.log('Connection has been established successfully.');
-})
- .catch(err => {
- console.error('Unable to connect to the database:', err);
-});
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
