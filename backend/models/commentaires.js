@@ -1,35 +1,27 @@
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('Groupomania', 'marcos', '12345', {
-  host: '127.0.0.1',
-  port: 3306,
-  dialect: 'mysql'
-});
-sequelize
-.authenticate()
-.then(() => {
-console.log('Connection has been established successfully.');
-})
-.catch(err => {
-console.error('Unable to connect to the database:', err);
-});
+module.exports = (sequelize, DataTypes) => {
+  const Comment = sequelize.define('Commentaires', {
+    texte: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    post_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    },
+    {timestamps: false}
+    );
 
-const Comment = sequelize.define('Commentaires', {
-  texte: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  user_id: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  post_id: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  },
-  {timestamps: false}
-  );
+  return Comment;
+};
 
-  module.exports = Comment;
+
+
+
+
 
   

@@ -17,6 +17,7 @@ const sequelize = new Sequelize('Groupomania', 'marcos', '12345', {
 
   const User = require('./user.js')(sequelize, DataTypes);
   const Post = require('./blogs.js')(sequelize, DataTypes);
+  const Comment = require('./commentaires.js')(sequelize, DataTypes);
 
   const dbb = {  };
 
@@ -24,5 +25,6 @@ const sequelize = new Sequelize('Groupomania', 'marcos', '12345', {
 
   dbb.User = User;
   dbb.Post = Post;
+  dbb.Comment = Comment;
 
   module.exports = dbb;

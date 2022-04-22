@@ -1,7 +1,6 @@
 const sequelize = require('../models');
 const User = sequelize.User;
 const Post = sequelize.Post;
-const Comments = require('../models/commentaires');
 
 
 
@@ -77,12 +76,6 @@ const Comments = require('../models/commentaires');
       try {
         Post.findAll({
           attributes: ["titre", "texte", "imageUrl"],
-          // include: [
-          //   {
-          //     model: User,
-          //     attributes: ["prenom", "nom", "email"],
-          //   },
-          // ],
           }).then(posts => {
           posts.map(posts => {
           // if(post.imageUrl) post.imageUrl = `http://localhost:4200/images/${post.imageUrl}`
