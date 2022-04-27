@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 interface Users{
   prénom: string;
+  nom: string;
 }
 
 

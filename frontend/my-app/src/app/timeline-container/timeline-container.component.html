@@ -12,8 +12,11 @@
         <button class="publier">Publier</button>
     </div>
     </div>
-    <div class="user-container">
+    <div class="user-container" id="myDiv">
         <h1>La Team</h1>
+        <div *ngFor="let user of users">
+            {{user}}
+        </div>
     </div>
     </section>
  

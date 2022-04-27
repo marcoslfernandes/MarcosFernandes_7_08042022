@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AppService } from './app.service';
 
 @Component({
@@ -13,13 +12,7 @@ export class AppComponent {
   constructor(private appService: AppService){}
 
   ngOnInit(){
-    this.appService.getAllUsers().subscribe(data => 
-      {
-        for (let i = 0; i < data.length; i++) {
-          console.log(data[i].prénom)
-        }
-         
-      });
+  
   }
   
 }
