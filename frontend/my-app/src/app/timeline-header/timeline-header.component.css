@@ -1,0 +1,17 @@
+.container-header{
+    text-align: center;
+    position: relative;
+    right: 10px;
+    width: 1448px;
+    max-height: 200px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: rgb(100, 154, 179);
+    background-color: #FFF;
+    border-bottom: solid #FFF 2px;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(100, 154, 179)
+}

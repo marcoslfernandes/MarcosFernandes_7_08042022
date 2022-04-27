@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+    background-image: url('cowork.jpg');
+    background-position: center;
+    height: 800px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

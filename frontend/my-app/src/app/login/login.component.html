@@ -1,0 +1,19 @@
+<body>
+
+<form>
+    <label for="email">{{ texteEmail }}:</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <label for="password">{{ textePassword }}:</label><br>
+    <input type="text" id="lname" name="lname">
+  </form>
+
+  <div class="anime">
+  <div class="anime2" (click)="onClick()"> <a routerLink="/timeline">{{texteLogin}}</a></div>
+</div>
+
+  <div class="inscription">
+      <a routerLink="/inscription">
+      <p>Vous n'êtes pas encore inscrit ? Cliquez ici !</p>
+      </a>
+  </div>
+</body>

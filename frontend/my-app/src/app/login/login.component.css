@@ -1,0 +1,66 @@
+body{
+    width: 370px;
+}
+
+form{
+    margin-top: 40px;
+    margin-left: 60px;
+    display: flex;
+    flex-direction: column;
+    color: #FFF;
+}
+
+a{
+    text-decoration: none;
+    color: #FFF;
+}
+
+
+input{
+    position: relative;
+    bottom: 20px;
+}
+
+.anime2{
+   
+    width: 80px;
+    color: #FFF;
+    font-size: 20px;
+    position: relative;
+    left: 200px;
+    top: 10px;
+    
+}
+
+.anime{
+
+    transition-property: all;
+}
+
+.anime:hover .anime2 {
+transform: scale(1.2);
+transition-timing-function: ease;
+}
+
+.anime2{
+    transition-duration: 500ms;
+}
+
+.inscription{
+    font-size: 12px;
+    position: relative;
+    top: 20px;
+   left: 90px;
+   color: rgb(238, 190, 198);
+}
+
+.inscription a{
+
+    text-decoration: none;
+    color: rgb(238, 190, 198);
+}
+
+p{
+   
+    width: 300px;
+}

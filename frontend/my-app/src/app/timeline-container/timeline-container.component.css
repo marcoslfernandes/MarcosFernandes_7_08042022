@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+fa-icon{
+background-color: #FFF;
+padding-left: 5px;
+padding-right: 5px;
+padding-top: 2px;
+padding-bottom: 2px;
+border-top-left-radius: 50%;
+border-top-right-radius: 50%;
+border-bottom-left-radius: 50%;
+border-bottom-right-radius: 50%;
+}
+
+.parametres{
+
+    display: flex;
+    flex-direction: row;
+width: 20px;
+  position: relative;
+  left: 1280px;
+  top: 25px;
+}
+
+.parametres a{
+    color: black;
+}
+
+.parametres a :hover{
+    color: #FFF;
+}
+
+a{
+    text-decoration: none;
+}
+
+.config{
+    position: relative;
+    top: 2px;
+    left: 10px;
+    border-bottom: 1px solid #FFF;
+    padding-right: 20px;
+}
+
+
+section{
+    overflow: hidden;
+    position: relative;
+    width: 1300px;
+    height: 680px;
+    left: 40px;
+    top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.user-container{
+    position: relative;
+    top: 50px;
+    height: 570px;
+    right: 50px;
+    width: 300px;
+    border: solid;
+    background-color: #FFF;
+    border: 2px solid #FFF;
+    border-radius: 15px;
+}
+
+h1{
+    position: relative;
+    color:rgb(100, 154, 179);
+    text-align: center;
+}
+
+.container {
+
+    position: relative;
+    bottom: 200px;
+    right: 80px;
+    max-width: 700px;
+    height: 570px;
+    margin: 30px auto;
+    margin-top: 250px;
+    overflow: auto;
+    min-height: 500px;
+    background-color: #FFF;
+    border: 2px solid #FFF;
+    padding: 30px;
+    border-radius: 15px;
+    opacity: 98%;
+  }
+
+  button{
+      font-family: Poppins;
+      font-size: 12px;
+    background-color: rgb(137, 198, 226);
+    border: 1px solid #FFF;
+    border-radius: 15px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .button-container{
+      position: relative;
+      left: 410px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 200px;
+  
+  }
+
+  textarea{
+      font-family: Poppins;
+      border: 1px solid gray;
+      border-radius: 5px;
+      position: relative;
+      left: 5px;
+      height: 150px;
+      width: 600px;
+  }
+
+::placeholder{
+      font-family: Poppins;
+  }
+  

@@ -1,0 +1,45 @@
+.container {
+    position: relative;
+    top: 50px;
+    left: 400px;
+    max-width: 400px;
+    margin-top: 60px;
+    overflow: hidden;
+    min-height: 500px;
+    background-color: rgb(100, 154, 179);
+    border: 2px solid #FFF;
+    padding: 30px;
+    border-radius: 15px;
+    opacity: 95%;
+  }
+
+  .anime{
+
+      transition-property: all;
+  }
+  
+  .anime:hover .anime2 {
+  transform: scale(1.2);
+  transition-timing-function: ease;
+  }
+  
+  .anime2{
+      transition-duration: 500ms;
+  }
+
+  form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+  }
+
+  h1{
+        position: relative;
+        bottom: 10px;
+  }
+
+  h2{
+        text-align: center;
+        position: relative;
+        top: 20px;
+  }
