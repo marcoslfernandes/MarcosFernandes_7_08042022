@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit, ElementRef, ViewChild  } from '@angular/core';
 import { faTools } from '@fortawesome/free-solid-svg-icons';
 import { AppService } from '../app.service';
+import { PostService } from '../post.service';
 import { Inject }  from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
@@ -13,28 +14,27 @@ import { DOCUMENT } from '@angular/common';
 })
 export class TimelineContainerComponent implements OnInit {
 
-  
+  userData: any;
 
-  constructor(private appService: AppService) { }
- 
+  postData: any;
+
+  constructor(private appService: AppService, private postService: PostService) { }
+
+  
   ngOnInit(): void {
-
-   
-
-    this.appService.getAllUsers().subscribe(users => 
+    this.appService.getAllUsers().subscribe((users) => 
       {
+        console.log(users);
+        this.userData = users;
+      });
 
-        for (let i = 0; i < users.length; i++) {
-          console.log(users[i].prénom)
-          // users.innerHTML += `
-          //   <h3 class="productName">${data[i].prénom}</h3>
-          //   `
+      this.postService.getAllPosts().subscribe((posts) => 
+      {
+        console.log(posts);
+        this.postData = posts;
+      });
+    }
 
-        }});
-
-  }
-
-  
 
   faTools = faTools;
 
