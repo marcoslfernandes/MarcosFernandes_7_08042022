@@ -9,24 +9,32 @@
 </div>
 <section>
     <div class="container">
-        <textarea placeholder="Racontez une nouveauté..." id="w3review" name="w3review" rows="4" cols="50"></textarea>
+        <form>
+            <label for="titre">Titre du post :</label><br>
+            <input type="text" id="titre" name="titre" ><br>
+            <label for="nom">Texte :</label><br>
+            <input type="text" id="texte" name="texte"  ><br>
+          </form>
         <div class="button-container">
         <button class="image">Télécharger image</button>
         <button class="publier">Publier</button>
     </div>
-    <div class="posts" *ngFor='let post of postData'>
+    <div class="posts" *ngFor='let post of post'>
         <div class="titre">{{ post.titre }}</div>
         <div class="texte">{{ post.texte }}</div>
         <div class="images">{{ post.imageUrl }}</div>
-      
+        <!-- <div class="commentaires" *ngFor='let comment of commentData'>
+            <div class="comment">{{ comment.texte }}</div>
+    </div> -->
     </div>
     </div>
     <div class="user-container">
         <h1>La Team</h1>
         <div class="users" *ngFor='let user of userData'>
-            {{user.nom}}
+            {{user.prenom}}
         </div>
     </div>
     </section>
+    
 </body>
  

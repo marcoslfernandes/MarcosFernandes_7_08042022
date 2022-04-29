@@ -7,17 +7,26 @@
 </div>
 <div class="container">
     <h1>Modifier mon profil :</h1>
-    <form>
-        <label for="prenom">Prénom:</label><br>
-        <input type="text" id="prenom" name="prenom"><br>
-        <label for="nom">Nom:</label><br>
-        <input type="text" id="nom" name="nom"><br>
-        <label for="fname">Email:</label><br>
-        <input type="text" id="email" name="email"><br>
-        <label for="password">Password:</label><br>
-        <input type="text" id="password" name="password">
-      </form>
+    <form [formGroup]="register" (ngSubmit)="collection()">
+        <div class="form-group">
+          <label for="prenom">Prénom:</label><br>
+          <input type="text" formControlName="prenom" class="form-group" placeholder="Insérez un prénom" id="prenom" name="prenom" #prenom><br>
+        </div>
+        <div class="form-group">
+          <label for="nom">Nom:</label><br>
+          <input type="text" formControlName="nom" class="form-group" placeholder="Insérez un nom"  id="nom" name="nom" #nom><br>
+        </div>
+        <div class="form-group">
+          <label for="fname">Email:</label><br>
+          <input type="text" formControlName="email" class="form-group" placeholder="Insérez un email"  id="email" name="email" #email><br>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label><br>
+          <input type="text" formControlName="password" class="form-group" placeholder="Insérez un mot de passe"  id="password" name="password" #password>
+        </div>
+        <button type="submit" class="anime2">S'inscrire</button>
+        </form>
       <div class="anime">
-      <button class="anime2">Supprimer mon compte</button>
+      <button class="anime2" (click)="deleteUser(item.id)">Supprimer mon compte</button>
     </div>
 </div>

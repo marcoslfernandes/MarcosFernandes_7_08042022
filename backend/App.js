@@ -16,7 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/blogs', blogsRoutes);
+app.use('/api/posts', blogsRoutes);
 app.use('/api/auth', userRoutes);
 app.use('/api/comment', commentRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));

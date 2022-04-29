@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -7,16 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  texteEmail: string = "Email";
-  textePassword: string = "Password";
-  texteLogin: string = "Login";
+  register=new FormGroup({
+    email: new FormControl(),
+    password: new FormControl()
+  });
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {}
 
   onClick(){
-    console.log("Login");
+   
+      console.warn(this.register.value)
+      this.loginService.loginUser(this.register.value).subscribe((result)=>{
+        console.warn("Login", result)
+      })
+    
   }
 
 }

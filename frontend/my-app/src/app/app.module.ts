@@ -15,6 +15,8 @@ import { ParemetresComponent } from './paremetres/paremetres.component';
 import { ParametresContainerComponent } from './parametres-container/parametres-container.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LogoutButtonComponent } from './logout-button/logout-button.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -39,8 +41,9 @@ import { LogoutButtonComponent } from './logout-button/logout-button.component';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    HttpClientModule
-
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,3 @@
-
-
-
-
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Blogs', {
     titre: {
@@ -20,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     }});
-
   return Post;
 };
 

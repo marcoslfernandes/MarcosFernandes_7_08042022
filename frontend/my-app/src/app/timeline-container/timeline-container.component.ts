@@ -1,10 +1,6 @@
-import { AfterViewInit, Component, Input, OnInit, ElementRef, ViewChild  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { faTools } from '@fortawesome/free-solid-svg-icons';
-import { AppService } from '../app.service';
-import { PostService } from '../post.service';
-import { Inject }  from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-
+import { TimelineService } from './timeline.service';
 
 
 @Component({
@@ -12,30 +8,63 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './timeline-container.component.html',
   styleUrls: ['./timeline-container.component.css']
 })
+
 export class TimelineContainerComponent implements OnInit {
 
   userData: any;
 
-  postData: any;
+  post: any;
+  
+  commentData: any;
 
-  constructor(private appService: AppService, private postService: PostService) { }
+
+  constructor(private timelineService: TimelineService) { }
 
   
   ngOnInit(): void {
-    this.appService.getAllUsers().subscribe((users) => 
+
+    this.refreshPosts();
+
+    this.timelineService.getAllUsers().subscribe((users) => 
       {
         console.log(users);
         this.userData = users;
       });
 
-      this.postService.getAllPosts().subscribe((posts) => 
+      this.timelineService.getAllPosts().subscribe((posts) => 
       {
         console.log(posts);
-        this.postData = posts;
+        this.post = posts;
       });
+
+      this.timelineService.getAllComments().subscribe((comments) => 
+      {
+        console.log(comments);
+        // this.commentData = comments;
+      });
+
+
     }
 
 
+    refreshPosts() {
+      this.timelineService.getAllPosts().subscribe((posts) => 
+      {
+        console.log(posts);
+        this.post = posts;
+      });     
+   
+    }
+   
+    addPost() {
+      this.timelineService.addPost(this.post)
+        .subscribe(publi => {
+          console.log(publi)
+          this.refreshPosts();
+        })      
+    }
+
+    
   faTools = faTools;
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { InscriptionService } from './container.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-container',
@@ -8,11 +9,36 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContainerComponent implements OnInit {
 
-  readonly ROOT_URL = 'http://localhost:3000/api/auth/signup'
+ 
+  register=new FormGroup({
+    prenom: new FormControl(),
+    nom: new FormControl(),
+    email: new FormControl(),
+    password: new FormControl()
+  })
 
-  constructor(private http: HttpClient){}
+userData: any;
+
+  constructor(private inscriptionService: InscriptionService){}
 
   ngOnInit(): void {
+
+  
+    
+
+    this.inscriptionService.getAllUsers().subscribe((users) => 
+    {
+      console.log(users);
+      // this.User = users;
+    });
+
+  }
+
+  collection(){
+    console.warn(this.register.value)
+    this.inscriptionService.createNewUser(this.register.value).subscribe((result)=>{
+      console.warn("Nouvel utilisateur créé", result)
+    })
   }
 
 }

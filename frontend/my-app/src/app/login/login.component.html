@@ -1,15 +1,18 @@
 <body>
 
-<form>
-    <label for="email">{{ texteEmail }}:</label><br>
-    <input type="text" id="fname" name="fname"><br>
-    <label for="password">{{ textePassword }}:</label><br>
-    <input type="text" id="lname" name="lname">
-  </form>
-
+<form [formGroup]="register" (ngSubmit)="onClick()">
+  <div class="form-group">
+    <label for="email">Email :</label><br>
+    <input type="text" formControlName="email" class="form-group" id="fname" name="fname" #email><br>
+  </div>
+    <div class="form-group">
+    <label for="password">Password</label><br>
+    <input type="text" formControlName="password" class="form-group" id="lname" name="lname" #password>
+  </div>
   <div class="anime">
-  <div class="anime2" (click)="onClick()"> <a routerLink="/timeline">{{texteLogin}}</a></div>
-</div>
+    <button class="anime2"> Login</button>
+  </div>
+  </form>
 
   <div class="inscription">
       <a routerLink="/inscription">

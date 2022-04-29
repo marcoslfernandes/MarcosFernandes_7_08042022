@@ -8,5 +8,4 @@ router.post('/:id', commentCtrl.createComment);
 router.delete('/del/:id', commentCtrl.deleteComment);
 router.get('/', commentCtrl.findAll);
 
-
 module.exports = router;

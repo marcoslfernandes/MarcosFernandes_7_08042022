@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs';
-
 
 
 
 @Injectable({ providedIn: 'root' })
-export class AppService {
+export class LoginService {
+
+    
 
   constructor(private http: HttpClient) { }
+
+ 
+  rootURL="http://localhost:3000/";
+ 
 
   getAllUsers(){
 
@@ -16,8 +20,9 @@ return this.http.get('http://localhost:3000/api/auth/users');
 
   }
 
+  loginUser(data: any){
+      
+      return this.http.post(this.rootURL+"api/auth/login",data)
   }
 
-
-
-
+  }
