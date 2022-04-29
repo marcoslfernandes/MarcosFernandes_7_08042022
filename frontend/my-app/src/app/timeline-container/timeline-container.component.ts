@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { faTools } from '@fortawesome/free-solid-svg-icons';
 import { TimelineService } from './timeline.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -10,6 +11,12 @@ import { TimelineService } from './timeline.service';
 })
 
 export class TimelineContainerComponent implements OnInit {
+
+
+  register=new FormGroup({
+    titre: new FormControl(),
+    texte: new FormControl(),
+  })
 
   userData: any;
 
@@ -56,12 +63,12 @@ export class TimelineContainerComponent implements OnInit {
    
     }
    
-    addPost() {
-      this.timelineService.addPost(this.post)
-        .subscribe(publi => {
-          console.log(publi)
-          this.refreshPosts();
-        })      
+    getPost(){
+      window.location.reload();
+      console.warn(this.register.value)
+      this.timelineService.createNewPost(this.register.value).subscribe((result)=>{
+        console.warn("Nouveeau post créé", result)
+      })
     }
 
     

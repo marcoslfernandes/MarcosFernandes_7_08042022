@@ -1,40 +1,45 @@
 <body>
-    
 
-<div class="parametres">
-    <a routerLink="/parametres">
-    <div class="config">Paramètres</div>
-</a>
-    <fa-icon [icon]="faTools"></fa-icon>
-</div>
-<section>
-    <div class="container">
-        <form>
-            <label for="titre">Titre du post :</label><br>
-            <input type="text" id="titre" name="titre" ><br>
-            <label for="nom">Texte :</label><br>
-            <input type="text" id="texte" name="texte"  ><br>
-          </form>
-        <div class="button-container">
-        <button class="image">Télécharger image</button>
-        <button class="publier">Publier</button>
+
+    <div class="parametres">
+        <a routerLink="/parametres">
+            <div class="config">Paramètres</div>
+        </a>
+        <fa-icon [icon]="faTools"></fa-icon>
     </div>
-    <div class="posts" *ngFor='let post of post'>
-        <div class="titre">{{ post.titre }}</div>
-        <div class="texte">{{ post.texte }}</div>
-        <div class="images">{{ post.imageUrl }}</div>
-        <!-- <div class="commentaires" *ngFor='let comment of commentData'>
+    <section>
+        <div class="container">
+            <form [formGroup]="register" (ngSubmit)="getPost()">
+                <div class="form-group">
+                    <label for="titre">Titre du post :</label><br>
+                    <input type="text" formControlName="titre" class="form-group" placeholder="Insérez un titre"
+                        id="titre" name="titre" #titre><br>
+                </div>
+                <div class="form-group">
+                    <label for="texte">Texte :</label><br>
+                    <input type="text" formControlName="texte" class="form-group"
+                        placeholder="Racontez une nouveauté..." id="texte" name="texte"><br>
+                </div>
+                <div class="button-container">
+                    <button class="image">Télécharger image</button>
+                    <button class="publier">Publier</button>
+                </div>
+            </form>
+            <div class="posts" *ngFor='let post of post.slice().reverse()'>
+                <div class="titre">{{ post.titre }}</div>
+                <div class="texte">{{ post.texte }}</div>
+                <div class="images">{{ post.imageUrl }}</div>
+                <!-- <div class="commentaires" *ngFor='let comment of commentData'>
             <div class="comment">{{ comment.texte }}</div>
     </div> -->
-    </div>
-    </div>
-    <div class="user-container">
-        <h1>La Team</h1>
-        <div class="users" *ngFor='let user of userData'>
-            {{user.prenom}}
+            </div>
         </div>
-    </div>
+        <div class="user-container">
+            <h1>La Team</h1>
+            <div class="users" *ngFor='let user of userData'>
+                {{user.prenom}}
+            </div>
+        </div>
     </section>
-    
+
 </body>
- 

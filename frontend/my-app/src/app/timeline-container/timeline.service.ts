@@ -12,7 +12,7 @@ export class TimelineService {
 
   constructor(private http: HttpClient) { }
 
-  baseURL: string = "http://localhost:3000/";
+  rootURL: string = "http://localhost:3000/";
  
 
   getAllUsers(){
@@ -33,11 +33,8 @@ return this.http.get('http://localhost:3000/api/auth/users');
         
           }
 
-      addPost(publi:Publi): Observable<any> {
-        const headers = { 'content-type': 'application/json'}  
-        const body=JSON.stringify(publi);
-        console.log(body)
-        return this.http.post(this.baseURL + 'api/posts/53', body,{'headers':headers})
-      }
+          createNewPost(data: any){
+            return this.http.post(this.rootURL+"api/posts/53",data)
+        }
 
   }
