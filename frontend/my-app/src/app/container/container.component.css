@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
 .container {
     position: relative;
     top: 50px;
@@ -11,6 +13,22 @@
     padding: 30px;
     border-radius: 15px;
     opacity: 95%;
+  }
+
+  ::placeholder{
+        font-family: Poppins;
+  }
+
+  label{
+        font-size: 18px;
+        margin-top: 20px;
+  }
+
+  input{
+        margin-top: 5px;
+        margin-bottom: 30px;
+        padding-bottom: 5px;
+        width: 250px;
   }
 
   .anime{
@@ -43,3 +61,16 @@
         position: relative;
         top: 20px;
   }
+
+  button{
+      width: 100px;
+      background-color: #FFF;
+      color: rgb(137, 194, 221);
+      border: none;
+      border-radius: 15px;
+      font-size: 18px;
+      position: relative;
+      top: 10px;
+      left: 120px;
+
+}

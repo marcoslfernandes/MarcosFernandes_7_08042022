@@ -1,4 +1,4 @@
-<body>
+
 
 <form [formGroup]="register" (ngSubmit)="onClick()">
   <div class="form-group">
@@ -6,11 +6,14 @@
     <input type="text" formControlName="email" class="form-group" id="fname" name="fname" #email><br>
   </div>
     <div class="form-group">
-    <label for="password">Password</label><br>
+    <label for="password">Password :</label><br>
     <input type="text" formControlName="password" class="form-group" id="lname" name="lname" #password>
   </div>
+  
   <div class="anime">
-    <button class="anime2"> Login</button>
+    
+    <button class="anime2"><a href="">Login</a></button>
+  
   </div>
   </form>
 
@@ -19,4 +22,3 @@
       <p>Vous n'êtes pas encore inscrit ? Cliquez ici !</p>
       </a>
   </div>
-</body>
