@@ -2,6 +2,7 @@ const sequelize = require('./models');
 const express = require('express');
 const app = express();
 app.use(express.json());
+const multer = require('./middleware/multer');
 
 const blogsRoutes = require('./routes/blogs');
 const userRoutes = require('./routes/user');
@@ -16,9 +17,11 @@ app.use((req, res, next) => {
   next();
 });
 
+
 app.use('/api/posts', blogsRoutes);
 app.use('/api/auth', userRoutes);
 app.use('/api/comment', commentRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));
+
 
 module.exports = app;

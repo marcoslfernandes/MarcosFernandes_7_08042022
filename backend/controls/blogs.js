@@ -1,12 +1,31 @@
 const sequelize = require('../models');
 const User = sequelize.User;
 const Post = sequelize.Post;
+const multer = require('multer');
+const MIME_TYPES = {
+  'image/jpg': 'jpg',
+  'image/jpeg': 'jpg',
+  'image/png': 'png'
+};
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, 'images');
+  },
+  filename: (req, file, callback) => {
+    const name = file.originalname.split(' ').join('_');
+    const extension = MIME_TYPES[file.mimetype];
+    callback(null, name + Date.now() + '.' + extension);
+  }
+});
+
 
     exports.createPost = async (req, res, next) => {
+      
 
       const titre = req.body.titre;
       const texte = req.body.texte;
       const imageUrl = req.body.imageUrl;
+      // const imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
       const user_id = req.params.id;
       const user = await User.findByPk(user_id);
       if (!user) {

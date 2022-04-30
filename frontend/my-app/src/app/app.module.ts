@@ -35,6 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ParametresContainerComponent,
     LogoutButtonComponent,
   
+
+  
   
   ],
   imports: [
