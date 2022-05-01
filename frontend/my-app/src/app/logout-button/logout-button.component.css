@@ -24,7 +24,7 @@ fa-icon{
         color: black;
     }
     
-    .config :hover{
+    .config-logout :hover{
         color: #FFF;
     }
     
@@ -32,7 +32,7 @@ fa-icon{
         text-decoration: none;
     }
     
-    .config{
+    .config-logout{
         position: relative;
 
         left: 10px;

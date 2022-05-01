@@ -1,5 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { faTools } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faKey } from '@fortawesome/free-solid-svg-icons';
 import { TimelineService } from './timeline.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -121,5 +123,7 @@ return
   
     
   faTools = faTools;
+  faTrash = faTrash;
+  faKey = faKey;
 
 }
