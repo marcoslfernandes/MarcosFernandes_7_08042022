@@ -40,10 +40,11 @@ export class TimelineContainerComponent implements OnInit {
 
   constructor(private timelineService: TimelineService, private router: Router) { }
 
+ 
   
+
   ngOnInit(): void {
 
-   
 
     this.refreshPosts();
 
@@ -65,11 +66,12 @@ export class TimelineContainerComponent implements OnInit {
         // this.commentData = comments;
       });
 
+    
 
     }
 
 
-
+  
 
     refreshPosts() {
       this.timelineService.getAllPosts().subscribe((posts) => 
@@ -88,6 +90,14 @@ export class TimelineContainerComponent implements OnInit {
         console.warn("Nouveau post créé", result)
       })
     }
+
+    toggleAskTask(){
+      console.log("toggle");
+      localStorage.removeItem('isUserLoggedIn')
+      this.router.navigate(['/'])
+
+    }
+  
 
 
     onChange(event: any) {
@@ -109,7 +119,7 @@ return
     // OnClick of button Upload
     onUpload() {
       this.loading = !this.loading;
-      console.log(this.file);
+      // console.log(this.file);
       this.timelineService.upload(this.file).subscribe(
         (event: any) => {
           if (typeof (event) === 'object') {
@@ -118,9 +128,9 @@ return
         }
       );
 
-    this.timelineService.deletePost().subscribe((result)=>{
-          console.warn("result", result)
-      })
+    // this.timelineService.deletePost().subscribe((result)=>{
+    //       console.warn("result", result)
+    //   })
 
   
 

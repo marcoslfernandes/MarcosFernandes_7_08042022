@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
       this.loginService.loginUser(this.register.value).subscribe((result)=>{
 
-        console.warn("Login", result)
+        console.log("Login", result)
         // localStorage.setItem('token', result.token)
        
         if(this.register.valid){

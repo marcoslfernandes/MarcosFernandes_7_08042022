@@ -17,7 +17,7 @@ export class ParametresService {
 
 
   modifyUser(data: any){
-      return this.http.put(this.rootURL+"api/auth/update/58",data)
+      return this.http.put(this.rootURL+"api/auth/update/63",data)
   }
 
   deleteUser(id: any){

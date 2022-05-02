@@ -24,13 +24,15 @@ export class ExpenseGuard implements CanActivate {
     let val = localStorage.getItem('isUserLoggedIn');
 
     if(val != null && val == "true"){
-       if(url == "/")
-          this.router.parseUrl('/timeline');
+       if(url == '/')
+       this.router.parseUrl('/timeline');
        else 
           return true;
     } else return false
        return this.router.parseUrl('/');
+       
     }
+    
  }
 
 

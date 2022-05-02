@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { ParametresService } from './parametres.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-parametres-container',
@@ -19,7 +20,7 @@ export class ParametresContainerComponent implements OnInit {
 
   item: any;
 
-  constructor(private parametresService: ParametresService) { }
+  constructor(private parametresService: ParametresService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -28,10 +29,14 @@ export class ParametresContainerComponent implements OnInit {
   }
 
   collection(){
-    console.warn(this.register.value)
-    this.parametresService.modifyUser(this.register.value).subscribe((result)=>{
-      console.warn("Profil modifié !", result)
+    
+    this.parametresService.modifyUser(this.register.value).subscribe(()=>{
+      console.warn("Profil modifié !")
     })
+
+    if(this.register.valid){
+      this.router.navigate(['/timeline']);
+    } 
   }
 
   deleteUser(item: any){

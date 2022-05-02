@@ -7,7 +7,6 @@ import { Publi } from './post.model';
 
 @Injectable({ providedIn: 'root' })
 export class TimelineService {
-  localStorage: any;
 
 
 
@@ -35,7 +34,7 @@ export class TimelineService {
   }
 
   createNewPost(data: any) {
-    return this.http.post(`${this.rootURL}api/posts/58`, data)
+    return this.http.post(`${this.rootURL}api/posts/63`, data)
   }
 
   upload(file: string | Blob): Observable<any> {
@@ -59,10 +58,7 @@ export class TimelineService {
   }
 
 
-  logout() {
-    console.log("teste")
-      return this.localStorage.removeItem('isUserLoggedIn'); 
-    }
+ 
  
 }
 

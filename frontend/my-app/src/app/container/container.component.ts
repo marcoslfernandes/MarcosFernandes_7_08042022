@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InscriptionService } from './container.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-container',
@@ -19,12 +20,14 @@ export class ContainerComponent implements OnInit {
 
 userData: any;
 
-  constructor(private inscriptionService: InscriptionService){}
+  constructor(private inscriptionService: InscriptionService, private router: Router){}
+
+    isUserLoggedIn: boolean = false;
 
   ngOnInit(): void {
 
   
-    
+
 
     this.inscriptionService.getAllUsers().subscribe((users) => 
     {
@@ -35,9 +38,15 @@ userData: any;
   }
 
   collection(){
-    console.warn(this.register.value)
-    this.inscriptionService.createNewUser(this.register.value).subscribe((result)=>{
-      console.warn("Nouvel utilisateur créé", result)
+
+    this.inscriptionService.createNewUser(this.register.value).subscribe(()=>{
+      console.log("Nouvel utilisateur créé")
+
+      if(this.register.valid){
+        // this.isUserLoggedIn = true;
+        // localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
+        this.router.navigate(['/']);
+      } 
     })
   }
 
