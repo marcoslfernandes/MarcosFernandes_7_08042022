@@ -1,20 +1,11 @@
 
 
-<form [formGroup]="register" (ngSubmit)="onClick()">
-  <div class="form-group">
+<form action="post" [formGroup]="register" (ngSubmit)="onClick()">
     <label for="email">Email :</label><br>
-    <input type="text" formControlName="email" class="form-group" id="fname" name="fname" #email><br>
-  </div>
-    <div class="form-group">
+    <input type="text" name="email"formControlName="email" class="form-group" required />
     <label for="password">Password :</label><br>
-    <input type="text" formControlName="password" class="form-group" id="lname" name="lname" #password>
-  </div>
-  
-  <div class="anime">
-    
-    <button class="anime2"><a href="">Login</a></button>
-  
-  </div>
+    <input type="password" name="password"  formControlName="password" class="form-group" required />
+    <button type="submit" class="anime2">Login</button>
   </form>
 
   <div class="inscription">

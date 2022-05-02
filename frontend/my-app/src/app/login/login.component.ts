@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-login',
@@ -10,19 +13,30 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
 
   register=new FormGroup({
-    email: new FormControl(),
-    password: new FormControl()
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   });
 
-  constructor(private loginService: LoginService) { }
+ 
+
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {}
 
   onClick(){
    
-      console.warn(this.register.value)
+      
       this.loginService.loginUser(this.register.value).subscribe((result)=>{
+
         console.warn("Login", result)
+        // localStorage.setItem('token', result.token)
+       
+        if(this.register.valid){
+          this.router.navigate(['/timeline']);
+        } 
+          
+        
+        
       })
     
   }

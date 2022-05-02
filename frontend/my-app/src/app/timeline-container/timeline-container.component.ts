@@ -79,7 +79,6 @@ export class TimelineContainerComponent implements OnInit {
     getPost(){
       window.location.reload();
       console.warn(this.register.value)
-      console.log("teste")
       this.onUpload();
       this.timelineService.createNewPost(this.register.value).subscribe((result)=>{
         console.warn("Nouveau post créé", result)

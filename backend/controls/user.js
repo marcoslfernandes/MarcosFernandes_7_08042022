@@ -28,9 +28,9 @@ exports.signup = (req, res, next) => {
   const password = req.body.password;
   const user = User.create({ prenom, nom, email, password });
   res.status(200).json({
-    userId: user._id,
+    userId: user.id,
     token: jwt.sign(
-      { userId: user._id },
+      { userId: user.id },
       'RANDOM_TOKEN_SECRET',
       { expiresIn: '24h' }
     )
@@ -49,12 +49,10 @@ exports.login = (req, res, next) => {
             return res.status(401).json({ error: 'Mot de passe incorrect !' });
           }
           res.status(200).json({
-            userId: user._id,
-            token: jwt.sign(
-              { userId: user._id },
-              'RANDOM_TOKEN_SECRET',
-              { expiresIn: '24h' }
-            )
+            userId: user.id,
+            token: jwt.sign({ userId: user.id }, `secretToken`, {
+              expiresIn: "24h",
+            })
           });
         })
         .catch(error => res.status(500).json({ error }));

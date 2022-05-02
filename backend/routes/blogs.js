@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const publiCtrl = require('../controls/blogs');
 
-// const auth = require('../middleware/auth');
+const auth = require('../middleware/auth');
 const multer = require('../middleware/multer');
 
 router.post('/:id', multer, publiCtrl.createPost);

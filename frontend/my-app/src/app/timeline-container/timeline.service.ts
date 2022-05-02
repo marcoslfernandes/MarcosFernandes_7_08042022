@@ -34,7 +34,7 @@ export class TimelineService {
   }
 
   createNewPost(data: any) {
-    return this.http.post(this.rootURL + "api/posts/53", data)
+    return this.http.post(`${this.rootURL}api/posts/58`, data)
   }
 
   upload(file: string | Blob): Observable<any> {

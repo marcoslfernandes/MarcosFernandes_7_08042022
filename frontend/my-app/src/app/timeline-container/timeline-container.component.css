@@ -149,7 +149,7 @@ font-size: 12px}
     /* height: fit-content; */
     margin: 30px auto;
     /* margin-top: 250px; */
-    /* min-height: 500px; */
+    min-height: 500px;
     background-color: #FFF;
     border: 2px solid #FFF;
     border-radius: 15px;
@@ -167,6 +167,7 @@ font-size: 12px}
     background-color: #FFF;
     border: 2px solid #FFF;
     border-radius: 15px;
+    min-height: 500px;
 }
 
 

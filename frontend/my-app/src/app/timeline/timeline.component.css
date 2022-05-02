@@ -9,32 +9,3 @@ body{
       
 }
 
-.logout{
-    
-    display: flex;
-    flex-direction: row;
-width: 20px;
-  position: relative;
-  left: 1320px;
-  bottom: 10px;
-}
-
-.logout a{
-    color: black;
-}
-
-.config-logout :hover{
-    color: #FFF;
-}
-
-a{
-    text-decoration: none;
-}
-
-.config-logout{
-    position: relative;
-
-    left: 10px;
-    border-bottom: 1px solid #FFF;
-    padding-right: 20px;
-}
