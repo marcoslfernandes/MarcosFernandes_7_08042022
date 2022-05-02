@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ParemetresComponent } from './paremetres/paremetres.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { ExpenseGuard } from './expense.guard';
 
 
 const routes: Routes = [
@@ -14,11 +15,11 @@ const routes: Routes = [
 },
 {
   path:'timeline',
-  component: TimelineComponent
+  component: TimelineComponent, canActivate: [ExpenseGuard]
 },
 {
   path:'parametres',
-  component: ParemetresComponent
+  component: ParemetresComponent, canActivate: [ExpenseGuard]
 },
 {
   path:'',

@@ -49,8 +49,8 @@ exports.login = (req, res, next) => {
             return res.status(401).json({ error: 'Mot de passe incorrect !' });
           }
           res.status(200).json({
-            userId: user.id,
-            token: jwt.sign({ userId: user.id }, `secretToken`, {
+            id: user.id,
+            token: jwt.sign({ id: user.id }, `secretToken`, {
               expiresIn: "24h",
             })
           });
@@ -130,7 +130,7 @@ exports.findAll = async (req, res, next) => {
 
   try {
     User.findAll({
-      attributes: ["prenom", "nom", "email"],
+      attributes: ["id", "prenom", "nom", "email"],
     }).then(users => {
       users.map(users => {
         // if(post.imageUrl) post.imageUrl = `http://localhost:4200/images/${post.imageUrl}`

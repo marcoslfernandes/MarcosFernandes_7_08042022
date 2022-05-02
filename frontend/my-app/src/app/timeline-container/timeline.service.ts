@@ -7,6 +7,7 @@ import { Publi } from './post.model';
 
 @Injectable({ providedIn: 'root' })
 export class TimelineService {
+  localStorage: any;
 
 
 
@@ -56,6 +57,12 @@ export class TimelineService {
     console.log("teste")
     return this.http.delete(`${this.rootURL}api/blogs/del/39`)
   }
+
+
+  logout() {
+    console.log("teste")
+      return this.localStorage.removeItem('isUserLoggedIn'); 
+    }
  
 }
 

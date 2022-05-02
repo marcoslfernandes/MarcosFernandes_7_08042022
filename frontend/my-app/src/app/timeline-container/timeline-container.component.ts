@@ -4,6 +4,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faKey } from '@fortawesome/free-solid-svg-icons';
 import { TimelineService } from './timeline.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 export class TimelineContainerComponent implements OnInit {
 
+ 
 
   register=new FormGroup({
     titre: new FormControl(),
@@ -26,8 +28,6 @@ export class TimelineContainerComponent implements OnInit {
   })
 
 
-
-
   userData: any;
 
   post: any;
@@ -38,10 +38,12 @@ export class TimelineContainerComponent implements OnInit {
   file: File = null as any; // Variable to store file
 
 
-  constructor(private timelineService: TimelineService) { }
+  constructor(private timelineService: TimelineService, private router: Router) { }
 
   
   ngOnInit(): void {
+
+   
 
     this.refreshPosts();
 
@@ -65,6 +67,8 @@ export class TimelineContainerComponent implements OnInit {
 
 
     }
+
+
 
 
     refreshPosts() {
@@ -118,7 +122,11 @@ return
           console.warn("result", result)
       })
 
+  
+
     }
+
+    
   
     
   faTools = faTools;

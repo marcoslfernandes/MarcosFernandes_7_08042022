@@ -23,15 +23,20 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  isUserLoggedIn: boolean = false;
+
   onClick(){
    
-      
+  
+
       this.loginService.loginUser(this.register.value).subscribe((result)=>{
 
         console.warn("Login", result)
         // localStorage.setItem('token', result.token)
        
         if(this.register.valid){
+          this.isUserLoggedIn = true;
+          localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
           this.router.navigate(['/timeline']);
         } 
           

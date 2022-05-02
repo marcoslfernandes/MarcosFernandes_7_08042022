@@ -43,6 +43,27 @@ fa-icon{
      left: 140px;
       width: 80px;
       margin-bottom: 20px;
+
+    }
+
+    .photo{
+        width: 150px;
+        height: 150px;
+        position: relative;
+        left: 100px;
+        border-top-left-radius: 75px;
+        border-bottom-left-radius: 75px;
+        border-top-right-radius: 75px;
+        border-bottom-right-radius: 75px;
+        background-color: rgb(192, 186, 186);
+        margin-bottom: 20px;
+    }
+
+    .modif-photo{
+        background-color: rgb(158, 202, 223) ;
+        position: relative;
+     left: 110px;
+     margin-bottom: 20px;
     }
     
     .parametres a{
@@ -67,12 +88,12 @@ fa-icon{
 
 .container {
     position: relative;
-    top: 50px;
+    bottom: 10px;
     left: 10px;
+    height: fit-content;
     max-width: 400px;
     margin-top: 60px;
     overflow: hidden;
-    min-height: 500px;
     background-color: #FFF;
     border: 2px solid #FFF;
     padding: 30px;
