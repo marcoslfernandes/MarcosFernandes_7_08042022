@@ -5,7 +5,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   selector: 'app-button-logout',
   templateUrl: './button-logout.component.html',
   styleUrls: ['./button-logout.component.css']
-  
+
 })
 export class ButtonLogoutComponent implements OnInit {
 
@@ -13,10 +13,9 @@ export class ButtonLogoutComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  onClick(){
+  onClick() {
     this.btnClick.emit();
   }
 

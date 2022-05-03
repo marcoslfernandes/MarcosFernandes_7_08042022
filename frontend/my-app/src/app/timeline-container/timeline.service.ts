@@ -24,6 +24,7 @@ export class TimelineService {
   getAllPosts() {
 
     return this.http.get('http://localhost:3000/api/posts/');
+   
 
   }
 
@@ -35,6 +36,10 @@ export class TimelineService {
 
   createNewPost(data: any) {
     return this.http.post(`${this.rootURL}api/posts/63`, data)
+  }
+
+  createNewComment(data: any){
+    return this.http.post(`${this.rootURL}/api/comment/58`, data)
   }
 
   upload(file: string | Blob): Observable<any> {
@@ -54,7 +59,7 @@ export class TimelineService {
 
   deletePost(){
     console.log("teste")
-    return this.http.delete(`${this.rootURL}api/blogs/del/39`)
+    // return this.http.delete(`${this.rootURL}api/blogs/del/39`)
   }
 
 

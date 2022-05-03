@@ -20,13 +20,19 @@ export class ParametresContainerComponent implements OnInit {
 
   item: any;
 
+
+
   constructor(private parametresService: ParametresService, private router:Router) { }
 
   ngOnInit(): void {
 
-
+   this.getID();
     
   }
+
+  // user(){
+  //   console.log(localStorage.getItem('user'))
+  // }
 
   collection(){
     
@@ -39,11 +45,22 @@ export class ParametresContainerComponent implements OnInit {
     } 
   }
 
-  deleteUser(item: any){
+  deleteUser(){
     console.log("teste!!!!")
-    this.parametresService.deleteUser(item).subscribe((result)=>{
+    this.parametresService.deleteUser().subscribe((result)=>{
         console.warn("result", result)
     })
+
+   
+
+    
+  }
+
+  getID(){
+
+    let userGet = localStorage.getItem("user")
+
+    console.log(userGet)
   }
 
   faHome = faHome;

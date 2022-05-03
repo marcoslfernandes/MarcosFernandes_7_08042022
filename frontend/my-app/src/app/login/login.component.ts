@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { JsonpClientBackend } from '@angular/common/http';
 
 
 
@@ -24,20 +25,33 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   isUserLoggedIn: boolean = false;
+ 
+  user: any;
+  
 
+  
   onClick(){
    
   
 
       this.loginService.loginUser(this.register.value).subscribe((result)=>{
+      
+      
+        console.log(result)
+        
+        
 
-        console.log("Login", result)
-        // localStorage.setItem('token', result.token)
+        let userSent = JSON.stringify(result) 
+
+              localStorage.setItem("user", userSent)
+
        
         if(this.register.valid){
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
           this.router.navigate(['/timeline']);
+         
+             
         } 
           
         
@@ -47,3 +61,8 @@ export class LoginComponent implements OnInit {
   }
 
 }
+function id(id: any) {
+  throw new Error('Function not implemented.');
+}
+
+

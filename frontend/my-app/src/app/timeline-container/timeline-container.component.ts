@@ -32,7 +32,7 @@ export class TimelineContainerComponent implements OnInit {
 
   post: any;
   
-  commentData: any;
+  commentaire: any;
 
   loading: boolean = false; // Flag variable
   file: File = null as any; // Variable to store file
@@ -57,21 +57,26 @@ export class TimelineContainerComponent implements OnInit {
       this.timelineService.getAllPosts().subscribe((posts) => 
       {
         console.log(posts);
+
+        
         this.post = posts;
+       
       });
 
-      this.timelineService.getAllComments().subscribe((comments) => 
+      this.timelineService.getAllComments().subscribe((commentaires) => 
       {
-        console.log(comments);
-        // this.commentData = comments;
+        console.log(commentaires);
+        this.commentaire = commentaires;
       });
 
     
 
     }
 
-
+    local(){
+     let user = localStorage.getItem('user')
   
+    }
 
     refreshPosts() {
       this.timelineService.getAllPosts().subscribe((posts) => 
@@ -89,11 +94,22 @@ export class TimelineContainerComponent implements OnInit {
       this.timelineService.createNewPost(this.register.value).subscribe((result)=>{
         console.warn("Nouveau post créé", result)
       })
+    };
+
+    postComment(){
+      window.location.reload();
+      console.warn(this.comment.value)
+      this.timelineService.createNewComment(this.comment.value).subscribe((result)=>{
+        console.warn("Nouveau commentaire créé", result)
+      })
+
     }
 
     toggleAskTask(){
       console.log("toggle");
       localStorage.removeItem('isUserLoggedIn')
+      localStorage.removeItem('user')
+      // localStorage.clear()
       this.router.navigate(['/'])
 
     }

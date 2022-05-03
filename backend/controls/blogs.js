@@ -18,10 +18,8 @@ const storage = multer.diskStorage({
   }
 });
 
-
     exports.createPost = async (req, res, next) => {
       
-
       const titre = req.body.titre;
       const texte = req.body.texte;
       const imageUrl = req.body.imageUrl;
@@ -34,12 +32,6 @@ const storage = multer.diskStorage({
       const publi = await Post.create({titre, texte, imageUrl, user_id});
       return res.json(publi);
     }
-
-
-  
-
-
-
 
    exports.deletePost = async (req, res, next) => {
    
@@ -58,7 +50,7 @@ const storage = multer.diskStorage({
     exports.findAll = async (req, res, next) => {
 
       try {
-        Post.findAll({attributes: ["titre", "texte", "imageUrl"],})
+        Post.findAll({attributes: ["id", "titre", "texte", "imageUrl", "user_id"],})
           .then(posts => {
           posts.map(posts => {
           // if(post.imageUrl) post.imageUrl = `http://localhost:4200/images/${post.imageUrl}`

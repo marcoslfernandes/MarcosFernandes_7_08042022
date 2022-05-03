@@ -14,14 +14,14 @@ export class ParametresService {
  
   rootURL="http://localhost:3000/";
  
-
+ 
 
   modifyUser(data: any){
       return this.http.put(this.rootURL+"api/auth/update/63",data)
   }
 
-  deleteUser(id: any){
-    return this.http.delete(`${this.rootURL}api/auth/${id}/del`)
+  deleteUser(){
+    return this.http.delete(`${this.rootURL}api/auth/61/del`)
   }
 
   }

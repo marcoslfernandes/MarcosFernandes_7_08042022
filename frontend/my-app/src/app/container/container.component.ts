@@ -10,43 +10,42 @@ import { Router } from '@angular/router';
 })
 export class ContainerComponent implements OnInit {
 
- 
-  register=new FormGroup({
+
+  register = new FormGroup({
     prenom: new FormControl(),
     nom: new FormControl(),
     email: new FormControl(),
     password: new FormControl()
   })
 
-userData: any;
+  userData: any;
 
-  constructor(private inscriptionService: InscriptionService, private router: Router){}
+  constructor(private inscriptionService: InscriptionService, private router: Router) { }
 
-    isUserLoggedIn: boolean = false;
+  isUserLoggedIn: boolean = false;
 
   ngOnInit(): void {
 
-  
 
 
-    this.inscriptionService.getAllUsers().subscribe((users) => 
-    {
+
+    this.inscriptionService.getAllUsers().subscribe((users) => {
       console.log(users);
       // this.User = users;
     });
 
   }
 
-  collection(){
+  collection() {
 
-    this.inscriptionService.createNewUser(this.register.value).subscribe(()=>{
+    this.inscriptionService.createNewUser(this.register.value).subscribe(() => {
       console.log("Nouvel utilisateur créé")
 
-      if(this.register.valid){
+      if (this.register.valid) {
         // this.isUserLoggedIn = true;
         // localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
         this.router.navigate(['/']);
-      } 
+      }
     })
   }
 

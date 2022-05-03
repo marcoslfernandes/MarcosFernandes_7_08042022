@@ -157,6 +157,12 @@ font-size: 12px}
     
   }
 
+  #comment-button{
+      position: relative;
+      top: 120px;
+      left: 50px;
+  }
+
   .user-container{
     position: relative;
     top: 50px;

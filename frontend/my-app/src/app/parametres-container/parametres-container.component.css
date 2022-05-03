@@ -31,8 +31,10 @@ fa-icon{
     }
     
     .anime2{
+        background-color: rgb(205, 136, 136);
+        border: 1px solid rgb(205, 136, 136);
         transition-duration: 500ms;
-        background-color: rgb(207, 93, 93);
+        margin-top: 40px;
         position: relative;
         left: 100px;
     }
@@ -105,6 +107,8 @@ fa-icon{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        border-bottom: 2px solid rgb(158, 202, 223);
+        padding-bottom: 20px;
   }
 
   h1{

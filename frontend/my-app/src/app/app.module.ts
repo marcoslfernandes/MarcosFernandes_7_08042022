@@ -21,6 +21,7 @@ import { ButtonLogoutComponent } from './button-logout/button-logout.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { ButtonLogoutComponent } from './button-logout/button-logout.component';
     ParametresContainerComponent,
     LogoutButtonComponent,
     ButtonLogoutComponent,
+  
   
 
   

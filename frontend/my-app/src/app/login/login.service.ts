@@ -5,6 +5,9 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
+  get(id: any) {
+    throw new Error('Method not implemented.');
+  }
 
   
 
@@ -23,6 +26,7 @@ return this.http.get('http://localhost:3000/api/auth/users');
   loginUser(data: any){
       
       return this.http.post(this.rootURL+"api/auth/login",data)
+     
   }
 
   }

@@ -9,9 +9,9 @@
     </div>
     <div class="logout">
         <div class="config-logout">
-        <app-button-logout (btnClick)="toggleAskTask()"></app-button-logout>
-    </div>
-   
+            <app-button-logout (btnClick)="toggleAskTask()"></app-button-logout>
+        </div>
+
         <fa-icon class="icon" [icon]="faKey"></fa-icon>
     </div>
     <section>
@@ -29,9 +29,10 @@
                 </div>
                 <div class="form-group">
                     <label for="file-upload" class="custom-file-upload">
-                  
+
                     </label>
-                    <input type="file" formControlName="imageUrl" id="imageUrl" class="form-group" name="imageUrl" (change)="onChange($event)">
+                    <input type="file" formControlName="imageUrl" id="imageUrl" class="form-group" name="imageUrl"
+                        (change)="onChange($event)">
                 </div>
                 <div class="button-container">
                     <button class="publier">Publier</button>
@@ -41,11 +42,18 @@
                 <div class="titre">{{ post.titre }}</div>
                 <div class="texte">{{ post.texte }}</div>
                 <div class="images">{{ post.imageUrl }}</div>
-
+            <form [formGroup]="comment" (ngSubmit)="postComment()">
                 <label for="commentaires" [formGroup]="comment"></label>
+                <div class="comments" *ngFor='let commentaire of commentaire' >
+                   
+                </div>
                 <input type="text" class="form-group" placeholder="Laissez un commentaire" id="comment" name="texte">
+                <button type="submit" id="comment-button">Commenter</button>
+                </form>
                 <div class="button-supprimer">
-                    <button class="supprimer" click="deletePost()"> <fa-icon class="trash" [icon]="faTrash"></fa-icon></button>
+                    <button class="supprimer" click="deletePost()">
+                        <fa-icon class="trash" [icon]="faTrash"></fa-icon>
+                    </button>
                 </div>
             </div>
         </div>
