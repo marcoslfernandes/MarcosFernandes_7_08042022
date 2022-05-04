@@ -12,6 +12,8 @@ export class PostsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private postsService: PostsService) { }
 
   post: any;
+  titre: any;
+  texte: any;
 
   ngOnInit(): void {
 
@@ -22,8 +24,13 @@ export class PostsComponent implements OnInit {
       let id = params.get('id')
       this.postsService.getPostById(id).subscribe((posts) => 
       {
-        this.post = posts
+       
         console.log(posts);
+
+        
+        this.titre = posts.titre
+        this.texte = posts.texte
+
 
 
       })

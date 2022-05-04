@@ -58,7 +58,7 @@ export class TimelineService {
 
 
   deletePost(){
-    console.log("teste")
+ 
     // return this.http.delete(`${this.rootURL}api/blogs/del/39`)
   }
 

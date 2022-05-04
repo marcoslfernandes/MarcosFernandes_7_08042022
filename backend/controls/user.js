@@ -151,7 +151,7 @@ exports.findOne = (req, res, next) => {
   User.findOne({
     where: {
       id: req.params.id
-    }, attributes: ["id", "prenom", "nom"]
+    }, attributes: ["id", "prenom", "nom", "email"]
   }).then(
     (user) => {
       if (!user) {

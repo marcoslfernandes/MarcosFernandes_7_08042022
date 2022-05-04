@@ -1,1 +1,20 @@
-<p>posts works!</p>
+<body>
+    
+
+<app-timeline-header></app-timeline-header>
+
+<div class="container-post">
+
+<h1>{{titre}}</h1>
+<h3>{{texte}}</h3>
+</div>
+
+<form>
+    <label for="commentaires"></label>
+    <div class="comments">
+    </div>
+    <input type="text" class="form-group" placeholder="Laissez un commentaire" id="comment" name="texte">
+    <button type="submit" id="comment-button">Commenter</button>
+</form>
+
+</body>

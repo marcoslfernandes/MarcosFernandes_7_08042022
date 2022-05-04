@@ -11,6 +11,10 @@ import { ProfilUserService } from './profil-user.service';
 export class ProfilUserComponent implements OnInit {
   user: any;
   id: any;
+  prenom: any;
+  nom: any;
+  email: any;
+
 
 
 
@@ -25,8 +29,24 @@ export class ProfilUserComponent implements OnInit {
       let id = params.get('id')
       this.profilUserService.getProjectById(id).subscribe((users) => 
       {
-        this.user = users
-        console.log(users);
+
+        // const obj = {users};
+
+        // const mapped = Object.keys(obj).map(key => ({type: key, value: obj[key]}));
+
+        // const obj = {users};
+
+        // const mapped = Object.entries(obj).map(([type, value]) => ({type, value}));
+
+        // console.log(mapped);
+
+        console.log(users)
+
+      
+        this.prenom = users.prenom
+        this.nom = users.nom
+        this.email = users.email
+      
 
 
       })

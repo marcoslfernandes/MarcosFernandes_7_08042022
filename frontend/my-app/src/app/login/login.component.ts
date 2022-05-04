@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JsonpClientBackend } from '@angular/common/http';
 
 
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
  
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {}
 
@@ -38,10 +38,15 @@ export class LoginComponent implements OnInit {
       
       
         console.log(result)
+
+ 
+
+  
         
-        
+        this.route.snapshot.paramMap.get('id')
 
         let userSent = JSON.stringify(result) 
+        
 
               localStorage.setItem("user", userSent)
 

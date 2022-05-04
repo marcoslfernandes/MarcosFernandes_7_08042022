@@ -42,26 +42,19 @@
                 <a [routerLink]="['/posts', post.id]"><div class="titre">{{ post.titre }}</div></a>
                 <div class="texte">{{ post.texte }}</div>
                 <div class="images">{{ post.imageUrl }}</div>
-            <form [formGroup]="comment" (ngSubmit)="postComment()">
-                <label for="commentaires" [formGroup]="comment"></label>
-                <div class="comments" *ngFor='let commentaire of commentaire' >
-                   
-                </div>
-                <input type="text" class="form-group" placeholder="Laissez un commentaire" id="comment" name="texte">
-                <button type="submit" id="comment-button">Commenter</button>
-                </form>
                 <div class="button-supprimer">
-                    <button class="supprimer" click="deletePost()">
-                        <fa-icon class="trash" [icon]="faTrash"></fa-icon>
+                    <button class="supprimer">
+                        <fa-icon class="trash" [icon]="faTrash" click="deleteP()"></fa-icon>
                     </button>
                 </div>
             </div>
         </div>
         <div class="user-container">
+          
             <h1>La Team</h1>
             <div class="users" *ngFor='let user of userData'>
                 <a [routerLink]="['/profil', user.id]">
-                {{user.prenom}}
+               <div>{{user.prenom}}</div> 
                 </a>
             </div>
         </div>

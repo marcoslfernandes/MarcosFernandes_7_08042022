@@ -32,7 +32,13 @@ width: 20px;
 
 a{
     text-decoration: none;
+    color:rgb(100, 154, 179);
+    
 }
+
+
+
+
 
 .config-logout{
     position: relative;
@@ -42,16 +48,7 @@ a{
     padding-right: 20px;
 }
 
-#comment{
-    position: relative;
-    top: 80px;
-    left: 150px;
-    width: 200px;
-    height: 50px;
-    border-radius: 15px;
-    border: 1px solid rgb(187, 185, 185);
-    padding-left: 4px;
-}
+
 
 
 .parametres{
@@ -72,9 +69,6 @@ width: 20px;
     color: #FFF;
 }
 
-a{
-    text-decoration: none;
-}
 
 .config{
     position: relative;
@@ -130,6 +124,9 @@ h1{
     height: fit-content;
     border-bottom: 1px solid rgb(199, 198, 198)}
 
+  
+
+
 .texte{
     height: fit-content;
     color: rgb(63, 61, 61);
@@ -157,11 +154,7 @@ font-size: 12px}
     
   }
 
-  #comment-button{
-      position: relative;
-      top: 120px;
-      left: 50px;
-  }
+
 
   .user-container{
     position: relative;
@@ -175,6 +168,8 @@ font-size: 12px}
     border-radius: 15px;
     min-height: 500px;
 }
+
+
 
 
 input[type="file"] {
@@ -239,4 +234,8 @@ input[type="file"] {
       padding-bottom: 5px;
       border-bottom: 1px solid rgb(137, 198, 226);
   }
+
+  .users :hover{
+    color: pink;
+}
   

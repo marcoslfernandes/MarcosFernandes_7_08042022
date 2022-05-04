@@ -38,7 +38,7 @@ export class TimelineContainerComponent implements OnInit {
   file: File = null as any; // Variable to store file
 
 
-  constructor(private activatedRoute: ActivatedRoute, private timelineService: TimelineService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private timelineService: TimelineService, private router: Router) { }
 
  
   
@@ -92,12 +92,23 @@ export class TimelineContainerComponent implements OnInit {
    
     }
    
+    getID(){
+    
+      this.route.paramMap
+      .subscribe(params => {
+        console.log(params)
+      })
+
+    }
+
     getPost(){
       window.location.reload();
       console.warn(this.register.value)
       this.onUpload();
       this.timelineService.createNewPost(this.register.value).subscribe((result)=>{
         console.warn("Nouveau post créé", result)
+       
+        
       })
     };
 
@@ -106,6 +117,7 @@ export class TimelineContainerComponent implements OnInit {
       console.warn(this.comment.value)
       this.timelineService.createNewComment(this.comment.value).subscribe((result)=>{
         console.warn("Nouveau commentaire créé", result)
+        
       })
 
     }
@@ -118,7 +130,10 @@ export class TimelineContainerComponent implements OnInit {
       this.router.navigate(['/'])
 
     }
+
+   
   
+   
 
 
     onChange(event: any) {

@@ -12,16 +12,10 @@ export class ProfilUserService {
   constructor(private http: HttpClient) { }
 
 
-
-
-
- 
-
   getProjectById(id: string | null): Observable<any> {
 
     return this.http.get(`http://localhost:3000/api/auth/profil/${id}`)
 
-   
   }
 
 }
