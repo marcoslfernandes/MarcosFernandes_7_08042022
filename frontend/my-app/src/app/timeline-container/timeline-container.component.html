@@ -39,7 +39,7 @@
                 </div>
             </form>
             <div class="posts" *ngFor='let post of post.slice().reverse()'>
-                <div class="titre">{{ post.titre }}</div>
+                <a [routerLink]="['/posts', post.id]"><div class="titre">{{ post.titre }}</div></a>
                 <div class="texte">{{ post.texte }}</div>
                 <div class="images">{{ post.imageUrl }}</div>
             <form [formGroup]="comment" (ngSubmit)="postComment()">

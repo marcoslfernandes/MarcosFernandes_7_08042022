@@ -4,7 +4,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faKey } from '@fortawesome/free-solid-svg-icons';
 import { TimelineService } from './timeline.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -38,13 +38,18 @@ export class TimelineContainerComponent implements OnInit {
   file: File = null as any; // Variable to store file
 
 
-  constructor(private timelineService: TimelineService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private timelineService: TimelineService, private router: Router) { }
 
  
   
 
   ngOnInit(): void {
 
+    // this.activatedRoute.paramMap.subscribe(params => {
+    //   let id = params.get('id')
+    //   console.log(id)
+      
+    // })
 
     this.refreshPosts();
 

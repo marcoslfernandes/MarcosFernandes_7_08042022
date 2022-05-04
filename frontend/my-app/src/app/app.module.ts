@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonLogoutComponent } from './button-logout/button-logout.component';
 import { ProfilUserComponent } from './profil-user/profil-user.component';
+import { PostsComponent } from './posts/posts.component';
 
 
 
@@ -39,6 +40,7 @@ import { ProfilUserComponent } from './profil-user/profil-user.component';
     LogoutButtonComponent,
     ButtonLogoutComponent,
     ProfilUserComponent,
+    PostsComponent,
   
   
 

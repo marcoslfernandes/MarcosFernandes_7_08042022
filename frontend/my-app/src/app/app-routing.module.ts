@@ -6,6 +6,7 @@ import { ParemetresComponent } from './paremetres/paremetres.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ExpenseGuard } from './expense.guard';
 import { ProfilUserComponent } from './profil-user/profil-user.component';
+import { PostsComponent } from './posts/posts.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
 {
   path:'profil/:id',
   component: ProfilUserComponent, canActivate: [ExpenseGuard]
+},
+{
+  path:'posts/:id',
+  component: PostsComponent, canActivate: [ExpenseGuard]
 },
 {
   path:'',
