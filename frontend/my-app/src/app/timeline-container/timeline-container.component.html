@@ -60,7 +60,9 @@
         <div class="user-container">
             <h1>La Team</h1>
             <div class="users" *ngFor='let user of userData'>
+                <a [routerLink]="['/profil', user.id]">
                 {{user.prenom}}
+                </a>
             </div>
         </div>
     </section>

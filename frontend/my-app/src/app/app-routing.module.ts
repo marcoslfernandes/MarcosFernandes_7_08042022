@@ -5,6 +5,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ParemetresComponent } from './paremetres/paremetres.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ExpenseGuard } from './expense.guard';
+import { ProfilUserComponent } from './profil-user/profil-user.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,10 @@ const routes: Routes = [
 {
   path:'parametres',
   component: ParemetresComponent, canActivate: [ExpenseGuard]
+},
+{
+  path:'profil/:id',
+  component: ProfilUserComponent, canActivate: [ExpenseGuard]
 },
 {
   path:'',
