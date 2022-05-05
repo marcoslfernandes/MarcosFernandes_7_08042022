@@ -22,15 +22,38 @@ h3{
     padding-top: 20px;
 }
 
+#post_id{
+  position: relative;
+  top: 280px;
+  left: 630px;
+}
+
 #comment-button{
     position: relative;
-    top: 350px;
-    left: 260px;
+    top: 280px;
+    left: 660px;
 }
 
 form{
     position: relative;
     bottom: 250px;
+}
+
+h4{
+  font-size: 14px;
+  position: relative;
+top: 20px;
+  left: 530px;
+  max-width: 350px;
+      margin-top: 20px;
+        overflow: hidden;
+        background-color: #FFF;
+        border: 2px solid #FFF;
+        padding: 20px;
+        border-radius: 15px;
+        opacity: 70%;
+
+
 }
 
 #comment{

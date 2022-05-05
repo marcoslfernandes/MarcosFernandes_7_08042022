@@ -112,15 +112,7 @@ export class TimelineContainerComponent implements OnInit {
       })
     };
 
-    postComment(){
-      window.location.reload();
-      console.warn(this.comment.value)
-      this.timelineService.createNewComment(this.comment.value).subscribe((result)=>{
-        console.warn("Nouveau commentaire créé", result)
-        
-      })
-
-    }
+  
 
     toggleAskTask(){
       console.log("toggle");

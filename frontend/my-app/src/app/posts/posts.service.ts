@@ -18,4 +18,22 @@ export class PostsService {
 
   }
 
+  createNewComment(data: any){
+    return this.http.post(`http://localhost:3000/api/comment/59`, data)
+  }
+
+  getCommentById(id_c: string | null): Observable<any> {
+
+    return this.http.get(` http://localhost:3000/api/comment/${id_c}`)
+
+  }
+
+  getAllComments() {
+
+    return this.http.get('http://localhost:3000/api/comment');
+
+  }
+
+ 
+
 }

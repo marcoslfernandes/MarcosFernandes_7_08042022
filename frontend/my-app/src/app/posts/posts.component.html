@@ -7,14 +7,24 @@
 
 <h1>{{titre}}</h1>
 <h3>{{texte}}</h3>
-</div>
 
-<form>
-    <label for="commentaires"></label>
-    <div class="comments">
+</div>
+<div *ngFor='let commentaire of commentaire'>
+<h4>{{commentaire.texte}}</h4>
+</div>
+<form [formGroup]="comment" (ngSubmit)="postComment()">
+  
+    <div class="comments"> 
+    <div  class="form-group">
+    <label for="texte"></label><br>
+    <input type="text" formControlName="texte" class="form-group" placeholder="Laissez un commentaire" id="comment" name="texte">
+    <div  class="form-group">
+    <label for="post_id"></label><br>
+    <input type="text" formControlName="post_id" class="form-group" id="post_id" name="texte">
     </div>
-    <input type="text" class="form-group" placeholder="Laissez un commentaire" id="comment" name="texte">
     <button type="submit" id="comment-button">Commenter</button>
+    </div>
+    </div>
 </form>
 
 </body>

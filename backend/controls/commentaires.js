@@ -33,3 +33,23 @@ exports.createComment = async (req, res, next) => {
       } catch (error) {
         return res.status(500).send({
           error: "Une erreur est survenue lors de la récupération des posts ",})}};
+
+          exports.findOne = (req, res, next) => {
+            
+            Comment.findOne({
+              where: { post_id: req.params.id }
+     
+            }).then(
+              (post) => {
+                if (!post) {
+                  return res.status(404).json({ message: "Comment non trouvé" });
+                }
+                // product.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + product.imageUrl;
+                res.status(200).json(post);
+              }
+            ).catch(
+              () => {
+                res.status(500).send(new Error('Database error!'));
+              }
+            )
+          };
