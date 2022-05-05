@@ -34,6 +34,8 @@ export class TimelineContainerComponent implements OnInit {
   
   commentaire: any;
 
+  id: any;
+
   loading: boolean = false; // Flag variable
   file: File = null as any; // Variable to store file
 
@@ -50,6 +52,8 @@ export class TimelineContainerComponent implements OnInit {
     //   console.log(id)
       
     // })
+
+    console.log(JSON.parse(localStorage.getItem('id') || '{}'))
 
     this.refreshPosts();
 
@@ -102,10 +106,12 @@ export class TimelineContainerComponent implements OnInit {
     }
 
     getPost(){
+  
+      this.id = JSON.parse(localStorage.getItem('id') || '{}')
       window.location.reload();
       console.warn(this.register.value)
       this.onUpload();
-      this.timelineService.createNewPost(this.register.value).subscribe((result)=>{
+      this.timelineService.createNewPost(this.register.value, this.id).subscribe((result)=>{
         console.warn("Nouveau post créé", result)
        
         
@@ -144,9 +150,9 @@ return
  `<input type="file" formControlName="imageUrl" class="form-group" name="imageUrl" (change)="onChange($event)">`
   }
   
-    // OnClick of button Upload
+  
     onUpload() {
-      this.loading = !this.loading;
+      // this.loading = !this.loading;
       // console.log(this.file);
       this.timelineService.upload(this.file).subscribe(
         (event: any) => {
@@ -156,9 +162,7 @@ return
         }
       );
 
-    // this.timelineService.deletePost().subscribe((result)=>{
-    //       console.warn("result", result)
-    //   })
+  
 
   
 

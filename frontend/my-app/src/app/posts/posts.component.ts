@@ -18,60 +18,65 @@ export class PostsComponent implements OnInit {
   post_id: any;
   texte_comment: any;
   commentaire: any;
-  
+  id_post: any;
+
 
   comment = new FormGroup({
     texte: new FormControl(),
-    post_id: new FormControl
+   
   })
 
   ngOnInit(): void {
 
-   
 
- this.getPosts();
 
-  // this.getComment();
+    this.getPosts();
 
-  this.getAllComments();
-   
+    // this.getComment();
+
+    this.getAllComments();
+
 
 
 
   }
 
- 
+
 
 
   postComment() {
-    window.location.reload();
+    // window.location.reload();
     console.warn(this.comment.value)
+    console.log(this.route.snapshot.params['id'])
+
+    this.post_id = this.route.snapshot.params['id']
     this.postsService.createNewComment(this.comment.value).subscribe((result) => {
       // console.warn("Nouveau commentaire créé", result)
     })
   };
 
-  getPosts(){
+  getPosts() {
 
     this.route.paramMap
-    .subscribe(params => {
-      const id = params.get('id')
-      this.postsService.getPostById(id).subscribe((posts) => {
+      .subscribe(params => {
+        const id = params.get('id')
+        this.postsService.getPostById(id).subscribe((posts) => {
 
-        console.log(posts);
-
-
-        this.titre = posts.titre
-        this.texte = posts.texte
+          console.log(posts);
 
 
-      })
+          this.titre = posts.titre
+          this.texte = posts.texte
+        
 
-    });
 
-    
+        })
 
-    
+      });
+
+
+
+
 
   }
 
@@ -82,22 +87,22 @@ export class PostsComponent implements OnInit {
   //   //   let id_c = params.get('id')
   //   let id_c="66"
   //     this.postsService.getCommentById(id_c).subscribe((comments) => {
-       
+
   //       console.warn(comments);
   //       this.texte_comment = comments.texte
 
 
   // })}
 
-    getAllComments(){
-  this.postsService.getAllComments().subscribe((commentaire) => 
-  {
-    console.log(commentaire);
-
+  getAllComments() {
+    this.postsService.getAllComments().subscribe((commentaire) => {
+      console.log(commentaire);
     
 
-    this.commentaire = commentaire;
-  });}
+
+      this.commentaire = commentaire;
+    });
+  }
 
 
 

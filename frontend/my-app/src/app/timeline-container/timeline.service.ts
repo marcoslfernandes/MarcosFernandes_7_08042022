@@ -34,13 +34,11 @@ export class TimelineService {
 
   }
 
-  createNewPost(data: any) {
-    return this.http.post(`${this.rootURL}api/posts/63`, data)
+  createNewPost(data: any, id: any) {
+    return this.http.post(`${this.rootURL}api/posts/${id}`, data)
   }
 
-  createNewComment(data: any){
-    return this.http.post(`${this.rootURL}/api/comment/58`, data)
-  }
+  // {"Authorization": Bearer token}
 
   upload(file: string | Blob): Observable<any> {
 

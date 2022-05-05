@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ModeleLogin } from '../modele/login.modele';
+import { Observable } from 'rxjs';
 
 
 
@@ -23,9 +25,9 @@ return this.http.get('http://localhost:3000/api/auth/users');
 
   }
 
-  loginUser(data: any){
+  loginUser(data: any):Observable<ModeleLogin>{
       
-      return this.http.post(this.rootURL+"api/auth/login",data)
+      return this.http.post<ModeleLogin>(this.rootURL+"api/auth/login",data)
      
   }
 

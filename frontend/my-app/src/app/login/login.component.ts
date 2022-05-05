@@ -27,6 +27,11 @@ export class LoginComponent implements OnInit {
   isUserLoggedIn: boolean = false;
  
   user: any;
+  local!: string;
+  result: any;
+  user_id: any;
+  token: any;
+ 
   
 
   
@@ -37,19 +42,27 @@ export class LoginComponent implements OnInit {
       this.loginService.loginUser(this.register.value).subscribe((result)=>{
       
       
-        console.log(result)
-
- 
-
-  
-        
-        this.route.snapshot.paramMap.get('id')
-
-        let userSent = JSON.stringify(result) 
+        // console.warn(result.id)
+        // console.warn(result.token)
+          
         
 
-              localStorage.setItem("user", userSent)
+        
+        // console.log(this.route.snapshot.paramMap.get('id'))
+        
 
+        this.user_id = result.id
+        this.token = result.token
+
+        localStorage.setItem('id', JSON.stringify(this.user_id))
+        // localStorage.setItem('token', this.token)
+
+      
+        
+
+        //  this.local = localStorage.getItem('user')!=null ? localStorage.getItem('user'):"";
+
+         
        
         if(this.register.valid){
           this.isUserLoggedIn = true;
