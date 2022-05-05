@@ -27,6 +27,7 @@ exports.createComment = async (req, res, next) => {
 
       try {
         Comment.findAll({
+          where: { post_id: req.params.id },
           attributes: ["id", "texte", "post_id", "user_id"],
           }).then(comments => {
           res.json(comments)})

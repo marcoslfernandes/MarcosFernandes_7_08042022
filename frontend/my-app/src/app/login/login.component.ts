@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         this.token = result.token
 
         localStorage.setItem('id', JSON.stringify(this.user_id))
-        // localStorage.setItem('token', this.token)
+        localStorage.setItem('token', JSON.stringify(this.token))
 
       
         

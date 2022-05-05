@@ -19,6 +19,7 @@ export class ParametresContainerComponent implements OnInit {
   })
 
   item: any;
+  id: any;
 
 
 
@@ -35,20 +36,25 @@ export class ParametresContainerComponent implements OnInit {
   // }
 
   collection(){
+    this.id = JSON.parse(localStorage.getItem('id') || '{}')
     
-    this.parametresService.modifyUser(this.register.value).subscribe(()=>{
+    this.parametresService.modifyUser(this.register.value, this.id).subscribe(()=>{
       console.warn("Profil modifié !")
     })
 
     if(this.register.valid){
-      this.router.navigate(['/timeline']);
+      window.location.reload();
+    
     } 
   }
 
   deleteUser(){
-    console.log("teste!!!!")
-    this.parametresService.deleteUser().subscribe((result)=>{
+    this.id = JSON.parse(localStorage.getItem('id') || '{}')
+  
+    this.parametresService.deleteUser(this.id).subscribe((result)=>{
         console.warn("result", result)
+        localStorage.clear();
+        this.router.navigate(['/'])
     })
 
    

@@ -22,15 +22,15 @@ export class PostsService {
     return this.http.post(`http://localhost:3000/api/comment/59`, data)
   }
 
-  getCommentById(id_c: string | null): Observable<any> {
+  // getCommentById(id_c: any){
 
-    return this.http.get(` http://localhost:3000/api/comment/${id_c}`)
+  //   return this.http.get(` http://localhost:3000/api/comment/${id_c}`)
 
-  }
+  // }
 
-  getAllComments() {
+  getAllComments(id_c: any) {
 
-    return this.http.get('http://localhost:3000/api/comment');
+    return this.http.get(`http://localhost:3000/api/comment/${id_c}`);
 
   }
 

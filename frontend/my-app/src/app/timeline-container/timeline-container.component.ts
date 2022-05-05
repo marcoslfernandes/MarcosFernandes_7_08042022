@@ -120,11 +120,11 @@ export class TimelineContainerComponent implements OnInit {
 
   
 
-    toggleAskTask(){
-      console.log("toggle");
-      localStorage.removeItem('isUserLoggedIn')
-      localStorage.removeItem('user')
-      // localStorage.clear()
+    logout(){
+     
+      // localStorage.removeItem('isUserLoggedIn')
+      // localStorage.removeItem('user')
+      localStorage.clear()
       this.router.navigate(['/'])
 
     }

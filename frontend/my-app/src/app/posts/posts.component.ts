@@ -23,7 +23,7 @@ export class PostsComponent implements OnInit {
 
   comment = new FormGroup({
     texte: new FormControl(),
-   
+    post_id: new FormControl()
   })
 
   ngOnInit(): void {
@@ -45,7 +45,7 @@ export class PostsComponent implements OnInit {
 
 
   postComment() {
-    // window.location.reload();
+    window.location.reload();
     console.warn(this.comment.value)
     console.log(this.route.snapshot.params['id'])
 
@@ -82,20 +82,18 @@ export class PostsComponent implements OnInit {
 
   // getComment(){
 
-  //   // this.route.paramMap
-  //   // .subscribe(comment => {
-  //   //   let id_c = params.get('id')
-  //   let id_c="66"
-  //     this.postsService.getCommentById(id_c).subscribe((comments) => {
+  //   let id_c=this.route.snapshot.params['id']
+  //     this.postsService.getCommentById(id_c).subscribe((commentaire) => {
 
-  //       console.warn(comments);
-  //       this.texte_comment = comments.texte
-
+  //       console.warn(commentaire);
+       
+  //       this.commentaire = commentaire;
 
   // })}
 
   getAllComments() {
-    this.postsService.getAllComments().subscribe((commentaire) => {
+    let id_c=this.route.snapshot.params['id']
+    this.postsService.getAllComments(id_c).subscribe((commentaire) => {
       console.log(commentaire);
     
 
