@@ -8,6 +8,12 @@
 <h3>{{email}}</h3>
 </div>
 
+<div class="posts" *ngFor='let post of post.slice().reverse()'>
+    <a [routerLink]="['/posts', post.id]"><div class="titre">{{ post.titre }}</div></a>
+    <div class="texte">{{ post.texte }}</div>
+    <div class="images">{{ post.imageUrl }}</div>
+    </div>
+
 </body>
  
     

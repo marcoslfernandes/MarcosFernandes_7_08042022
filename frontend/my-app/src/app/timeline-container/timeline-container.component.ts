@@ -53,7 +53,7 @@ export class TimelineContainerComponent implements OnInit {
       
     // })
 
-    console.log(JSON.parse(localStorage.getItem('id') || '{}'))
+    // console.log(JSON.parse(localStorage.getItem('id') || '{}'))
 
     this.refreshPosts();
 

@@ -8,5 +8,6 @@ router.delete('/:id/del', userCtrl.delete);
 router.put('/update/:id', userCtrl.updateUser);
 router.get('/users', userCtrl.findAll);
 router.get('/profil/:id', userCtrl.findOne);
+router.get('/postuser/:id', userCtrl.findOnePost);
 
 module.exports = router;

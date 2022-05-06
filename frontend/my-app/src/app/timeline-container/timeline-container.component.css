@@ -118,7 +118,15 @@ h1{
     left: 220px;
 }
 
-
+#texte{
+    font-family: Poppins;
+    border: 1px solid gray;
+    border-radius: 5px;
+    position: relative;
+    left: 5px;
+    height: 150px;
+    width: 600px;
+}
 
 .titre{
     height: fit-content;
@@ -212,15 +220,7 @@ input[type="file"] {
 
   
 
-  #texte{
-      font-family: Poppins;
-      border: 1px solid gray;
-      border-radius: 5px;
-      position: relative;
-      left: 5px;
-      height: 150px;
-      width: 600px;
-  }
+
 
 ::placeholder{
       font-family: Poppins;

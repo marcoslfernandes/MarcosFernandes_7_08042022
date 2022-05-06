@@ -7,10 +7,17 @@
 
         <h1>{{titre}}</h1>
         <h3>{{texte}}</h3>
-
+        <div *ngFor='let user of user'>
+            <div class="prenom"></div>
+            <div class="nom"></div>
+        </div>
     </div>
+
+
     <div *ngFor='let commentaire of commentaire'>
         <h4>{{commentaire.texte}}</h4>
+
+        <button class="anime2"(click)="deleteC()"><fa-icon class="trash" [icon]="faTrash"></fa-icon></button>
     </div>
     <form [formGroup]="comment" (ngSubmit)="postComment()">
 
@@ -21,11 +28,15 @@
                     id="comment" name="texte">
                 <div class="form-group">
                     <label for="post_id"></label><br>
-                    <input type="text" formControlName="post_id" class="form-group" id="post_id" name="texte">
+                    <input type="text" [value]="postId" formControlName="post_id" class="form-group" id="post_id"
+                        name="texte">
+
                 </div>
                 <button type="submit" id="comment-button">Commenter</button>
             </div>
         </div>
     </form>
+    <div class="anime"><button class="anime2"(click)="deleteP()"><fa-icon class="trash" [icon]="faTrash"></fa-icon></button></div> 
+
 
 </body>

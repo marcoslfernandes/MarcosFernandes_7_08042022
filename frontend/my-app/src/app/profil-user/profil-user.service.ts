@@ -18,6 +18,13 @@ export class ProfilUserService {
 
   }
 
+  getAllPosts(post_id: any) {
+
+    return this.http.get(`http://localhost:3000/api/posts/${post_id}`);
+   
+
+  }
+
 }
 
 

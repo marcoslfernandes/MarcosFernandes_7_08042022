@@ -1,64 +1,64 @@
-body{
-    background-color: rgb(158, 202, 223);
+body {
+  background-color: rgb(158, 202, 223);
 }
 
-.container-post{
-    margin-left: 35%;
-    text-align: center;
-    margin-top: 200px;
-        max-width: 400px;
-        margin-top: 60px;
-        overflow: hidden;
-        background-color: #FFF;
-        border: 2px solid #FFF;
-        padding: 30px;
-        border-radius: 15px;
-        opacity: 95%;
+.container-post {
+  margin-left: 35%;
+  text-align: center;
+  margin-top: 200px;
+  max-width: 400px;
+  margin-top: 60px;
+  overflow: hidden;
+  background-color: #FFF;
+  border: 2px solid #FFF;
+  padding: 30px;
+  border-radius: 15px;
+  opacity: 95%;
 
 }
 
-h3{
-    border-top: 1px solid rgb(158, 202, 223);
-    padding-top: 20px;
+h3 {
+  border-top: 1px solid rgb(158, 202, 223);
+  padding-top: 20px;
 }
 
-#post_id{
+#post_id {
   position: relative;
   top: 280px;
   left: 630px;
 }
 
-#comment-button{
-    position: relative;
-    top: 280px;
-    left: 660px;
+#comment-button {
+  position: relative;
+  top: 280px;
+  left: 660px;
 }
 
-form{
-    position: relative;
-    bottom: 250px;
+form {
+  position: relative;
+  bottom: 250px;
 }
 
-h4{
+h4 {
   font-size: 14px;
   position: relative;
-top: 20px;
+  top: 20px;
   left: 530px;
   max-width: 350px;
-      margin-top: 20px;
-        overflow: hidden;
-        background-color: #FFF;
-        border: 2px solid #FFF;
-        padding: 20px;
-        border-radius: 15px;
-        opacity: 70%;
+  margin-top: 20px;
+  overflow: hidden;
+  background-color: #FFF;
+  border: 2px solid #FFF;
+  padding: 20px;
+  border-radius: 15px;
+  opacity: 70%;
 
 
 }
 
-#comment{
+#comment {
   position: relative;
-    top: 300px;
+  top: 300px;
   left: 505px;
   width: 400px;
   height: 50px;
@@ -67,12 +67,12 @@ top: 20px;
   padding-left: 4px;
 }
 
-  button{
-      font-family: Poppins;
-      font-size: 12px;
-    background-color: rgb(137, 198, 226);
-    border: 1px solid #FFF;
-    border-radius: 15px;
-    padding-right: 5px;
-    padding-left: 5px;
-  }
+button {
+  font-family: Poppins;
+  font-size: 12px;
+  background-color: rgb(137, 198, 226);
+  border: 1px solid #FFF;
+  border-radius: 15px;
+  padding-right: 5px;
+  padding-left: 5px;
+}

@@ -14,6 +14,8 @@ export class ProfilUserComponent implements OnInit {
   prenom: any;
   nom: any;
   email: any;
+  post: any;
+  post_id: any;
 
 
 
@@ -23,6 +25,8 @@ export class ProfilUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.getPosts();
 
     this.route.paramMap
     .subscribe(params => {
@@ -58,7 +62,17 @@ export class ProfilUserComponent implements OnInit {
 
   }
 
-   
+   getPosts(){
+    this.post_id=this.route.snapshot.params['id']
+    this.profilUserService.getAllPosts(this.post_id).subscribe((post) => 
+    {
+      console.log(post);
+
+      
+      this.post = post;
+     
+    });
+   }
         
 
 

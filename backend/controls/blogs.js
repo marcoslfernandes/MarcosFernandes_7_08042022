@@ -1,6 +1,7 @@
 const sequelize = require('../models');
 const User = sequelize.User;
 const Post = sequelize.Post;
+const Comment = sequelize.Comment;
 const multer = require('multer');
 const MIME_TYPES = {
   'image/jpg': 'jpg',
@@ -34,7 +35,7 @@ const storage = multer.diskStorage({
     }
 
    exports.deletePost = async (req, res, next) => {
-   
+    Comment.destroy({where : {post_id:req.params.id}})
     Post.destroy({
       where: {id: req.params.id}})
       .then(function (deletedRecord) {
@@ -46,6 +47,30 @@ const storage = multer.diskStorage({
       }})
   .catch(function (error){
       res.status(500).json(error);});};
+
+      // exports.deletePost = async (req, res, next) => {
+      //   try {
+      //     const post = await Post.findOne({where: {id: req.params.id}})
+      //     console.log("Post trouvé :", post)
+      //     if (post.imageUrl) {
+      //       const filename = post.imageUrl.split("/images")[0]
+      //       console.log("Filename to Delete", filename)
+      //       fs.unlink(`images/${filename}`, function(error) {
+      //         if(error){
+      //           throw error;
+      //         }
+      //         Comments.destroy({where : {posts_id :req.params.id}})
+      //         Post.destroy({where: {id: req.params.id}})
+      //         res.status(200).json({message: "Post et image supprimé"})
+      //       })
+      //     } else {
+      //       Post.destroy({where: {id: post.id}}, {truncate: true})
+      //       res.status(200).json({message: "Post supprimé"})
+      //     }
+      //   } catch (error) {
+      //     return res.status(500).send({error: "Erreur serveur"})
+      //   }
+      // };
 
     exports.findAll = async (req, res, next) => {
 
@@ -78,3 +103,21 @@ const storage = multer.diskStorage({
           }
         )
       };
+
+
+      exports.findAllPostsUser = async (req, res, next) => {
+
+        try {
+          Post.findAll({   where: { user_id: req.params.id },
+            attributes: ["id", "titre", "texte", "imageUrl", "user_id"],})
+            .then(posts => {
+            posts.map(posts => {
+            // if(post.imageUrl) post.imageUrl = `http://localhost:4200/images/${post.imageUrl}`
+            // if(post.User.avatar) post.User.avatar = `http://localhost:4200/images/${post.User.avatar}`
+            });
+            res.json(posts)})
+        } catch (error) {return res.status(500).send({error: "Une erreur est survenue lors de la récupération des posts ",})}};
+  
+
+
+   
