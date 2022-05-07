@@ -1,24 +1,4 @@
-fa-icon{
-    background-color: #FFF;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-    }
-    
-    .parametres{
-    
-        display: flex;
-        flex-direction: row;
-    width: 20px;
-      position: relative;
-      left: 10px;
-      top: 25px;
-    }
+
 
     .anime{
 
@@ -75,6 +55,28 @@ fa-icon{
     .parametres a :hover{
         color: #FFF;
     }
+
+    fa-icon{
+        background-color: #FFF;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+        }
+        
+        .parametres{
+        
+            display: flex;
+            flex-direction: row;
+        width: 10px;
+          position: relative;
+          left: 10px;
+          top: 25px;
+        }
     
     a{
         text-decoration: none;

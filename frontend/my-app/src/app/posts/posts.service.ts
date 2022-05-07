@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -18,7 +18,9 @@ export class PostsService {
 
   }
 
-  createNewComment(data: any, id: any){
+  createNewComment(data: any, id: any) {
+    
+
     return this.http.post(`http://localhost:3000/api/comment/${id}`, data)
   }
 

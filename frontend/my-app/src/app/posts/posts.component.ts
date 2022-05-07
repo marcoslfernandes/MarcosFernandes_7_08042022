@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from './posts.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-posts',
@@ -56,7 +57,7 @@ export class PostsComponent implements OnInit {
     console.warn(this.comment.value)
     
   
-    this.postId = this.route.snapshot.params['id']
+    this.post_id = this.route.snapshot.params['id']
   
     this.postsService.createNewComment(this.comment.value, this.id).subscribe((result) => {
       console.warn("Nouveau commentaire créé", result)
@@ -170,5 +171,6 @@ export class PostsComponent implements OnInit {
 
   // }
   faTrash = faTrash;
+  faHome = faHome;
 
 }

@@ -24,6 +24,7 @@ import { PostsComponent } from './posts/posts.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,7 @@ import { PostsComponent } from './posts/posts.component';
     ButtonLogoutComponent,
     ProfilUserComponent,
     PostsComponent,
+   
   
   
 
