@@ -24,13 +24,13 @@ export class PostsService {
     return this.http.post(`http://localhost:3000/api/comment/${id}`, data)
   }
 
-  // getUserById(id: string | null): Observable<any>  {
+  getUserById(user_id: string | null): Observable<any>  {
 
-  //   return this.http.get(`http://localhost:3000/api/auth/profil/${id}`)
+    return this.http.get(`http://localhost:3000/api/auth/profil/${user_id}`)
 
-  // }
+  }
 
-  getAllComments(id_c: any) {
+  getAllComments(id_c: any| null): Observable<any> {
 
     return this.http.get(`http://localhost:3000/api/comment/${id_c}`);
 

@@ -19,17 +19,28 @@ const storage = multer.diskStorage({
   }
 });
 
+
+
     exports.createPost = async (req, res, next) => {
       
       const titre = req.body.titre;
       const texte = req.body.texte;
-      const imageUrl = req.body.imageUrl;
-      // const imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
+      // const imageUrl = req.body.imageUrl;
+      // const imageUrl = `${req.file.filename}`;
       const user_id = req.params.id;
       const user = await User.findByPk(user_id);
+      User.findOne({
+        where: {
+          id: req.params.id
+        }, attributes: ["id", "prenom", "nom", "email"]
+      })
       if (!user) {
         return res.status(400).json({error: 'User not found'});
-      }
+      }let imageUrl
+      if (req.file) {
+        console.log("filename", req.file.filename)
+        imageUrl = `${req.file.filename}`
+      } 
       const publi = await Post.create({titre, texte, imageUrl, user_id});
       return res.json(publi);
     }
@@ -117,7 +128,21 @@ const storage = multer.diskStorage({
             });
             res.json(posts)})
         } catch (error) {return res.status(500).send({error: "Une erreur est survenue lors de la récupération des posts ",})}};
+   
+
+        exports.findOnePost = async (req, res, next) => {
+
+          try {
+           
+            Post.findOne({   where: { user_id: req.params.id },
+              attributes: ["id", "titre", "texte", "imageUrl", "user_id"],})
+              .then(posts => {
+              posts.map(posts => {
+              // if(post.imageUrl) post.imageUrl = `http://localhost:4200/images/${post.imageUrl}`
+              // if(post.User.avatar) post.User.avatar = `http://localhost:4200/images/${post.User.avatar}`
+              });
+              res.json(posts)})
+          } catch (error) {return res.status(500).send({error: "Une erreur est survenue lors de la récupération des posts ",})}};
+    
   
-
-
    

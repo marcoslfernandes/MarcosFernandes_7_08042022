@@ -42,13 +42,21 @@
                 <a [routerLink]="['/posts', post.id]"><div class="titre">{{ post.titre }}</div></a>
                 <div class="texte">{{ post.texte }}</div>
                 <div class="images">{{ post.imageUrl }}</div>
+              
                 <!-- <div class="button-supprimer">
                     <button class="supprimer">
                         <fa-icon class="trash" [icon]="faTrash" click="deleteP()"></fa-icon>
                     </button>
                 </div> -->
             </div>
+           
         </div>
+
+        <div class="auteur" *ngFor='let userAuteur of userAuteur'>
+            
+        </div>
+
+        
         <div class="user-container">
           
             <h1>La Team</h1>

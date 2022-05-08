@@ -147,6 +147,25 @@ exports.findAll = async (req, res, next) => {
   }
 };
 
+// exports.findAllByPost = async (req, res, next) => {
+
+//   try {
+//     User.findAll({
+//       attributes: ["id", "prenom", "nom", "email"],
+//     }).then(users => {
+//       users.map(users => {
+//         // if(post.imageUrl) post.imageUrl = `http://localhost:4200/images/${post.imageUrl}`
+//         // if(post.User.avatar) post.User.avatar = `http://localhost:4200/images/${post.User.avatar}`
+//       });
+//       res.json(users)
+//     })
+//   } catch (error) {
+//     return res.status(500).send({
+//       error: "Une erreur est survenue lors de la récupération des utilisateurs",
+//     })
+//   }
+// };
+
 exports.findOne = (req, res, next) => {
   User.findOne({
     where: {
@@ -170,7 +189,7 @@ exports.findOne = (req, res, next) => {
 exports.findOnePost = (req, res, next) => {
   User.findOne({
     where: {
-      user_id: req.params.id
+      post_id: req.params.id
     }, attributes: ["id", "prenom", "nom", "email"]
   }).then(
     (user) => {
@@ -186,4 +205,28 @@ exports.findOnePost = (req, res, next) => {
     }
   )
 };
+
+exports.findOneAuthor = (req, res, next) => {
+  User.findOne({
+    where: {
+      id: req.params.id
+    }, attributes: ["id", "prenom", "nom", "email"]
+  }).then(
+    (user) => {
+      if (!user) {
+        return res.status(404).json({ message: "Profil non trouvé" });
+      }
+      // product.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + product.imageUrl;
+      res.status(200).json(user);
+    }
+  ).catch(
+    () => {
+      res.status(500).send(new Error('Database error!'));
+    }
+  )
+};
+
+
+
+
 

@@ -25,7 +25,9 @@ export class PostsComponent implements OnInit {
   id: any;
   prenom: any;
   nom: any;
-  
+  user_id: any;
+
+
 
   comment = new FormGroup({
     texte: new FormControl(),
@@ -35,52 +37,39 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
 
 
-   
+
     this.getPosts();
 
     // this.getComment();
 
     this.getAllComments();
 
-  //  this.getUser();
-  
-   
+    //  this.getUser();
+
+
 
 
   }
 
- 
+
 
   postComment() {
     window.location.reload();
     this.id = JSON.parse(localStorage.getItem('id') || '{}')
     console.warn(this.comment.value)
-    
-  
+
+
     this.post_id = this.route.snapshot.params['id']
-  
+
     this.postsService.createNewComment(this.comment.value, this.id).subscribe((result) => {
       console.warn("Nouveau commentaire créé", result)
     })
   };
 
 
-  // getUser(){
-  //   this.id = this.route.snapshot.params['user_id']
-
-  //   this.postsService.getUserById(this.id).subscribe((user) => 
-  //     {
 
 
-  //       console.log(user)
 
-  //       this.user = user.prenom;
-  
-
-  //     })
-  // }
-
- 
 
   getPosts() {
 
@@ -91,11 +80,20 @@ export class PostsComponent implements OnInit {
 
           console.log(posts);
 
+          this.user_id = posts.user_id
 
           this.titre = posts.titre
           this.texte = posts.texte
-        
 
+          this.postsService.getUserById(this.user_id).subscribe((user) => {
+
+
+            console.log(user.prenom)
+
+            this.prenom = user.prenom
+    
+      
+          })
 
         })
 
@@ -103,9 +101,21 @@ export class PostsComponent implements OnInit {
 
 
 
-
-
   }
+
+  // getUser() {
+
+
+  //   this.postsService.getUserById(this.user_id).subscribe((user) => {
+
+
+  //     console.log(user)
+
+
+
+
+  //   })
+  // }
 
   // getComment(){
 
@@ -113,52 +123,67 @@ export class PostsComponent implements OnInit {
   //     this.postsService.getCommentById(id_c).subscribe((commentaire) => {
 
   //       console.warn(commentaire);
-       
+
   //       this.commentaire = commentaire;
 
   // })}
 
   getAllComments() {
-    let id_c=this.route.snapshot.params['id']
+    let id_c = this.route.snapshot.params['id']
     this.postsService.getAllComments(id_c).subscribe((commentaire) => {
-      console.log(commentaire);
-    
+      console.log(commentaire[0].user_id);
+
+       for (var i = 0; i < 0; i++) {
+        commentaire[i].user_id
+     }
+
+
 
 
       this.commentaire = commentaire;
+
+      this.postsService.getUserById(this.user_id).subscribe((user) => {
+
+
+        console.log(user.prenom)
+
+        this.prenom = user.prenom
+
+  
+      })
     });
   }
 
- 
-  deleteP(){
-    
-    this.id=this.route.snapshot.params['id']
+
+  deleteP() {
+
+    this.id = this.route.snapshot.params['id']
     this.postsService.deletePost(this.id).subscribe((result) => {
-      
+
       console.warn(result);
 
       this.router.navigate(['/timeline'])
 
     });
 
-   
+
 
 
   }
 
- deleteC(){
-   console.log("teste")
-   window.location.reload();
-   this.id = JSON.parse(localStorage.getItem('id') || '{}')
-   this.postsService.deleteComment(this.id).subscribe((result) => {
-      
-    console.warn(result);
+  deleteC() {
+    console.log("teste")
+    window.location.reload();
+    this.id = JSON.parse(localStorage.getItem('id') || '{}')
+    this.postsService.deleteComment(this.id).subscribe((result) => {
 
-   
+      console.warn(result);
 
-  });
-   
- }
+
+
+    });
+
+  }
 
 
   // postComment(){

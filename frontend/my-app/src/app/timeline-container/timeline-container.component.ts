@@ -29,6 +29,8 @@ export class TimelineContainerComponent implements OnInit {
 
 
   userData: any;
+  
+  userAuteur: any;
 
   post: any;
   
@@ -57,6 +59,8 @@ export class TimelineContainerComponent implements OnInit {
 
     this.refreshPosts();
 
+
+
     this.timelineService.getAllUsers().subscribe((users) => 
       {
         console.log(users);
@@ -66,7 +70,6 @@ export class TimelineContainerComponent implements OnInit {
       this.timelineService.getAllPosts().subscribe((posts) => 
       {
         console.log(posts);
-
         
         this.post = posts;
        
@@ -108,14 +111,23 @@ export class TimelineContainerComponent implements OnInit {
     getPost(){
   
       this.id = JSON.parse(localStorage.getItem('id') || '{}')
-      window.location.reload();
+      // window.location.reload();
       console.warn(this.register.value)
+    
       this.onUpload();
       this.timelineService.createNewPost(this.register.value, this.id).subscribe((result)=>{
         console.warn("Nouveau post créé", result)
-       
-        
       })
+
+      this.timelineService.getUserById(this.id).subscribe((users) => 
+      {
+
+
+        console.warn(users)
+        this.userAuteur = users.prenom
+      
+      })
+
     };
 
   
@@ -135,13 +147,13 @@ export class TimelineContainerComponent implements OnInit {
 
 
     onChange(event: any) {
-      this.file = event.target.files[0];
-      const value = event.target.value;
+      const files = event.target.files[0]
+      // const value = event.target.value;
 
   // this will return C:\fakepath\somefile.ext
-  console.log(value);
+  // console.log(value);
 
-  const files = event.target.files;
+ 
 
   //this will return an ARRAY of File object
   console.log(files);

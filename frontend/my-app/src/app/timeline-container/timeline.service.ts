@@ -21,7 +21,7 @@ export class TimelineService {
 
   }
 
-  getAllPosts() {
+  getAllPosts(): Observable<any> {
 
     return this.http.get('http://localhost:3000/api/posts/');
    
@@ -36,6 +36,12 @@ export class TimelineService {
 
   createNewPost(data: any, id: any) {
     return this.http.post(`${this.rootURL}api/posts/${id}`, data)
+  }
+
+  getUserById(id: string | null): Observable<any> {
+
+    return this.http.get(`http://localhost:3000/api/auth/profil/${id}`)
+
   }
 
   // {"Authorization": Bearer token}

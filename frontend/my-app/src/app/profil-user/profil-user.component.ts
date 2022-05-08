@@ -34,15 +34,6 @@ export class ProfilUserComponent implements OnInit {
       this.profilUserService.getProjectById(id).subscribe((users) => 
       {
 
-        // const obj = {users};
-
-        // const mapped = Object.keys(obj).map(key => ({type: key, value: obj[key]}));
-
-        // const obj = {users};
-
-        // const mapped = Object.entries(obj).map(([type, value]) => ({type, value}));
-
-        // console.log(mapped);
 
         console.log(users)
 
