@@ -20,7 +20,7 @@ export class ParametresContainerComponent implements OnInit {
 
   item: any;
   id: any;
-
+  token: any;
 
 
   constructor(private parametresService: ParametresService, private router:Router) { }
@@ -37,8 +37,8 @@ export class ParametresContainerComponent implements OnInit {
 
   collection(){
     this.id = JSON.parse(localStorage.getItem('id') || '{}')
-    
-    this.parametresService.modifyUser(this.register.value, this.id).subscribe(()=>{
+    this.token = JSON.parse(localStorage.getItem('token') || '{}');
+    this.parametresService.modifyUser(this.register.value, this.id, this.token).subscribe(()=>{
       console.warn("Profil modifié !")
     })
 
@@ -50,8 +50,8 @@ export class ParametresContainerComponent implements OnInit {
 
   deleteUser(){
     this.id = JSON.parse(localStorage.getItem('id') || '{}')
-  
-    this.parametresService.deleteUser(this.id).subscribe((result)=>{
+    this.token = JSON.parse(localStorage.getItem('token') || '{}');
+    this.parametresService.deleteUser(this.id, this.token).subscribe((result)=>{
         console.warn("result", result)
         localStorage.clear();
         this.router.navigate(['/'])

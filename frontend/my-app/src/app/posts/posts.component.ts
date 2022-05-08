@@ -26,6 +26,7 @@ export class PostsComponent implements OnInit {
   prenom: any;
   nom: any;
   user_id: any;
+  token: any;
 
 
 
@@ -55,13 +56,14 @@ export class PostsComponent implements OnInit {
 
   postComment() {
     window.location.reload();
-    this.id = JSON.parse(localStorage.getItem('id') || '{}')
+    this.id = JSON.parse(localStorage.getItem('id') || '{}');
+    this.token = JSON.parse(localStorage.getItem('token') || '{}');
     console.warn(this.comment.value)
 
 
     this.post_id = this.route.snapshot.params['id']
 
-    this.postsService.createNewComment(this.comment.value, this.id).subscribe((result) => {
+    this.postsService.createNewComment(this.comment.value, this.id, this.token).subscribe((result) => {
       console.warn("Nouveau commentaire créé", result)
     })
   };
@@ -158,7 +160,8 @@ export class PostsComponent implements OnInit {
   deleteP() {
 
     this.id = this.route.snapshot.params['id']
-    this.postsService.deletePost(this.id).subscribe((result) => {
+    this.token = JSON.parse(localStorage.getItem('token') || '{}');
+    this.postsService.deletePost(this.id, this.token).subscribe((result) => {
 
       console.warn(result);
 

@@ -38,6 +38,8 @@ export class TimelineContainerComponent implements OnInit {
 
   id: any;
 
+  token: any;
+
   loading: boolean = false; // Flag variable
   file: File = null as any; // Variable to store file
 
@@ -110,12 +112,13 @@ export class TimelineContainerComponent implements OnInit {
 
     getPost(){
   
-      this.id = JSON.parse(localStorage.getItem('id') || '{}')
+      this.id = JSON.parse(localStorage.getItem('id') || '{}');
+      this.token = JSON.parse(localStorage.getItem('token') || '{}');
       // window.location.reload();
       console.warn(this.register.value)
     
       this.onUpload();
-      this.timelineService.createNewPost(this.register.value, this.id).subscribe((result)=>{
+      this.timelineService.createNewPost(this.register.value, this.id, this.token).subscribe((result)=>{
         console.warn("Nouveau post créé", result)
       })
 

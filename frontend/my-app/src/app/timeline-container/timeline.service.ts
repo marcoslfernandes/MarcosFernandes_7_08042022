@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Publi } from './post.model';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
+
 
 
 
@@ -34,9 +36,14 @@ export class TimelineService {
 
   }
 
-  createNewPost(data: any, id: any) {
-    return this.http.post(`${this.rootURL}api/posts/${id}`, data)
+  createNewPost(data: any, id: any, token: any): Observable<any> {
+    const header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.post(`${this.rootURL}api/posts/${id}`, data, { headers: header })
   }
+
 
   getUserById(id: string | null): Observable<any> {
 

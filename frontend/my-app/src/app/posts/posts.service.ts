@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,11 +19,15 @@ export class PostsService {
 
   }
 
-  createNewComment(data: any, id: any) {
-    
+  createNewComment(data: any, id: any, token: any): Observable<any> {
+    const header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
 
-    return this.http.post(`http://localhost:3000/api/comment/${id}`, data)
+    return this.http.post(`http://localhost:3000/api/comment/${id}`, data, { headers: header })
   }
+
 
   getUserById(user_id: string | null): Observable<any>  {
 
@@ -36,11 +41,17 @@ export class PostsService {
 
   }
 
-  deletePost(id: any){
+  deletePost(id: any, token: any): Observable<any> {
+    const header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
 
-    return this.http.delete(`http://localhost:3000/api/posts/delete/${id}`)
+    return this.http.delete(`http://localhost:3000/api/posts/delete/${id}`, { headers: header })
 
   }
+
+  
 
   deleteComment(id: any){
 
