@@ -27,17 +27,22 @@ export class PostsComponent implements OnInit {
   nom: any;
   user_id: any;
   token: any;
+comment: any;
+idnumber: any;
 
 
-
-  comment = new FormGroup({
-    texte: new FormControl(),
-    post_id: new FormControl()
-  })
+ 
 
   ngOnInit(): void {
 
+    this.comment = new FormGroup({
+      texte: new FormControl(),
+      post_id: new FormControl()
+    })
 
+    let idnumber = this.route.snapshot.params['id']
+
+    this.comment.get('post_id').setValue(idnumber);
 
     this.getPosts();
 
@@ -59,12 +64,9 @@ export class PostsComponent implements OnInit {
     this.id = JSON.parse(localStorage.getItem('id') || '{}');
     this.token = JSON.parse(localStorage.getItem('token') || '{}');
     console.warn(this.comment.value)
-
-
-    this.post_id = this.route.snapshot.params['id']
-
     this.postsService.createNewComment(this.comment.value, this.id, this.token).subscribe((result) => {
       console.warn("Nouveau commentaire créé", result)
+  
     })
   };
 
@@ -74,6 +76,8 @@ export class PostsComponent implements OnInit {
 
 
   getPosts() {
+
+    // this.post_id = this.route.snapshot.params['id']
 
     this.route.paramMap
       .subscribe(params => {
@@ -93,6 +97,7 @@ export class PostsComponent implements OnInit {
             console.log(user.prenom)
 
             this.prenom = user.prenom
+            this.nom = user.nom
     
       
           })

@@ -116,6 +116,10 @@ a{
   color: black;
 }
 
+#post_id{
+ visibility: hidden;
+}
+
 .parametres a :hover{
   color: #FFF;
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,14 +20,18 @@ export class PostsService {
 
   }
 
-  createNewComment(data: any, id: any, token: any): Observable<any> {
+  createNewComment(data: any, id: any, token: any): Observable<any>{
     const header = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
-    })
+    });
+
+   
 
     return this.http.post(`http://localhost:3000/api/comment/${id}`, data, { headers: header })
   }
+
+
 
 
   getUserById(user_id: string | null): Observable<any>  {

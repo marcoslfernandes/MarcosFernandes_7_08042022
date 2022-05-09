@@ -40,7 +40,7 @@ exports.createPost = async (req, res, next) => {
   } let imageUrl
   if (req.file) {
     console.log("filename", req.file.filename)
-    imageUrl = `${req.file.filename}`
+    imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   }
   const publi = await Post.create({ titre, texte, imageUrl, user_id });
   return res.json(publi);

@@ -151,6 +151,9 @@ exports.findAll = async (req, res, next) => {
 
 //   try {
 //     User.findAll({
+//       where: {
+//         user_id: req.params.id
+//       },
 //       attributes: ["id", "prenom", "nom", "email"],
 //     }).then(users => {
 //       users.map(users => {

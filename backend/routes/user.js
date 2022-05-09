@@ -11,4 +11,5 @@ router.get('/users', userCtrl.findAll);
 router.get('/profil/:id', userCtrl.findOne);
 router.get('/postuser/:id', userCtrl.findOnePost);
 
+
 module.exports = router;
