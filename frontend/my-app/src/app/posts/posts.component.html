@@ -15,7 +15,9 @@
 
    
 
-    <div class="comment-box" *ngFor='let commentaire of commentaire'><a [routerLink]="['/comments', commentaire.id]"><h4>{{commentaire.texte}}</h4></a> </div>
+    <div class="comment-box" *ngFor='let commentaire of commentaire'>
+        <a [routerLink]="['/comments', commentaire.id]"><h4>{{commentaire.texte}}</h4></a> 
+    </div>
     <form [formGroup]="comment" (ngSubmit)="postComment()">
 
         <div class="comments">
@@ -33,7 +35,7 @@
             </div>
         </div>
     </form>
-    <div class="anime"><button class="anime2"(click)="deleteP()"><fa-icon class="trash" [icon]="faTrash"></fa-icon></button></div> 
+    <div *ngIf="visibility()" class="anime"><button class="anime2"(click)="deleteP()"><fa-icon class="trash" [icon]="faTrash"></fa-icon></button></div> 
 
 
 </body>

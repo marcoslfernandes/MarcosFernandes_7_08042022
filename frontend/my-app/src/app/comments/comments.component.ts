@@ -30,6 +30,21 @@ export class CommentsComponent implements OnInit {
   comment: any;
   post_id: any;
   token: any;
+  userId: any;
+
+  visibility(){
+
+    this.userId = JSON.parse(localStorage.getItem('id') || '{}');
+
+
+    if (this.userId !== this.user_id) {
+      
+      return false
+      
+    } else{
+      return true
+    }
+  }
 
   deleteP() {
  
@@ -74,6 +89,7 @@ export class CommentsComponent implements OnInit {
 
             this.prenom = user.prenom
             this.nom = user.nom
+            
     
       
           })

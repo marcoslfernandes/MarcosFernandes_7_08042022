@@ -72,7 +72,19 @@ idnumber: any;
 
 
 
+  visibility(){
 
+  
+    this.id = JSON.parse(localStorage.getItem('id') || '{}');
+
+    if (this.id !== this.user_id) {
+      
+      return false
+      
+    } else{
+      return true
+    }
+  }
 
 
   getPosts() {
@@ -173,9 +185,6 @@ idnumber: any;
       this.router.navigate(['/timeline'])
 
     });
-
-
-
 
   }
 
