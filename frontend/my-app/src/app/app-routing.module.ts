@@ -7,6 +7,7 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { ExpenseGuard } from './expense.guard';
 import { ProfilUserComponent } from './profil-user/profil-user.component';
 import { PostsComponent } from './posts/posts.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
 {
   path:'posts/:id',
   component: PostsComponent, canActivate: [ExpenseGuard]
+},
+{
+  path:'comments/:id',
+  component: CommentsComponent, canActivate: [ExpenseGuard]
 },
 {
   path:'',

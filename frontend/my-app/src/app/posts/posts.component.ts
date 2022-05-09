@@ -179,20 +179,7 @@ idnumber: any;
 
   }
 
-  deleteC() {
-    console.log("teste")
-    window.location.reload();
-    this.id = JSON.parse(localStorage.getItem('id') || '{}')
-    this.postsService.deleteComment(this.id).subscribe((result) => {
-
-      console.warn(result);
-
-
-
-    });
-
-  }
-
+ 
 
   // postComment(){
   //   window.location.reload();

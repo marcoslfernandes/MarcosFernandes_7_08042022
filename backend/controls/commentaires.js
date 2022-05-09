@@ -20,6 +20,12 @@ exports.createComment = async (req, res, next) => {
     } catch(erreur) {res.status(500).send({error: erreur.message})}};
 
     exports.deleteComment = async (req, res) => {
+      const comment_id = await Comment.findOne({where: {id: req.params.id}})
+      if (comment_id.user_id !== req.auth.userId) {
+        res.status(400).json({
+          error: new Error('Unauthorized request!')
+        });
+      }
       const comment = await Comment.destroy({where: {id: req.params.id}})
       res.status(200).json({comment, message: "Commentaire supprimé"})};
 
@@ -38,15 +44,15 @@ exports.createComment = async (req, res, next) => {
           exports.findOne = (req, res, next) => {
             
             Comment.findOne({
-              where: { post_id: req.params.id }
+              where: { id: req.params.id }
      
             }).then(
-              (post) => {
-                if (!post) {
+              (comment) => {
+                if (!comment) {
                   return res.status(404).json({ message: "Comment non trouvé" });
                 }
                 // product.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + product.imageUrl;
-                res.status(200).json(post);
+                res.status(200).json(comment);
               }
             ).catch(
               () => {

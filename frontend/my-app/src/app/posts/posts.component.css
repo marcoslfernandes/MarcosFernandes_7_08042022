@@ -17,6 +17,28 @@ body {
 
 }
 
+.comment-box{
+ text-align: center;
+ max-width: 350px;
+ position: relative;
+ left: 520px;
+
+}
+
+
+.comment-box a{
+  text-decoration: none;
+  color: black;
+}
+
+.comment-box :hover{
+  opacity: 100%;
+ 
+
+}
+
+
+
 h3 {
   border-top: 1px solid rgb(158, 202, 223);
   padding-top: 20px;
@@ -43,17 +65,21 @@ h4 {
   font-size: 14px;
   position: relative;
   top: 20px;
-  left: 530px;
   max-width: 350px;
   margin-top: 20px;
+  margin-bottom: 30px;
   overflow: hidden;
   background-color: #FFF;
   border: 2px solid #FFF;
   padding: 20px;
   border-radius: 15px;
   opacity: 70%;
+  transition:0.2s;
+}
 
-
+h4 :hover{
+  opacity: 100%;
+  background-color: rgb(205, 136, 136);
 }
 
 #comment {

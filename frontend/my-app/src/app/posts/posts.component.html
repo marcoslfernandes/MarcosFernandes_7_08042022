@@ -15,11 +15,7 @@
 
    
 
-    <div *ngFor='let commentaire of commentaire'>
-        <h4>{{commentaire.texte}}</h4>
-
-       
-    </div>
+    <div class="comment-box" *ngFor='let commentaire of commentaire'><a [routerLink]="['/comments', commentaire.id]"><h4>{{commentaire.texte}}</h4></a> </div>
     <form [formGroup]="comment" (ngSubmit)="postComment()">
 
         <div class="comments">

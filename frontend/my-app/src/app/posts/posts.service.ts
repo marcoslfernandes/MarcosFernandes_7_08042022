@@ -58,13 +58,7 @@ export class PostsService {
 
   
 
-  deleteComment(id: any){
 
-    return this.http.delete(`http://localhost:3000/api/comment/del/${id}`)
-
-    
-
-  }
  
 
 }
