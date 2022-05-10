@@ -105,6 +105,14 @@
     opacity: 95%;
   }
 
+  @media screen and (max-width: 414px){
+    .container{
+        max-width: 380px;
+        left: 2px;
+    }
+}
+    
+
   form{
         display: flex;
         flex-direction: column;

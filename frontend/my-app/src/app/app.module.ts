@@ -21,6 +21,7 @@ import { ButtonLogoutComponent } from './button-logout/button-logout.component';
 import { ProfilUserComponent } from './profil-user/profil-user.component';
 import { PostsComponent } from './posts/posts.component';
 import { CommentsComponent } from './comments/comments.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -44,6 +45,7 @@ import { CommentsComponent } from './comments/comments.component';
     ProfilUserComponent,
     PostsComponent,
     CommentsComponent,
+    FooterComponent,
    
   
   

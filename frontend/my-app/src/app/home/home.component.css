@@ -1,12 +1,31 @@
 .container{
     display: flex;
     flex-direction: column;
+    width: 500px;
+    overflow: hidden;
 }
 
 body{
     background-image: url('cowork.jpg');
     background-position: center;
-    height: 800px;
+    height: 790px;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 820px){
+
+    body{
+        height: 1180px;
+    }
+
+ 
+
+}
+
+@media screen and (max-width: 414px){
+    .container{
+        width: 300px;
+       
+    }
 }

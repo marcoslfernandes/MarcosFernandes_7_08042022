@@ -17,6 +17,18 @@ body {
 
 }
 
+@media screen and (max-width: 820px){
+  .container-post{
+      margin-left: 25%;
+  }
+}
+
+@media screen and (max-width: 414px){
+  .container-post{
+      margin-left: 2%;
+  }
+}
+
 .comment-box{
  text-align: center;
  max-width: 350px;
@@ -27,6 +39,18 @@ body {
  height: 80px;
 margin-top: 30px;
 }
+
+@media screen and (max-width: 820px){
+ .comment-box{
+   left: 230px;
+ }
+ }
+
+ @media screen and (max-width: 414px){
+  .comment-box{
+    left: 30px;
+  }
+  }
 
 
 .comment-box a{
@@ -52,16 +76,43 @@ h3 {
   left: 630px;
 }
 
+@media screen and (max-width: 820px){
+  #post_id{
+    left: -450px;
+  }
+ }
+
 #comment-button {
   position: relative;
   top: 280px;
   left: 660px;
 }
 
+@media screen and (max-width: 820px){
+  #comment-button{
+    left: 650px;
+  }
+}
+
 form {
   position: relative;
   bottom: 250px;
 }
+
+@media screen and (max-width: 820px){
+  form{
+    right: 300px;
+  }
+ }
+
+
+ @media screen and (max-width: 414px){
+  form{
+    right: 495px;
+  }
+ }
+
+
 
 h4 {
  
@@ -104,12 +155,25 @@ button {
   background-color: rgb(205, 136, 136);
   position: relative;
   left: 680px;
-  top: 200px;
+  top: 100px;
   font-size: 25px;
   border-radius: 50%;
   padding-right: 10px;
   padding-left: 10px;
+
 }
+
+@media screen and (max-width: 820px){
+ .anime2{
+   left: 380px;
+ }
+ }
+
+ @media screen and (max-width: 414px){
+  .anime2{
+    left: 180px;
+  }
+  }
 
 
 .parametres{
@@ -164,4 +228,8 @@ a{
   border-top-right-radius: 50%;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
+  }
+
+  .trash{
+    padding-bottom: 50px;
   }

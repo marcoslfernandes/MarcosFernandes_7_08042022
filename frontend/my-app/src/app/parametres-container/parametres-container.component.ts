@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { ParametresService } from './parametres.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder,  Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class ParametresContainerComponent implements OnInit {
 
   register=new FormGroup({
-    prenom: new FormControl(),
+    prenom: new FormControl('', Validators.required),
     nom: new FormControl(),
     email: new FormControl(),
     password: new FormControl()
@@ -23,7 +23,7 @@ export class ParametresContainerComponent implements OnInit {
   token: any;
 
 
-  constructor(private parametresService: ParametresService, private router:Router) { }
+  constructor(private parametresService: ParametresService, private router:Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
 

@@ -26,7 +26,7 @@ export class ContainerComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.loggedIn();
 
 
     this.inscriptionService.getAllUsers().subscribe((users) => {
@@ -36,14 +36,19 @@ export class ContainerComponent implements OnInit {
 
   }
 
+  loggedIn(){
+    let val = localStorage.getItem('isUserLoggedIn');
+    if(val != null && val == "true"){
+      this.router.navigate(['/timeline'])
+    }
+  }
+
   collection() {
 
     this.inscriptionService.createNewUser(this.register.value).subscribe(() => {
       console.log("Nouvel utilisateur créé")
 
       if (this.register.valid) {
-        // this.isUserLoggedIn = true;
-        // localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
         this.router.navigate(['/']);
       }
     })

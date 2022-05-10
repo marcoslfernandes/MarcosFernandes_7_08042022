@@ -22,7 +22,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.loggedIn()
+
+  }
 
   isUserLoggedIn: boolean = false;
  
@@ -33,7 +37,12 @@ export class LoginComponent implements OnInit {
   token: any;
  
   
-
+  loggedIn(){
+    let val = localStorage.getItem('isUserLoggedIn');
+    if(val != null && val == "true"){
+      this.router.navigate(['/timeline'])
+    }
+  }
   
   onClick(){
    

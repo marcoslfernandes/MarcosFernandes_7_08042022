@@ -60,7 +60,7 @@ export class TimelineContainerComponent implements OnInit {
     })
 
  
-
+   
   
 
 
@@ -99,6 +99,8 @@ export class TimelineContainerComponent implements OnInit {
     
 
     }
+
+    
 
     local(){
      let user = localStorage.getItem('user')

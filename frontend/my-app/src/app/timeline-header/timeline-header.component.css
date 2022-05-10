@@ -11,7 +11,20 @@
     border-bottom: solid #FFF 2px;
 }
 
+@media screen and (max-width: 820px){
+    .container-header{
+        right: 300px;
+    }
+}
+
+@media screen and (max-width: 414px){
+    .container-header{
+        right: 500px;
+    }
+}
+
 a{
     text-decoration: none;
     color: rgb(100, 154, 179)
 }
+
