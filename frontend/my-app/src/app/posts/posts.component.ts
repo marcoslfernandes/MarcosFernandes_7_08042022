@@ -29,6 +29,7 @@ export class PostsComponent implements OnInit {
   token: any;
 comment: any;
 idnumber: any;
+admin: any;
 
 
  
@@ -74,10 +75,10 @@ idnumber: any;
 
   visibility(){
 
-  
+    this.admin = JSON.parse(localStorage.getItem('admin') || '{}');
     this.id = JSON.parse(localStorage.getItem('id') || '{}');
 
-    if (this.id !== this.user_id) {
+    if (this.admin == 0 && this.id !== this.user_id) {
       
       return false
       

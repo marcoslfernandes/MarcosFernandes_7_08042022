@@ -89,7 +89,8 @@ exports.createPost = async (req, res, next) => {
         try {
           const post = await Post.findOne({where: {id: req.params.id}})
           console.log("Post trouvé", post)
-          if (post.user_id !== req.auth.userId) {
+
+          if (User.admin == 0 && post.user_id !== req.auth.userId) {
                     res.status(400).json({
                       error: new Error('Unauthorized request!')
                     });

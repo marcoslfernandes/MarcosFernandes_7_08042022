@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   result: any;
   user_id: any;
   token: any;
+  admin: any;
  
   
   loggedIn(){
@@ -53,6 +54,7 @@ export class LoginComponent implements OnInit {
       
         // console.warn(result.id)
         // console.warn(result.token)
+        console.warn(result.admin)
           
         
 
@@ -62,9 +64,11 @@ export class LoginComponent implements OnInit {
 
         this.user_id = result.id
         this.token = result.token
+        this.admin = result.admin
 
         localStorage.setItem('id', JSON.stringify(this.user_id))
         localStorage.setItem('token', JSON.stringify(this.token))
+        localStorage.setItem('admin', JSON.stringify(this.admin))
 
       
         

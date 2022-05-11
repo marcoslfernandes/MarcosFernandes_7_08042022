@@ -21,7 +21,7 @@ exports.createComment = async (req, res, next) => {
 
     exports.deleteComment = async (req, res) => {
       const comment_id = await Comment.findOne({where: {id: req.params.id}})
-      if (comment_id.user_id !== req.auth.userId) {
+      if (User.admin == 0 && comment_id.user_id !== req.auth.userId) {
         res.status(400).json({
           error: new Error('Unauthorized request!')
         });

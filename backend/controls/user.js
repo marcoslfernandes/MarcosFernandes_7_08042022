@@ -26,7 +26,8 @@ exports.signup = (req, res, next) => {
   const nom = req.body.nom;
   const email = req.body.email;
   const password = req.body.password;
-  const user = User.create({ prenom, nom, email, password });
+  const admin = req.body.admin;
+  const user = User.create({ prenom, nom, email, password,admin });
   res.status(200).json({
     id: user.id,
     // token: jwt.sign(
@@ -50,8 +51,7 @@ exports.login = (req, res, next) => {
           }
           res.status(200).json({
             id: user.id,
-            // token: jwt.sign({ id: user.id }, `secretToken`, {
-            //   expiresIn: "24h",
+            admin: user.admin,
             token: jwt.sign({ userId: user.id }, 'RANDOM_TOKEN_SECRET', {
               expiresIn: "24h",
             })

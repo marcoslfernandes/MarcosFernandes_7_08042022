@@ -31,13 +31,15 @@ export class CommentsComponent implements OnInit {
   post_id: any;
   token: any;
   userId: any;
+  admin: any;
 
   visibility(){
 
+    this.admin = JSON.parse(localStorage.getItem('admin') || '{}');
     this.userId = JSON.parse(localStorage.getItem('id') || '{}');
 
 
-    if (this.userId !== this.user_id) {
+    if (this.admin == 0 && this.userId !== this.user_id) {
       
       return false
       
