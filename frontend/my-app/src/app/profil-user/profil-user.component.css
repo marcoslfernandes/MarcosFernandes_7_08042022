@@ -17,6 +17,35 @@ body{
 
 }
 
+.anime{
+
+    transition-property: all;
+}
+
+.anime:hover .anime2 {
+transform: scale(1.2);
+transition-timing-function: ease;
+}
+
+.anime2{
+    background-color: rgb(205, 136, 136);
+    border: 1px solid rgb(205, 136, 136);
+    transition-duration: 500ms;
+    margin-top: 40px;
+    position: relative;
+    left: 630px;
+}
+
+button{
+
+    font-family: Poppins;
+    font-size: 12px;
+    border: 1px solid #FFF;
+    border-radius: 15px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
 a{
     text-decoration: none;
     color: rgb(100, 154, 179);

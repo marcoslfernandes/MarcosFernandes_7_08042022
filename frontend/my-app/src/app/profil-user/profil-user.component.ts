@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfilUserService } from './profil-user.service';
 
 
@@ -16,11 +16,12 @@ export class ProfilUserComponent implements OnInit {
   email: any;
   post: any;
   post_id: any;
+  token: any;
+  admin: any;
 
 
 
-
-  constructor(private route: ActivatedRoute, private profilUserService: ProfilUserService) {
+  constructor(private route: ActivatedRoute, private router: Router, private profilUserService: ProfilUserService) {
 
   }
 
@@ -51,6 +52,33 @@ export class ProfilUserComponent implements OnInit {
 
       })
 
+  }
+
+  visibility(){
+
+    this.admin = JSON.parse(localStorage.getItem('admin') || '{}');
+
+    if (this.admin == 0) {
+      
+      return false
+      
+    } else{
+      return true
+    }
+  }
+
+  deleteUser(){
+    
+     
+     
+    this.id = this.route.snapshot.params['id']
+    this.token = JSON.parse(localStorage.getItem('token') || '{}');
+    this.profilUserService.deleteUser(this.id, this.token).subscribe((result)=>{
+        console.warn("result", result)
+        this.router.navigate(['/timeline'])
+    })
+      
+    
   }
 
    getPosts(){

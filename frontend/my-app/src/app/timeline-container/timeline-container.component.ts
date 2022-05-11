@@ -39,6 +39,8 @@ export class TimelineContainerComponent implements OnInit {
 
   formData: any;
 
+  admin: any;
+
   loading: boolean = false; // Flag variable
   file: File = null as any; // Variable to store file
   
@@ -102,9 +104,17 @@ export class TimelineContainerComponent implements OnInit {
 
     
 
-    local(){
-     let user = localStorage.getItem('user')
+    visibility(){
+
+      this.admin = JSON.parse(localStorage.getItem('admin') || '{}');
   
+      if (this.admin == 1) {
+        
+        return false
+        
+      } else{
+        return true
+      }
     }
 
     refreshPosts() {

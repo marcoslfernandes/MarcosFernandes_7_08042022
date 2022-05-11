@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProfilUserService {
  
- 
+  rootURL="http://localhost:3000/";
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +25,18 @@ export class ProfilUserService {
 
   }
 
+  deleteUser(id: any, token: any): Observable<any> {
+    const header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.delete(`${this.rootURL}api/auth/${id}/del`, { headers: header })
+  }
+
+ 
+
 }
+
+
 
 

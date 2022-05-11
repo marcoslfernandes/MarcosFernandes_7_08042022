@@ -62,7 +62,13 @@ exports.login = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
-exports.delete = (req, res, next) => {
+exports.delete = async (req, res) => {
+  const user_id = await User.findOne({where: {id: req.params.id}})
+  if (User.admin == 0 && user_id.user_id !== req.auth.userId) {
+    res.status(400).json({
+      error: new Error('Unauthorized request!')
+    });
+  }
   User.destroy({
     where: {
       id: req.params.id

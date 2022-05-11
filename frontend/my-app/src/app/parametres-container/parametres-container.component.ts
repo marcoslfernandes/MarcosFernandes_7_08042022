@@ -21,6 +21,7 @@ export class ParametresContainerComponent implements OnInit {
   item: any;
   id: any;
   token: any;
+  admin: any;
 
 
   constructor(private parametresService: ParametresService, private router:Router, private fb: FormBuilder) { }
@@ -28,6 +29,8 @@ export class ParametresContainerComponent implements OnInit {
   ngOnInit(): void {
 
    this.getID();
+
+   this. adminLoggedIn();
     
   }
 
@@ -67,6 +70,14 @@ export class ParametresContainerComponent implements OnInit {
     let userGet = localStorage.getItem("user")
 
     console.log(userGet)
+  }
+
+
+  adminLoggedIn(){
+    let val = localStorage.getItem('admin');
+    if(val != null && val == "1"){
+      this.router.navigate(['/timeline'])
+    }
   }
 
   faHome = faHome;
