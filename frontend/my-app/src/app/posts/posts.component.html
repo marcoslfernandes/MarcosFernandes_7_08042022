@@ -12,6 +12,7 @@
         <div class="auteur">{{prenom}} {{nom}}</div>
 
     </div>
+   
     <div class="comment-box" *ngFor='let commentaire of commentaire'>
         <a [routerLink]="['/comments', commentaire.id]"><h4>{{commentaire.texte}}</h4></a> 
     </div>

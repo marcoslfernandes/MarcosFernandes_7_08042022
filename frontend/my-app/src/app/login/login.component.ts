@@ -47,21 +47,14 @@ export class LoginComponent implements OnInit {
   
   onClick(){
    
-  
-
       this.loginService.loginUser(this.register.value).subscribe((result)=>{
-      
       
         // console.warn(result.id)
         // console.warn(result.token)
-        console.warn(result.admin)
-          
-        
-
+        console.warn(result)
         
         // console.log(this.route.snapshot.paramMap.get('id'))
         
-
         this.user_id = result.id
         this.token = result.token
         this.admin = result.admin
@@ -70,12 +63,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', JSON.stringify(this.token))
         localStorage.setItem('admin', JSON.stringify(this.admin))
 
-      
-        
-
         //  this.local = localStorage.getItem('user')!=null ? localStorage.getItem('user'):"";
-
-         
        
         if(this.register.valid){
           this.isUserLoggedIn = true;
@@ -92,8 +80,6 @@ export class LoginComponent implements OnInit {
   }
 
 }
-function id(id: any) {
-  throw new Error('Function not implemented.');
-}
+
 
 

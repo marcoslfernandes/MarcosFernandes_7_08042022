@@ -4,39 +4,59 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const passwordSchema = require('../models/validator-password');
 
-exports.signup = (req, res, next) => {
-  if (!passwordSchema.validate(req.body.password)) {
-    return res.status(400).json({ message: 'Le mot de passe doit contenir au moins 8 caractères, avec une majuscule, une miniscule et un chiffre au moins.' });
+exports.signup = async (req, res, next) => {
+  const hash = await bcrypt.hash(req.body.password, 10)
+  userInfo = {
+    prenom: req.body.prenom,
+    nom: req.body.nom,
+    email: req.body.email,
+    password: hash,
   }
-  function generateHash(user) {
-    if (user === null) {
-      throw new Error('No found employee');
-    }
-    else if (!user.changed('password')) return user.password;
-    else {
-      let salt = bcrypt.genSaltSync();
-      return user.password = bcrypt.hashSync(user.password, salt);
-    }
+  console.log("user prêt à être créé", userInfo)  
+  try {
+    const user = await User.create(userInfo)
+    console.log("Utilisateur crée !", userInfo)
+    res.status(200).json({
+      id: user.id,
+      prenom: user.prenom,
+      nom: user.nom,
+      email: user.email,
+    })
+  } catch (error) {
+    console.log(error)
+    return res.status(500).send({ error: "Erreur serveur" })
   }
+};
 
-  User.beforeCreate(generateHash);
-  User.beforeUpdate(generateHash);
+// exports.signup = (req, res, next) => {
+//   if (!passwordSchema.validate(req.body.password)) {
+//     return res.status(400).json({ message: 'Le mot de passe doit contenir au moins 8 caractères, avec une majuscule, une miniscule et un chiffre au moins.' });
+//   }
+//   function generateHash(user) {
+//     if (user === null) {
+//       throw new Error('No found employee');
+//     }
+//     else if (!user.changed('password')) return user.password;
+//     else {
+//       let salt = bcrypt.genSaltSync();
+//       return user.password = bcrypt.hashSync(user.password, salt);
+//     }
+//   }
 
-  const prenom = req.body.prenom;
-  const nom = req.body.nom;
-  const email = req.body.email;
-  const password = req.body.password;
-  const admin = req.body.admin;
-  const user = User.create({ prenom, nom, email, password,admin });
-  res.status(200).json({
-    id: user.id,
-    // token: jwt.sign(
-    //   { userId: user.id },
-    //   'RANDOM_TOKEN_SECRET',
-    //   { expiresIn: '24h' }
-    // )
-  });
-}
+//   User.beforeCreate(generateHash);
+//   User.beforeUpdate(generateHash);
+
+//   const prenom = req.body.prenom;
+//   const nom = req.body.nom;
+//   const email = req.body.email;
+//   const password = req.body.password;
+//   // const admin = req.body.admin;
+
+//   const user = User.create({ prenom, nom, email, password});
+//   res.status(200).json({
+//     id: user.id
+//   });
+// }
 
 exports.login = (req, res, next) => {
   User.findOne({ where: { email: req.body.email } })
@@ -56,19 +76,19 @@ exports.login = (req, res, next) => {
               expiresIn: "24h",
             })
           });
-        })
+        }) 
         .catch(error => res.status(500).json({ error }));
     })
-    .catch(error => res.status(500).json({ error }));
 };
 
-exports.delete = async (req, res) => {
-  const user_id = await User.findOne({where: {id: req.params.id}})
-  if (User.admin == 0 && user_id.user_id !== req.auth.userId) {
-    res.status(400).json({
-      error: new Error('Unauthorized request!')
-    });
-  }
+
+  exports.delete = async (req, res, next) => {
+   const user_id = User.findOne({where: {id: req.params.id}})
+    if (User.admin == 0 && user_id.user_id !== req.auth.userId) {
+      res.status(400).json({
+        error: new Error('Unauthorized request!')
+      });
+    }
   User.destroy({
     where: {
       id: req.params.id

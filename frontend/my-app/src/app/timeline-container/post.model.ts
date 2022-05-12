@@ -1,7 +1,10 @@
-export interface Publi {
+export class Publi {
 
-    titre: string;
-    texte: string;
-    imageURL: string;
+    constructor(public titre: string, public texte: string){}
+
+  
+    // imageURL: string;
 
  }
+
+ 

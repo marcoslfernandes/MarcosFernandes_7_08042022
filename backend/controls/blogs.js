@@ -23,9 +23,9 @@ const storage = multer.diskStorage({
 
 
 exports.createPost = async (req, res, next) => {
-
-  const titre = req.body.titre;
-  const texte = req.body.texte;
+  const post = JSON.parse( req.body.post);
+  const titre = post.titre;
+  const texte = post.texte;
   // const imageUrl = req.body.imageUrl;
   // const imageUrl = `${req.file.filename}`;
   const user_id = req.params.id;

@@ -10,6 +10,7 @@ import { PostsComponent } from './posts/posts.component';
 import { CommentsComponent } from './comments/comments.component';
 
 
+
 const routes: Routes = [
 
 {
@@ -40,7 +41,6 @@ const routes: Routes = [
   path:'',
   component: HomeComponent
 }
-
 ];
 
 @NgModule({

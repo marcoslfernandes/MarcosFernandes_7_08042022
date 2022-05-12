@@ -6,6 +6,7 @@ import { TimelineService } from './timeline.service';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Publi } from './post.model';
 
 
 @Component({
@@ -15,11 +16,6 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class TimelineContainerComponent implements OnInit {
-
-
- 
-
- 
 
 
 
@@ -35,6 +31,8 @@ export class TimelineContainerComponent implements OnInit {
 
   token: any;
 
+  objet: any;
+
   register:any;
 
   formData: any;
@@ -42,23 +40,31 @@ export class TimelineContainerComponent implements OnInit {
   admin: any;
 
   loading: boolean = false; // Flag variable
+  
   file: File = null as any; // Variable to store file
   
 
 
+  
   constructor(private route: ActivatedRoute, private timelineService: TimelineService, private router: Router, public fb: FormBuilder,
-    private http: HttpClient) { }
+    private http: HttpClient) { 
+    }
 
  
     API: string = "http://localhost:3000/";
 
   ngOnInit(): void {
 
-    this.register=new FormGroup({
-      titre: new FormControl(),
-      texte: new FormControl(),
+    // this.register=new FormGroup ({
+    //   titre: new FormControl(),
+    //   texte: new FormControl(),
+    // })
 
-      
+
+    this.register=this.fb.group({
+      titre: [''],
+      texte: [''],
+      imageUrl: [null]
     })
 
  
@@ -117,6 +123,18 @@ export class TimelineContainerComponent implements OnInit {
       }
     }
 
+    visibilityModerator(){
+      this.admin = JSON.parse(localStorage.getItem('admin') || '{}');
+  
+      if (this.admin == 0) {
+        
+        return false
+        
+      } else{
+        return true
+      }
+    }
+
     refreshPosts() {
       this.timelineService.getAllPosts().subscribe((posts) => 
       {
@@ -135,29 +153,62 @@ export class TimelineContainerComponent implements OnInit {
 
     }
 
+    onChange(event: Event) {
+
+      const file = (event.target as HTMLInputElement).files![0];
+      console.log(file);
+      this.register.patchValue({
+        imageUrl: file,
+      });
+      this.register.get('imageUrl').updateValueAndValidity();
+      // this.register.get('imageUrl');
+
+  //     const file = event.target.files[0]
+  
+
+  }
 
     submit(){
   
-     
+      // this.objet = {}
      
       this.id = JSON.parse(localStorage.getItem('id') || '{}');
       this.token = JSON.parse(localStorage.getItem('token') || '{}');
       // window.location.reload();
-      console.warn(this.register.value)
-
+      // console.warn(this.register.get('titre').value)
+      // console.warn(this.register.get('texte').value)
       
-      const formData = new FormData();
-
-      this.register.get('titre').setValue('titre');
-      this.register.get('texte').setValue('texte');
+      // this.objet.titre = this.register.get('titre').value
+      // this.objet.texte = this.register.get('texte').value
       
-     formData.append('titre', this.register.get('titre').value);
-      formData.append('texte', this.register.get('texte').value);
-      formData.append('imageUrl', this.file);
+      // const formData = new FormData();
+      
+      // // formData.append('titre', this.objet);
 
+
+      // formData.append('titre', this.register.get('titre').value);
+      // formData.append('texte', this.register.get('texte').value);
+
+
+      // formData.append('', JSON.stringify(this.objet));
+      // formData.append('imageUrl', this.file);
+
+      // console.warn(JSON.stringify(this.objet))
+
+
+      //
+
+
+      // let formData: any = new FormData();
+    // formData.append('titre', this.form.get('titre'));
+    // formData.append('texte', this.form.get('texte'));
+    // formData.append('imageUrl', this.form.get('imageUrl'));
+
+    // console.warn(formData);
+  
+      let post: Publi = ({titre: this.register.get('titre').value, texte: this.register.get('texte').value})
     
-    
-      this.timelineService.createNewPost(this.formData, this.id, this.token).subscribe((result)=>{
+      this.timelineService.createNewPost(post, this.id, this.token, this.register.get('imageUrl').value).subscribe((result)=>{
         console.warn("Nouveau post créé", result)
       })
 
@@ -181,19 +232,7 @@ export class TimelineContainerComponent implements OnInit {
    
 
 
-    onChange(event: any) {
-      const file = event.target.files[0]
-  //     // const value = event.target.value;
-
-  // // this will return C:\fakepath\somefile.ext
-  // // console.log(value);
-
-  // //this will return an ARRAY of File object
-  console.log(file);
    
-
-
-  }
   
   
     // onUpload(event: any) {

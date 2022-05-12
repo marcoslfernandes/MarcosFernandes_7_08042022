@@ -36,12 +36,16 @@ export class TimelineService {
 
   }
 
-  createNewPost(data: any, id: any, token: any): Observable<any> {
+  createNewPost(data: Publi, id: any, token: any, imageUrl: File): Observable<any> {
     const header = new HttpHeaders({
-      'Content-Type': 'application/json',
+      
       'Authorization': `Bearer ${token}`
     })
-    return this.http.post(`${this.rootURL}api/posts/${id}`, data, { headers: header })
+     const formData = new FormData();
+      
+      formData.append('post', JSON.stringify(data));
+      formData.append('image', imageUrl);
+    return this.http.post(`${this.rootURL}api/posts/${id}`, formData, { headers: header })
   }
 
 
