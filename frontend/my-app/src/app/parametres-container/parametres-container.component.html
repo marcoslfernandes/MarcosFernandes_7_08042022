@@ -6,9 +6,16 @@
 
 </div>
 <div class="container">
-    <h1>Modifier mon profil :</h1>
-    <div class="photo"></div>
+    <h1>Modifier mon profil :</h1> 
+    <div class="photo"><img [src]="photo" alt=""></div>
+    <form [formGroup]="profil" (ngSubmit)="profilSubmit()">
+    <div class="form-group">
+      <label for="file-upload" class="custom-file-upload">
+      </label>
+      <input class="file" type="file" (change)="onChange($event)">
+    </div>
     <button class="modif-photo">Modifier ma photo</button>
+  </form>
     <form [formGroup]="register" (ngSubmit)="collection()">
         <div class="form-group">
           <label for="prenom">Prénom:</label><br>

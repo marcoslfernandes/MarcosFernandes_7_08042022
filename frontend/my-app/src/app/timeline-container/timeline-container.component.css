@@ -15,7 +15,10 @@ border-bottom-right-radius: 50%;
 img{
     height: 300px;
     width: 300px;
+    object-fit: cover;
 }
+
+
 
 body {
     font-family: "Poppins", sans-serif;

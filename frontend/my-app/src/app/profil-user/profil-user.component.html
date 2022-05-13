@@ -1,21 +1,24 @@
-
 <body>
-    
+
     <app-timeline-header></app-timeline-header>
-<div class="container-profil">
-<h1>{{prenom}} {{nom}}</h1>
+    <div class="container-profil">
 
-<h3>{{email}}</h3>
-</div>
+        <div class="photo"><img [src]="photo" alt=""></div>
 
-<div *ngIf="visibility()" class="anime"><button class="anime2" (click)="deleteUser()">Supprimer cet utilisateur</button></div>
+        <h1>{{prenom}} {{nom}}</h1>
 
-<div class="posts" *ngFor='let post of post.slice().reverse()'>
-    <a [routerLink]="['/posts', post.id]"><div class="titre">{{ post.titre }}</div></a>
-    <div class="texte">{{ post.texte }}</div>
-    <div class="images">{{ post.imageUrl }}</div>
+        <h3>{{email}}</h3>
+    </div>
+
+    <div *ngIf="visibility()" class="anime"><button class="anime2" (click)="deleteUser()">Supprimer cet
+            utilisateur</button></div>
+
+    <div class="posts" *ngFor='let post of post.slice().reverse()'>
+        <a [routerLink]="['/posts', post.id]">
+            <div class="titre">{{ post.titre }}</div>
+        </a>
+        <div class="texte">{{ post.texte }}</div>
+        <div class="images"><img [src]="post.imageUrl" alt=""></div>
     </div>
 
 </body>
- 
-    

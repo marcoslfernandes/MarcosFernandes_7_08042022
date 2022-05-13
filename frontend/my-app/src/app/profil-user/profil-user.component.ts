@@ -18,6 +18,7 @@ export class ProfilUserComponent implements OnInit {
   post_id: any;
   token: any;
   admin: any;
+  photo: any;
 
 
 
@@ -42,6 +43,8 @@ export class ProfilUserComponent implements OnInit {
         this.prenom = users.prenom
         this.nom = users.nom
         this.email = users.email
+        this.photo = users.photo
+
       
 
 

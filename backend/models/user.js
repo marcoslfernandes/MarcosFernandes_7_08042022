@@ -19,7 +19,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       admin: {
         type: DataTypes.TINYINT, allowNull: true, default: 0
-      }
+      },
+        photo: {
+          type: DataTypes.STRING,
+          allowNull: true
+        },
     });
     return User;
   };

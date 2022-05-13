@@ -22,6 +22,10 @@ export class ParametresContainerComponent implements OnInit {
   id: any;
   token: any;
   admin: any;
+  profil: any;
+  prenom: any;
+  nom: any;
+  photo: any;
 
 
   constructor(private parametresService: ParametresService, private router:Router, private fb: FormBuilder) { }
@@ -31,12 +35,51 @@ export class ParametresContainerComponent implements OnInit {
    this.getID();
 
    this. adminLoggedIn();
+
+
+   this.profil=this.fb.group({
+   photo: [null]
+  })
+
+  this.id = JSON.parse(localStorage.getItem('id') || '{}')
+  this.parametresService.getProjectById(this.id).subscribe((users) => 
+  {
+
+   
+    console.log(users.prenom)
+
+  
+    this.prenom = users.prenom
+    this.nom = users.nom
+    this.photo = users.photo
+  
+
+
+  })
     
   }
 
-  // user(){
-  //   console.log(localStorage.getItem('user'))
-  // }
+
+
+  onChange(event: Event){
+    const file = (event.target as HTMLInputElement).files![0];
+    console.log(file);
+    this.profil.patchValue({
+      photo: file,
+    });
+    this.profil.get('photo').updateValueAndValidity();
+  }
+
+  profilSubmit(){
+    this.id = JSON.parse(localStorage.getItem('id') || '{}')
+    this.token = JSON.parse(localStorage.getItem('token') || '{}');
+    this.parametresService.modifyPhoto(this.profil.get('photo').value, this.id, this.token).subscribe((result)=>{
+      console.warn("Photo modifiée !", result)
+    })
+    if(this.profil.valid){
+      // window.location.reload();
+    } 
+  }
 
   collection(){
     this.id = JSON.parse(localStorage.getItem('id') || '{}')

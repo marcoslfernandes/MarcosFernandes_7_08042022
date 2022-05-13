@@ -110,6 +110,10 @@ exports.login = (req, res, next) => {
 exports.updateUser = async (req, res, next) => {
   try {
     let user = await User.findOne({ where: { id: req.params.id } })
+    if (req.file) {
+      console.log("filename", req.file.filename)
+      user.photo = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+    }
     if (req.body.prenom) {
       user.prenom = req.body.prenom
       console.log("Ancien prenom : ", user.prenom)
@@ -158,7 +162,7 @@ exports.findAll = async (req, res, next) => {
 
   try {
     User.findAll({
-      attributes: ["id", "prenom", "nom", "email"],
+      attributes: ["id", "prenom", "nom", "email", "photo"],
     }).then(users => {
       users.map(users => {
         // if(post.imageUrl) post.imageUrl = `http://localhost:4200/images/${post.imageUrl}`
@@ -199,7 +203,7 @@ exports.findOne = (req, res, next) => {
   User.findOne({
     where: {
       id: req.params.id
-    }, attributes: ["id", "prenom", "nom", "email"]
+    }, attributes: ["id", "prenom", "nom", "email", "photo"]
   }).then(
     (user) => {
       if (!user) {
