@@ -12,6 +12,11 @@ border-bottom-left-radius: 50%;
 border-bottom-right-radius: 50%;
 }
 
+img{
+    height: 300px;
+    width: 300px;
+}
+
 body {
     font-family: "Poppins", sans-serif;
       width: 100%;

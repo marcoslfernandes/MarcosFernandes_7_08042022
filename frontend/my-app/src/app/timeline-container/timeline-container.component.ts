@@ -93,8 +93,11 @@ export class TimelineContainerComponent implements OnInit {
       this.timelineService.getAllPosts().subscribe((posts) => 
       {
         console.log(posts);
-        
+       
         this.post = posts;
+        
+      
+        
        
       });
 
@@ -135,6 +138,14 @@ export class TimelineContainerComponent implements OnInit {
       }
     }
 
+    // visibilityImg(){
+    //   if (this.file == null){
+    //     return false
+    //   } else {
+    //     return true
+    //   }
+    // }
+
     refreshPosts() {
       this.timelineService.getAllPosts().subscribe((posts) => 
       {
@@ -168,9 +179,11 @@ export class TimelineContainerComponent implements OnInit {
 
   }
 
+
     submit(){
   
       // this.objet = {}
+     
      
       this.id = JSON.parse(localStorage.getItem('id') || '{}');
       this.token = JSON.parse(localStorage.getItem('token') || '{}');
@@ -210,6 +223,8 @@ export class TimelineContainerComponent implements OnInit {
     
       this.timelineService.createNewPost(post, this.id, this.token, this.register.get('imageUrl').value).subscribe((result)=>{
         console.warn("Nouveau post créé", result)
+        window.location.reload();
+       
       })
 
       

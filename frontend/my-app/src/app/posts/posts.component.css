@@ -17,6 +17,11 @@ body {
 
 }
 
+img{
+  height: 300px;
+  width: 300px;
+}
+
 @media screen and (max-width: 820px){
   .container-post{
       margin-left: 25%;

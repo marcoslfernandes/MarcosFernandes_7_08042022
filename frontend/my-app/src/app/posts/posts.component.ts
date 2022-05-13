@@ -4,6 +4,7 @@ import { PostsService } from './posts.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-posts',
@@ -12,7 +13,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 })
 export class PostsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router, private postsService: PostsService) { }
+  constructor(private route: ActivatedRoute, private location: Location, private router: Router, private postsService: PostsService) { }
 
   post: any;
   titre: any;
@@ -30,11 +31,14 @@ export class PostsComponent implements OnInit {
 comment: any;
 idnumber: any;
 admin: any;
+imageUrl: any;
 
 
  
 
   ngOnInit(): void {
+
+   
 
     this.comment = new FormGroup({
       texte: new FormControl(),
@@ -103,6 +107,7 @@ admin: any;
 
           this.titre = posts.titre
           this.texte = posts.texte
+          this.imageUrl = posts.imageUrl
 
           this.postsService.getUserById(this.user_id).subscribe((user) => {
 
@@ -182,9 +187,10 @@ admin: any;
     this.postsService.deletePost(this.id, this.token).subscribe((result) => {
 
       console.warn(result);
-
-      this.router.navigate(['/timeline'])
-
+      // this.router.navigate(['/timeline'])
+      this.location.back()
+   
+     
     });
 
   }
