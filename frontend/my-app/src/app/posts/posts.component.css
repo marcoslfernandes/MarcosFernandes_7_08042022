@@ -17,56 +17,56 @@ body {
 
 }
 
-img{
+img {
   height: 300px;
   width: 300px;
   object-fit: cover;
 }
 
-@media screen and (max-width: 820px){
-  .container-post{
-      margin-left: 25%;
+@media screen and (max-width: 820px) {
+  .container-post {
+    margin-left: 25%;
   }
 }
 
-@media screen and (max-width: 414px){
-  .container-post{
-      margin-left: 2%;
+@media screen and (max-width: 414px) {
+  .container-post {
+    margin-left: 2%;
   }
 }
 
-.comment-box{
- text-align: center;
- max-width: 350px;
- position: relative;
- top: 50px;
- left: 520px;
- border: 1px black solid;
- height: 80px;
-margin-top: 30px;
+.comment-box {
+  text-align: center;
+  max-width: 350px;
+  position: relative;
+  top: 50px;
+  left: 520px;
+  height: 80px;
+  margin-top: 50px;
+  margin-bottom: 30px;
 }
 
-@media screen and (max-width: 820px){
- .comment-box{
-   left: 230px;
- }
- }
+@media screen and (max-width: 820px) {
+  .comment-box {
+    left: 230px;
+  }
+}
 
- @media screen and (max-width: 414px){
-  .comment-box{
+@media screen and (max-width: 414px) {
+  .comment-box {
     left: 30px;
   }
-  }
+}
 
 
-.comment-box a{
+.comment-box a {
   text-decoration: none;
   color: black;
 }
 
-.comment-box :hover{
+.comment-box :hover {
   opacity: 100%;
- 
+
 }
 
 
@@ -82,11 +82,11 @@ h3 {
   left: 630px;
 }
 
-@media screen and (max-width: 820px){
-  #post_id{
+@media screen and (max-width: 820px) {
+  #post_id {
     left: -450px;
   }
- }
+}
 
 #comment-button {
   position: relative;
@@ -94,8 +94,8 @@ h3 {
   left: 660px;
 }
 
-@media screen and (max-width: 820px){
-  #comment-button{
+@media screen and (max-width: 820px) {
+  #comment-button {
     left: 650px;
   }
 }
@@ -105,23 +105,23 @@ form {
   bottom: 250px;
 }
 
-@media screen and (max-width: 820px){
-  form{
+@media screen and (max-width: 820px) {
+  form {
     right: 300px;
   }
- }
+}
 
 
- @media screen and (max-width: 414px){
-  form{
+@media screen and (max-width: 414px) {
+  form {
     right: 495px;
   }
- }
+}
 
 
 
 h4 {
- 
+
   font-size: 14px;
   position: relative;
   max-width: 350px;
@@ -131,7 +131,7 @@ h4 {
   padding: 20px;
   border-radius: 15px;
   opacity: 70%;
-  transition:0.2s;
+  transition: 0.2s;
 }
 
 
@@ -156,7 +156,7 @@ button {
   padding-left: 5px;
 }
 
-.anime2{
+.anime2 {
   cursor: pointer;
   background-color: rgb(205, 136, 136);
   position: relative;
@@ -169,34 +169,34 @@ button {
 
 }
 
-@media screen and (max-width: 820px){
- .anime2{
-   left: 380px;
- }
- }
-
- @media screen and (max-width: 414px){
-  .anime2{
-    left: 180px;
+@media screen and (max-width: 820px) {
+  .anime2 {
+    left: 380px;
   }
-  }
-
-
-.parametres{
-        
-  display: flex;
-  flex-direction: row;
-width: 20px;
-position: relative;
-left: 10px;
-top: 25px;
 }
 
-a{
+@media screen and (max-width: 414px) {
+  .anime2 {
+    left: 180px;
+  }
+}
+
+
+.parametres {
+
+  display: flex;
+  flex-direction: row;
+  width: 20px;
+  position: relative;
+  left: 10px;
+  top: 25px;
+}
+
+a {
   text-decoration: none;
 }
 
-.config{
+.config {
   position: relative;
   top: 2px;
   left: 10px;
@@ -204,27 +204,27 @@ a{
   padding-right: 20px;
 }
 
-.parametres a{
+.parametres a {
   color: black;
 }
 
-#post_id{
- visibility: hidden;
+#post_id {
+  visibility: hidden;
 }
 
-.parametres a :hover{
+.parametres a :hover {
   color: #FFF;
 }
 
-.auteur{
+.auteur {
   font-size: 14px;
- position: relative;
- top: 40px;
- padding-bottom: 30px;
- border-top: 1px solid rgb(158, 202, 223);
+  position: relative;
+  top: 40px;
+  padding-bottom: 30px;
+  border-top: 1px solid rgb(158, 202, 223);
 }
 
-.faHome{
+.faHome {
   background-color: #FFF;
   padding-left: 5px;
   padding-right: 5px;
@@ -234,8 +234,8 @@ a{
   border-top-right-radius: 50%;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
-  }
+}
 
-  .trash{
-    padding-bottom: 50px;
-  }
+.trash {
+  padding-bottom: 50px;
+}

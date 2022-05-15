@@ -11,19 +11,17 @@ export class ProfilUserService {
 
   constructor(private http: HttpClient) { }
 
-
   getProjectById(id: string | null): Observable<any> {
 
     return this.http.get(`http://localhost:3000/api/auth/profil/${id}`)
 
-  }
+  };
 
   getAllPosts(post_id: any) {
 
     return this.http.get(`http://localhost:3000/api/posts/${post_id}`);
-   
-
-  }
+  
+  };
 
   deleteUser(id: any, token: any): Observable<any> {
     const header = new HttpHeaders({
@@ -31,10 +29,7 @@ export class ProfilUserService {
       'Authorization': `Bearer ${token}`
     })
     return this.http.delete(`${this.rootURL}api/auth/${id}/del`, { headers: header })
-  }
-
- 
-
+  };
 }
 
 

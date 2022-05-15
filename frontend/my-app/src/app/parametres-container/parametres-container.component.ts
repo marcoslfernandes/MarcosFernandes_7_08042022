@@ -27,7 +27,6 @@ export class ParametresContainerComponent implements OnInit {
   nom: any;
   photo: any;
 
-
   constructor(private parametresService: ParametresService, private router:Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -36,30 +35,21 @@ export class ParametresContainerComponent implements OnInit {
 
    this. adminLoggedIn();
 
-
    this.profil=this.fb.group({
    photo: [null]
-  })
+  });
 
-  this.id = JSON.parse(localStorage.getItem('id') || '{}')
+  this.id = JSON.parse(localStorage.getItem('id') || '{}');
+
   this.parametresService.getProjectById(this.id).subscribe((users) => 
   {
-
-   
     console.log(users.prenom)
 
-  
     this.prenom = users.prenom
     this.nom = users.nom
     this.photo = users.photo
-  
-
-
-  })
-    
+  });
   }
-
-
 
   onChange(event: Event){
     const file = (event.target as HTMLInputElement).files![0];
@@ -68,7 +58,7 @@ export class ParametresContainerComponent implements OnInit {
       photo: file,
     });
     this.profil.get('photo').updateValueAndValidity();
-  }
+  };
 
   profilSubmit(){
     this.id = JSON.parse(localStorage.getItem('id') || '{}')
@@ -77,9 +67,9 @@ export class ParametresContainerComponent implements OnInit {
       console.warn("Photo modifiée !", result)
     })
     if(this.profil.valid){
-      // window.location.reload();
+      window.location.reload();
     } 
-  }
+  };
 
   collection(){
     this.id = JSON.parse(localStorage.getItem('id') || '{}')
@@ -87,12 +77,10 @@ export class ParametresContainerComponent implements OnInit {
     this.parametresService.modifyUser(this.register.value, this.id, this.token).subscribe(()=>{
       console.warn("Profil modifié !")
     })
-
     if(this.register.valid){
       window.location.reload();
-    
     } 
-  }
+  };
 
   deleteUser(){
     this.id = JSON.parse(localStorage.getItem('id') || '{}')
@@ -101,27 +89,20 @@ export class ParametresContainerComponent implements OnInit {
         console.warn("result", result)
         localStorage.clear();
         this.router.navigate(['/'])
-    })
-
-   
-
-    
-  }
+    }) 
+  };
 
   getID(){
-
     let userGet = localStorage.getItem("user")
-
     console.log(userGet)
-  }
-
+  };
 
   adminLoggedIn(){
     let val = localStorage.getItem('admin');
     if(val != null && val == "1"){
       this.router.navigate(['/timeline'])
     }
-  }
+  };
 
   faHome = faHome;
 

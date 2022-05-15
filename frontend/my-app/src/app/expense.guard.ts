@@ -31,8 +31,7 @@ export class ExpenseGuard implements CanActivate {
     } else return false
        return this.router.parseUrl('/');
        
-    }
-    
+    } 
  }
 
 

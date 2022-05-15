@@ -20,11 +20,7 @@ export class ProfilUserComponent implements OnInit {
   admin: any;
   photo: any;
 
-
-
-  constructor(private route: ActivatedRoute, private router: Router, private profilUserService: ProfilUserService) {
-
-  }
+  constructor(private route: ActivatedRoute, private router: Router, private profilUserService: ProfilUserService) {}
 
   ngOnInit(): void {
 
@@ -35,70 +31,44 @@ export class ProfilUserComponent implements OnInit {
       let id = params.get('id')
       this.profilUserService.getProjectById(id).subscribe((users) => 
       {
-
-
         console.log(users)
 
-      
         this.prenom = users.prenom
         this.nom = users.nom
         this.email = users.email
         this.photo = users.photo
-
-      
-
-
-      })
-
-
-
-
-      })
-
-  }
+      });
+      });
+  };
 
   visibility(){
 
     this.admin = JSON.parse(localStorage.getItem('admin') || '{}');
-
+    this.id = this.route.snapshot.params['id'];
     if (this.admin == 0) {
-      
       return false
-      
     } else{
       return true
     }
-  }
+  };
 
   deleteUser(){
-    
-     
-     
     this.id = this.route.snapshot.params['id']
     this.token = JSON.parse(localStorage.getItem('token') || '{}');
     this.profilUserService.deleteUser(this.id, this.token).subscribe((result)=>{
         console.warn("result", result)
         this.router.navigate(['/timeline'])
-    })
-      
-    
-  }
+    });
+  };
 
    getPosts(){
     this.post_id=this.route.snapshot.params['id']
     this.profilUserService.getAllPosts(this.post_id).subscribe((post) => 
     {
       console.log(post);
-
-      
       this.post = post;
-     
     });
-   }
-        
-
-
-
+   };
 }
 
   

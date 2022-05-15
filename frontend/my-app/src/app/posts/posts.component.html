@@ -1,24 +1,20 @@
 <body>
- 
     <app-timeline-header></app-timeline-header>
-    
-   
-
     <div class="container-post">
-
         <h1>{{titre}}</h1>
         <h3>{{texte}}</h3>
-        <div class="images"><img [src]="imageUrl" alt=""></div>
-        
+        <div class="images"><img [src]="imageUrl" style="display: none" onload="this.style.display=''" alt=""></div>
         <div class="auteur">{{prenom}} {{nom}}</div>
-
+        <div class="time">{{time}}</div>
     </div>
-   
+
     <div class="comment-box" *ngFor='let commentaire of commentaire'>
-        <a [routerLink]="['/comments', commentaire.id]"><h4>{{commentaire.texte}}</h4></a> 
+        <a [routerLink]="['/comments', commentaire.id]">
+            <h4>{{commentaire.texte}}</h4>
+        </a>
     </div>
-    <form [formGroup]="comment" (ngSubmit)="postComment()">
 
+    <form [formGroup]="comment" (ngSubmit)="postComment()">
         <div class="comments">
             <div class="form-group">
                 <label for="texte"></label><br>
@@ -28,13 +24,13 @@
                     <label for="post_id"></label><br>
                     <input type="text" [value]="postId" formControlName="post_id" class="form-group" id="post_id"
                         name="texte">
-
                 </div>
                 <button type="submit" id="comment-button">Commenter</button>
             </div>
         </div>
     </form>
-    <div *ngIf="visibility()" class="anime"><button class="anime2"(click)="deleteP()"><fa-icon class="trash" [icon]="faTrash"></fa-icon></button></div> 
 
-
+    <div *ngIf="visibility()" class="anime"><button class="anime2" (click)="deleteP()">
+            <fa-icon class="trash" [icon]="faTrash"></fa-icon>
+        </button></div>
 </body>

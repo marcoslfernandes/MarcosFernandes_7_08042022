@@ -11,6 +11,4 @@ router.get('/', publiCtrl.findAll);
 router.get('/:id', publiCtrl.findAllPostsUser);
 router.get('/post/:id', publiCtrl.findOne);
 
-// router.put('/:id', auth, multer, publiCtrl.modifyPubli);
-
 module.exports = router;

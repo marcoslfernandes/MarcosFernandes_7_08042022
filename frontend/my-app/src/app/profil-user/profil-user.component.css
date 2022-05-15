@@ -1,53 +1,52 @@
-body{
+body {
     background-color: rgb(158, 202, 223);
 }
 
-.container-profil{
+.container-profil {
     margin-left: 35%;
     text-align: center;
     margin-top: 200px;
-        max-width: 400px;
-        margin-top: 60px;
-        overflow: hidden;
-        background-color: rgb(100, 154, 179);
-        border: 2px solid #FFF;
-        padding: 30px;
-        border-radius: 15px;
-        opacity: 95%;
+    max-width: 400px;
+    margin-top: 60px;
+    overflow: hidden;
+    background-color: rgb(100, 154, 179);
+    border: 2px solid #FFF;
+    padding: 30px;
+    border-radius: 15px;
+    opacity: 95%;
 
 }
 
-.anime{
+.anime {
 
     transition-property: all;
 }
 
 .anime:hover .anime2 {
-transform: scale(1.2);
-transition-timing-function: ease;
+    transform: scale(1.2);
+    transition-timing-function: ease;
 }
 
-img{
+img {
     height: 150px;
     width: 150px;
     object-fit: cover;
 }
 
-.photo img{
-        border: 1px solid #FFF;
-        width: 150px;
-        height: 150px;
-        position: relative;
-        right: 2px;
-        border-top-left-radius: 75px;
-        border-bottom-left-radius: 75px;
-        border-top-right-radius: 75px;
-        border-bottom-right-radius: 75px;
-        margin-bottom: 20px;
-    
+.photo img {
+    border: 1px solid #FFF;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    right: 2px;
+    border-top-left-radius: 75px;
+    border-bottom-left-radius: 75px;
+    border-top-right-radius: 75px;
+    border-bottom-right-radius: 75px;
+    margin-bottom: 20px;
 }
 
-.anime2{
+.anime2 {
     background-color: rgb(205, 136, 136);
     border: 1px solid rgb(205, 136, 136);
     transition-duration: 500ms;
@@ -56,7 +55,7 @@ img{
     left: 630px;
 }
 
-button{
+button {
 
     font-family: Poppins;
     font-size: 12px;
@@ -64,29 +63,29 @@ button{
     border-radius: 15px;
     padding-right: 5px;
     padding-left: 5px;
-  }
+}
 
-a{
+a {
     text-decoration: none;
     color: rgb(100, 154, 179);
 }
 
-h1{
- font-size: 50px;
+h1 {
+    font-size: 50px;
 }
 
-h2{
+h2 {
     font-size: 30px;
 }
 
-h3{
+h3 {
     border-top: 1px solid rgb(158, 202, 223);
     margin-top: 20px;
     padding-top: 20px;
 }
 
 
-.posts{
+.posts {
     margin-bottom: 80px;
     text-align: center;
     position: relative;
@@ -99,7 +98,7 @@ h3{
     background-color: #FFF;
 }
 
-#titre{
+#titre {
     padding-bottom: 10px;
     padding-top: 10px;
     text-align: center;
@@ -107,7 +106,7 @@ h3{
     left: 220px;
 }
 
-#texte{
+#texte {
     font-family: Poppins;
     border: 1px solid gray;
     border-radius: 5px;
@@ -117,19 +116,18 @@ h3{
     width: 600px;
 }
 
-.titre{
+.titre {
     height: fit-content;
-    border-bottom: 1px solid rgb(199, 198, 198)}
-
-  
-
-
-.texte{
-    height: 50px;
-    color: rgb(63, 61, 61);
-font-size: 12px
+    border-bottom: 1px solid rgb(199, 198, 198)
 }
 
-.images{
+.texte {
+    height: 50px;
+    color: rgb(63, 61, 61);
+    font-size: 12px
+}
+
+.images {
     height: fit-content;
-    color: gray}
+    color: gray
+}

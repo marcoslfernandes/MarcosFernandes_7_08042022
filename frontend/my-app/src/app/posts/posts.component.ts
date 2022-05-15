@@ -28,41 +28,26 @@ export class PostsComponent implements OnInit {
   nom: any;
   user_id: any;
   token: any;
-comment: any;
-idnumber: any;
-admin: any;
-imageUrl: any;
-
-
- 
+  comment: any;
+  idnumber: any;
+  admin: any;
+  imageUrl: any;
+  time: any;
 
   ngOnInit(): void {
-
-   
 
     this.comment = new FormGroup({
       texte: new FormControl(),
       post_id: new FormControl()
-    })
+    });
 
-    let idnumber = this.route.snapshot.params['id']
-
+    let idnumber = this.route.snapshot.params['id'];
     this.comment.get('post_id').setValue(idnumber);
 
     this.getPosts();
-
-    // this.getComment();
-
     this.getAllComments();
 
-    //  this.getUser();
-
-
-
-
   }
-
-
 
   postComment() {
     window.location.reload();
@@ -71,141 +56,59 @@ imageUrl: any;
     console.warn(this.comment.value)
     this.postsService.createNewComment(this.comment.value, this.id, this.token).subscribe((result) => {
       console.warn("Nouveau commentaire créé", result)
-  
     })
   };
 
-
-
-  visibility(){
-
+  visibility() {
     this.admin = JSON.parse(localStorage.getItem('admin') || '{}');
     this.id = JSON.parse(localStorage.getItem('id') || '{}');
-
     if (this.admin == 0 && this.id !== this.user_id) {
-      
       return false
-      
-    } else{
+    } else {
       return true
     }
-  }
-
+  };
 
   getPosts() {
-
-    // this.post_id = this.route.snapshot.params['id']
-
     this.route.paramMap
       .subscribe(params => {
         const id = params.get('id')
         this.postsService.getPostById(id).subscribe((posts) => {
-
           console.log(posts);
 
           this.user_id = posts.user_id
-
           this.titre = posts.titre
           this.texte = posts.texte
           this.imageUrl = posts.imageUrl
+          this.time = posts.createdAt
 
           this.postsService.getUserById(this.user_id).subscribe((user) => {
-
-
             console.log(user.prenom)
 
             this.prenom = user.prenom
             this.nom = user.nom
-    
-      
-          })
-
-        })
-
+          });
+        });
       });
-
-
-
-  }
-
-  // getUser() {
-
-
-  //   this.postsService.getUserById(this.user_id).subscribe((user) => {
-
-
-  //     console.log(user)
-
-
-
-
-  //   })
-  // }
-
-  // getComment(){
-
-  //   let id_c=this.route.snapshot.params['id']
-  //     this.postsService.getCommentById(id_c).subscribe((commentaire) => {
-
-  //       console.warn(commentaire);
-
-  //       this.commentaire = commentaire;
-
-  // })}
+  };
 
   getAllComments() {
     let id_c = this.route.snapshot.params['id']
     this.postsService.getAllComments(id_c).subscribe((commentaire) => {
-      console.log(commentaire[0].user_id);
-
-       for (var i = 0; i < 0; i++) {
-        commentaire[i].user_id
-     }
-
-
-
-
       this.commentaire = commentaire;
-
-      this.postsService.getUserById(this.user_id).subscribe((user) => {
-
-
-        console.log(user.prenom)
-
-        this.prenom = user.prenom
-
-  
-      })
     });
-  }
-
+  };
 
   deleteP() {
-
     this.id = this.route.snapshot.params['id']
     this.token = JSON.parse(localStorage.getItem('token') || '{}');
     this.postsService.deletePost(this.id, this.token).subscribe((result) => {
-
       console.warn(result);
-      // this.router.navigate(['/timeline'])
-      this.location.back()
-   
      
+      this.router.navigate(['/timeline']);
     });
+  };
 
-  }
-
- 
-
-  // postComment(){
-  //   window.location.reload();
-  //   console.warn(this.comment.value)
-  //   this.timelineService.createNewComment(this.comment.value).subscribe((result)=>{
-  //     console.warn("Nouveau commentaire créé", result)
-
-  //   })
-
-  // }
   faTrash = faTrash;
   faHome = faHome;
 

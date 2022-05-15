@@ -9,7 +9,6 @@ export class TimelineHeaderComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

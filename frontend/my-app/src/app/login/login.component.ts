@@ -4,8 +4,6 @@ import { LoginService } from './login.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JsonpClientBackend } from '@angular/common/http';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,18 +16,15 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required)
   });
 
- 
-
   constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.loggedIn()
+    this.loggedIn();
 
   }
 
   isUserLoggedIn: boolean = false;
- 
   user: any;
   local!: string;
   result: any;
@@ -37,24 +32,17 @@ export class LoginComponent implements OnInit {
   token: any;
   admin: any;
  
-  
   loggedIn(){
     let val = localStorage.getItem('isUserLoggedIn');
     if(val != null && val == "true"){
       this.router.navigate(['/timeline'])
     }
-  }
+  };
   
   onClick(){
-   
       this.loginService.loginUser(this.register.value).subscribe((result)=>{
-      
-        // console.warn(result.id)
-        // console.warn(result.token)
         console.warn(result)
-        
-        // console.log(this.route.snapshot.paramMap.get('id'))
-        
+ 
         this.user_id = result.id
         this.token = result.token
         this.admin = result.admin
@@ -63,22 +51,13 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', JSON.stringify(this.token))
         localStorage.setItem('admin', JSON.stringify(this.admin))
 
-        //  this.local = localStorage.getItem('user')!=null ? localStorage.getItem('user'):"";
-       
         if(this.register.valid){
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
-          this.router.navigate(['/timeline']);
-         
-             
-        } 
-          
-        
-        
-      })
-    
-  }
-
+          this.router.navigate(['/timeline']);      
+        }; 
+      }); 
+  };
 }
 
 

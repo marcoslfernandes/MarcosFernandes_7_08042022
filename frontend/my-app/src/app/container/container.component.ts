@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class ContainerComponent implements OnInit {
 
-
   register = new FormGroup({
     prenom: new FormControl(),
     nom: new FormControl(),
@@ -26,32 +25,17 @@ export class ContainerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.loggedIn();
-
-
     this.inscriptionService.getAllUsers().subscribe((users) => {
       console.log(users);
-      // this.User = users;
     });
-
-  }
-
-  loggedIn(){
-    let val = localStorage.getItem('isUserLoggedIn');
-    if(val != null && val == "true"){
-      this.router.navigate(['/timeline'])
-    }
   }
 
   collection() {
-
     this.inscriptionService.createNewUser(this.register.value).subscribe(() => {
       console.log("Nouvel utilisateur créé")
-
       if (this.register.valid) {
         this.router.navigate(['/']);
       }
     })
   }
-
 }

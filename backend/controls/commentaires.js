@@ -19,6 +19,7 @@ exports.createComment = async (req, res, next) => {
       res.status(201).json({comment: comment})
     } catch(erreur) {res.status(500).send({error: erreur.message})}};
 
+
     exports.deleteComment = async (req, res) => {
       const comment_id = await Comment.findOne({where: {id: req.params.id}})
       if (User.admin == 0 && comment_id.user_id !== req.auth.userId) {
@@ -29,8 +30,8 @@ exports.createComment = async (req, res, next) => {
       const comment = await Comment.destroy({where: {id: req.params.id}})
       res.status(200).json({comment, message: "Commentaire supprimé"})};
 
-    exports.findAll = async (req, res, next) => {
 
+    exports.findAll = async (req, res, next) => {
       try {
         Comment.findAll({
           where: { post_id: req.params.id },
@@ -41,11 +42,10 @@ exports.createComment = async (req, res, next) => {
         return res.status(500).send({
           error: "Une erreur est survenue lors de la récupération des posts ",})}};
 
+
           exports.findOne = (req, res, next) => {
-            
             Comment.findOne({
               where: { id: req.params.id }
-     
             }).then(
               (comment) => {
                 if (!comment) {

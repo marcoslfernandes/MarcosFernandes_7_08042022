@@ -12,10 +12,8 @@ export class AuthServiceService {
  rootURL: string= 'http://localhost:3000/api';
  
 
-
 login(data: any): Observable<any> {
   return this.http.post(`${this.rootURL}/auth/login`, data)
 }
-
 
 }

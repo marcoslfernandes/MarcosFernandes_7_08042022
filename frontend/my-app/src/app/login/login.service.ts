@@ -11,14 +11,10 @@ export class LoginService {
     throw new Error('Method not implemented.');
   }
 
-  
-
   constructor(private http: HttpClient) { }
 
- 
   rootURL="http://localhost:3000/";
  
-
   getAllUsers(){
 
 return this.http.get('http://localhost:3000/api/auth/users');
@@ -28,7 +24,6 @@ return this.http.get('http://localhost:3000/api/auth/users');
   loginUser(data: any):Observable<ModeleLogin>{
       
       return this.http.post<ModeleLogin>(this.rootURL+"api/auth/login",data)
-     
   }
 
   }

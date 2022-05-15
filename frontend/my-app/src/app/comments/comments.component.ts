@@ -16,9 +16,8 @@ export class CommentsComponent implements OnInit {
   ngOnInit(): void {
 
     this.getPosts()
-    
-  }
 
+  }
 
   id: any;
   id_c: any;
@@ -33,39 +32,29 @@ export class CommentsComponent implements OnInit {
   userId: any;
   admin: any;
 
-  visibility(){
+  visibility() {
 
     this.admin = JSON.parse(localStorage.getItem('admin') || '{}');
     this.userId = JSON.parse(localStorage.getItem('id') || '{}');
 
-
     if (this.admin == 0 && this.userId !== this.user_id) {
-      
       return false
-      
-    } else{
+    } else {
       return true
     }
   }
 
   deleteP() {
- 
+
     this.id_c = this.route.snapshot.params['id']
     this.token = JSON.parse(localStorage.getItem('token') || '{}');
     this.commentsService.deleteComment(this.id_c, this.token).subscribe((result) => {
 
       console.warn(result);
 
-
-      // this.router.navigate(['/timeline'])
-
       this.location.back()
-
-
     });
-
   }
-
 
   getPosts() {
 
@@ -75,36 +64,21 @@ export class CommentsComponent implements OnInit {
       .subscribe(params => {
         const id = params.get('id')
         this.commentsService.getOneComment(id).subscribe((comment) => {
-
           console.log(comment);
 
           this.user_id = comment.user_id
-          
-
-          
           this.texte = comment.texte
 
           this.commentsService.getUserById(this.user_id).subscribe((user) => {
-
-
             console.log(user.prenom)
 
             this.prenom = user.prenom
             this.nom = user.nom
-            
-    
-      
           })
-
         })
-
       });
-
-
-
   }
 
-  faTrash=faTrash;
-
+  faTrash = faTrash;
 
 }
