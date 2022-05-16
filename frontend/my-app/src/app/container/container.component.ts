@@ -35,7 +35,14 @@ export class ContainerComponent implements OnInit {
       console.log("Nouvel utilisateur créé")
       if (this.register.valid) {
         this.router.navigate(['/']);
-      }
+      } else {alert("test")}
     })
   }
+
+  erreurMessage(){
+    if (this.register.value.length == 0){
+      alert("Empty")
+    } 
+  }
+
 }

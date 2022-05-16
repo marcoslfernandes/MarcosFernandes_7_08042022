@@ -33,7 +33,7 @@ export class ParametresContainerComponent implements OnInit {
 
    this.getID();
 
-   this. adminLoggedIn();
+   this.adminLoggedIn();
 
    this.profil=this.fb.group({
    photo: [null]
@@ -75,11 +75,9 @@ export class ParametresContainerComponent implements OnInit {
     this.id = JSON.parse(localStorage.getItem('id') || '{}')
     this.token = JSON.parse(localStorage.getItem('token') || '{}');
     this.parametresService.modifyUser(this.register.value, this.id, this.token).subscribe(()=>{
-      console.warn("Profil modifié !")
-    })
-    if(this.register.valid){
+      console.warn("Profil modifié !");
       window.location.reload();
-    } 
+    });
   };
 
   deleteUser(){

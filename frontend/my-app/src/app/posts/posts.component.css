@@ -23,6 +23,36 @@ img {
   object-fit: cover;
 }
 
+.profil-auteur{
+  border-top: 1px solid rgb(158, 202, 223);
+    position: relative;
+  top: 40px;
+  padding-bottom: 30px;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(100, 154, 179);
+  font-weight: bold;
+}
+
+a :hover{
+  color: rgb(205, 136, 136);
+}
+
+.photo-profil{
+  height: 30px;
+  width: 30px;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-left: 15px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border: 1px solid rgb(100, 154, 179);
+}
+
 @media screen and (max-width: 820px) {
   .container-post {
     margin-left: 25%;
@@ -33,6 +63,10 @@ img {
   .container-post {
     margin-left: 2%;
   }
+}
+
+.time{
+  margin-top: 20px;
 }
 
 .comment-box {
@@ -218,10 +252,8 @@ a {
 
 .auteur {
   font-size: 14px;
-  position: relative;
-  top: 40px;
-  padding-bottom: 30px;
-  border-top: 1px solid rgb(158, 202, 223);
+
+
 }
 
 .faHome {

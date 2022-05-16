@@ -50,7 +50,8 @@ img {
     background-color: rgb(205, 136, 136);
     border: 1px solid rgb(205, 136, 136);
     transition-duration: 500ms;
-    margin-top: 40px;
+    margin-top: 20px;
+    margin-bottom: 30px;
     position: relative;
     left: 630px;
 }

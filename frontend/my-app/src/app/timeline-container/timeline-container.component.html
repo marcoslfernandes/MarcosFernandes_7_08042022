@@ -53,6 +53,7 @@
         <div class="user-container">
             <h1>La Team</h1>
             <div class="users" *ngFor='let user of userData'>
+                <div><img class="photo-profil" [src]="user.photo" style="display: none" onload="this.style.display=''" alt=""></div>
                 <a [routerLink]="['/profil', user.id]">
                     <div>{{user.prenom}}</div>
                 </a>

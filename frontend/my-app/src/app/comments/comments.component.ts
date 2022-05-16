@@ -31,6 +31,7 @@ export class CommentsComponent implements OnInit {
   token: any;
   userId: any;
   admin: any;
+  photo: any;
 
   visibility() {
 
@@ -72,8 +73,10 @@ export class CommentsComponent implements OnInit {
           this.commentsService.getUserById(this.user_id).subscribe((user) => {
             console.log(user.prenom)
 
+            this.id = user.id
             this.prenom = user.prenom
             this.nom = user.nom
+            this.photo = user.photo
           })
         })
       });

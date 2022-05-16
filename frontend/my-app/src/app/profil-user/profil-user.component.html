@@ -5,8 +5,6 @@
         <h1>{{prenom}} {{nom}}</h1>
         <h3>{{email}}</h3>
     </div>
-    <div *ngIf="visibility()" class="anime"><button class="anime2" (click)="deleteUser()">Supprimer cet
-            utilisateur</button></div>
     <div class="posts" *ngFor='let post of post.slice().reverse()'>
         <a [routerLink]="['/posts', post.id]">
             <div class="titre">{{ post.titre }}</div>
@@ -14,4 +12,6 @@
         <div class="texte">{{ post.texte }}</div>
         <div class="images"><img [src]="post.imageUrl" style="display: none" onload="this.style.display=''" alt=""></div>
     </div>
+    <div *ngIf="visibility()" class="anime"><button class="anime2" (click)="deleteUser()">Supprimer cet
+        utilisateur</button></div>
 </body>

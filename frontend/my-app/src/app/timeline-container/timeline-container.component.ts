@@ -49,10 +49,6 @@ export class TimelineContainerComponent implements OnInit {
       this.userData = users;
     });
 
-    this.timelineService.getAllPosts().subscribe((posts) => {
-      console.log(posts);
-      this.post = posts;
-    });
   }
 
   visibility() {

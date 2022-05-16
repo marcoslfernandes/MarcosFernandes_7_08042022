@@ -33,6 +33,7 @@ export class PostsComponent implements OnInit {
   admin: any;
   imageUrl: any;
   time: any;
+  photo: any;
 
   ngOnInit(): void {
 
@@ -84,9 +85,10 @@ export class PostsComponent implements OnInit {
 
           this.postsService.getUserById(this.user_id).subscribe((user) => {
             console.log(user.prenom)
-
+            this.id = user.id
             this.prenom = user.prenom
             this.nom = user.nom
+            this.photo = user.photo
           });
         });
       });
@@ -104,7 +106,6 @@ export class PostsComponent implements OnInit {
     this.token = JSON.parse(localStorage.getItem('token') || '{}');
     this.postsService.deletePost(this.id, this.token).subscribe((result) => {
       console.warn(result);
-     
       this.router.navigate(['/timeline']);
     });
   };
