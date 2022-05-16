@@ -67,9 +67,11 @@ a :hover{
 
 .time{
   margin-top: 20px;
+  font-size: 12px;
 }
 
 .comment-box {
+  cursor: pointer;
   text-align: center;
   max-width: 350px;
   position: relative;
@@ -165,7 +167,7 @@ h4 {
   padding: 20px;
   border-radius: 15px;
   opacity: 70%;
-  transition: 0.2s;
+
 }
 
 

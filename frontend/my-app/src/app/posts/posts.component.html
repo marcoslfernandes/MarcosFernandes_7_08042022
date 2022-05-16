@@ -6,7 +6,7 @@
         <div class="images"><img [src]="imageUrl" style="display: none" onload="this.style.display=''" alt=""></div>
   
         <div class="profil-auteur">
-            <a [routerLink]="['/profil', id]">
+            <a [routerLink]="['/profil', user_id]">
             <div><img class="photo-profil" [src]="photo" style="display: none" onload="this.style.display=''" alt=""></div>
             <div class="auteur">{{prenom}} {{nom}}</div>
                  </a>
@@ -36,7 +36,7 @@
         </div>
     </form>
 
-    <div *ngIf="visibility()" class="anime"><button class="anime2" (click)="deleteP()">
+    <div *ngIf="visibility()" class="anime"><button class="anime2" (click)="deletePostQuestion()">
             <fa-icon class="trash" [icon]="faTrash"></fa-icon>
         </button></div>
 </body>

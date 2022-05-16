@@ -85,7 +85,7 @@ export class PostsComponent implements OnInit {
 
           this.postsService.getUserById(this.user_id).subscribe((user) => {
             console.log(user.prenom)
-            this.id = user.id
+            // this.id = user.id
             this.prenom = user.prenom
             this.nom = user.nom
             this.photo = user.photo
@@ -101,12 +101,21 @@ export class PostsComponent implements OnInit {
     });
   };
 
+  deletePostQuestion(){
+    if(confirm("Êtes-vous sûr de vouloir supprimer cette publication ?")) {
+      this.deleteP();
+    }
+  }
+
   deleteP() {
     this.id = this.route.snapshot.params['id']
     this.token = JSON.parse(localStorage.getItem('token') || '{}');
     this.postsService.deletePost(this.id, this.token).subscribe((result) => {
       console.warn(result);
-      this.router.navigate(['/timeline']);
+      this.router.navigate(['/timeline'])
+      .then(() => {
+        window.location.reload();
+      });
     });
   };
 

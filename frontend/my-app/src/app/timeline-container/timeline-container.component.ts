@@ -41,12 +41,14 @@ export class TimelineContainerComponent implements OnInit {
       texte: [''],
       imageUrl: [null]
     });
+    
 
     this.refreshPosts();
 
     this.timelineService.getAllUsers().subscribe((users) => {
       console.log(users);
       this.userData = users;
+      
     });
 
   }
@@ -107,6 +109,8 @@ export class TimelineContainerComponent implements OnInit {
     localStorage.clear()
     this.router.navigate(['/'])
   };
+
+
 
   faTools = faTools;
   faTrash = faTrash;

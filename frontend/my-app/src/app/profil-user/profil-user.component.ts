@@ -52,6 +52,12 @@ export class ProfilUserComponent implements OnInit {
     }
   };
 
+  deleteUserQuestion(){
+    if(confirm("Êtes-vous sûr de vouloir supprimer ce compte ?")) {
+      this.deleteUser();
+    }
+  }
+
   deleteUser(){
     this.id = this.route.snapshot.params['id']
     this.token = JSON.parse(localStorage.getItem('token') || '{}');

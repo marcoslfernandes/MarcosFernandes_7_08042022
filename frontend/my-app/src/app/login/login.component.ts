@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JsonpClientBackend } from '@angular/common/http';
+import { asLiteral } from '@angular/compiler/src/render3/view/util';
 
 @Component({
   selector: 'app-login',
@@ -54,8 +55,8 @@ export class LoginComponent implements OnInit {
         if(this.register.valid){
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
-          this.router.navigate(['/timeline']);      
-        }; 
+          this.router.navigate(['/timeline'])     
+        } 
       }); 
   };
 }

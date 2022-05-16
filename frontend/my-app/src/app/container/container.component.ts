@@ -19,7 +19,10 @@ export class ContainerComponent implements OnInit {
 
   userData: any;
 
+  get prenom() { return this.register.get('prenom'); }
+
   constructor(private inscriptionService: InscriptionService, private router: Router) { }
+
 
   isUserLoggedIn: boolean = false;
 
@@ -35,14 +38,19 @@ export class ContainerComponent implements OnInit {
       console.log("Nouvel utilisateur créé")
       if (this.register.valid) {
         this.router.navigate(['/']);
-      } else {alert("test")}
+      } if(this.register.value.lenght == ""){
+        alert("Name must be filled out");
+        
+      }
     })
   }
 
   erreurMessage(){
-    if (this.register.value.length == 0){
-      alert("Empty")
-    } 
+    if (this.register.invalid){
+        return true
+    } else {
+      return false
+    }
   }
 
 }

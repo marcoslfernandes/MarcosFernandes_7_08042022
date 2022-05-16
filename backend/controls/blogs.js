@@ -49,6 +49,7 @@ exports.deletePost = async (req, res, next) => {
         res.status(200).json({message: "Post et image supprimé"})
       })
     } else {
+      Comments.destroy({where : {post_id: req.params.id}})
       Post.destroy({where: {id: post.id}}, {truncate: true})
       res.status(200).json({message: "Post supprimé"})
     }

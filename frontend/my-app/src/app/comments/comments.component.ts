@@ -45,7 +45,13 @@ export class CommentsComponent implements OnInit {
     }
   }
 
-  deleteP() {
+  deleteCommentQuestion(){
+    if(confirm("Êtes-vous sûr de vouloir supprimer ce commentaire ?")) {
+      this.deleteComment();
+    }
+  }
+
+  deleteComment() {
 
     this.id_c = this.route.snapshot.params['id']
     this.token = JSON.parse(localStorage.getItem('token') || '{}');

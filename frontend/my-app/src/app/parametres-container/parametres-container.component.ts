@@ -80,6 +80,12 @@ export class ParametresContainerComponent implements OnInit {
     });
   };
 
+  deleteUserQuestion(){
+    if(confirm("Êtes-vous sûr de vouloir supprimer votre compte ?")) {
+      this.deleteUser();
+    }
+  }
+
   deleteUser(){
     this.id = JSON.parse(localStorage.getItem('id') || '{}')
     this.token = JSON.parse(localStorage.getItem('token') || '{}');

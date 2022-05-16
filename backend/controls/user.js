@@ -59,6 +59,20 @@ exports.login = (req, res, next) => {
         error: new Error('Unauthorized request!')
       });
     }
+    if (User.photo) {
+      const filename = user_id.photo.split("/images")[1]
+      console.log("Filename to Delete", filename)
+      fs.unlink(`images/${filename}`, function(error) {
+        if(error){
+          throw error;
+        }
+        User.destroy({
+          where: {
+            id: req.params.id
+          }
+        })
+      })
+    } else
   User.destroy({
     where: {
       id: req.params.id
