@@ -46,7 +46,7 @@ export class PostsComponent implements OnInit {
     this.comment.get('post_id').setValue(idnumber);
 
     this.getPosts();
-    this.getAllComments();
+    this.getComment();
 
   }
 
@@ -94,7 +94,7 @@ export class PostsComponent implements OnInit {
       });
   };
 
-  getAllComments() {
+  getComment() {
     let id_c = this.route.snapshot.params['id']
     this.postsService.getAllComments(id_c).subscribe((commentaire) => {
       this.commentaire = commentaire;

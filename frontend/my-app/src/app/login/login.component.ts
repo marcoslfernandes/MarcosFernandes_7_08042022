@@ -12,7 +12,7 @@ import { asLiteral } from '@angular/compiler/src/render3/view/util';
 })
 export class LoginComponent implements OnInit {
 
-  register=new FormGroup({
+  register = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
@@ -32,18 +32,21 @@ export class LoginComponent implements OnInit {
   user_id: any;
   token: any;
   admin: any;
- 
-  loggedIn(){
+
+  loggedIn() {
     let val = localStorage.getItem('isUserLoggedIn');
-    if(val != null && val == "true"){
+    if (val != null && val == "true") {
       this.router.navigate(['/timeline'])
     }
   };
-  
-  onClick(){
-      this.loginService.loginUser(this.register.value).subscribe((result)=>{
+
+  onClick() {
+    if (this.register.invalid) {
+      alert("Email ou mot de passe incorrect")
+    } else {
+      this.loginService.loginUser(this.register.value).subscribe((result) => {
         console.warn(result)
- 
+
         this.user_id = result.id
         this.token = result.token
         this.admin = result.admin
@@ -52,13 +55,19 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', JSON.stringify(this.token))
         localStorage.setItem('admin', JSON.stringify(this.admin))
 
-        if(this.register.valid){
+        // if(!this.register){
+        //   console.log("erreur")
+        // } else
+        if (this.register.valid) {
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
-          this.router.navigate(['/timeline'])     
-        } 
-      }); 
+          this.router.navigate(['/timeline'])
+        }
+      });
+    }
   };
+
+
 }
 
 

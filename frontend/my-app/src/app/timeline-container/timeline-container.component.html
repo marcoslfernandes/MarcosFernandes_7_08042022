@@ -46,6 +46,7 @@
                 </a>
                 <div class="texte">{{ post.texte }}</div>
                 <div class="images"><img [src]="post.imageUrl" style="display: none" onload="this.style.display=''" alt=""></div>
+                <!-- <div>{{myDate}}</div> -->
             </div>
         </div>
         <div class="auteur" *ngFor='let userAuteur of userAuteur'>

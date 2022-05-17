@@ -33,7 +33,7 @@ export class PostsService {
 
   };
 
-  getAllComments(id_c: any| null): Observable<any> {
+  getAllComments(id_c: any): Observable<any> {
 
     return this.http.get(`http://localhost:3000/api/comment/${id_c}`);
 

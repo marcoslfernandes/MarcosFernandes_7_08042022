@@ -36,11 +36,15 @@ exports.createComment = async (req, res, next) => {
         Comment.findAll({
           where: { post_id: req.params.id },
           attributes: ["id", "texte", "post_id", "user_id"],
-          }).then(comments => {
-          res.json(comments)})
+          })
+          .then(comments => {
+            comments.map(comments => {
+            });
+            res.json(comments)
+          })
       } catch (error) {
         return res.status(500).send({
-          error: "Une erreur est survenue lors de la récupération des posts ",})}};
+          error: "Une erreur est survenue lors de la récupération des posts "})}};
 
 
           exports.findOne = (req, res, next) => {

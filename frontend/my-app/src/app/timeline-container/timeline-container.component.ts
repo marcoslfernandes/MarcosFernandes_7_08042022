@@ -7,12 +7,14 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Publi } from './post.model';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-timeline-container',
   templateUrl: './timeline-container.component.html',
-  styleUrls: ['./timeline-container.component.css']
+  styleUrls: ['./timeline-container.component.css'],
+  providers: [DatePipe]
 })
 
 export class TimelineContainerComponent implements OnInit {
@@ -30,8 +32,12 @@ export class TimelineContainerComponent implements OnInit {
   loading: boolean = false; 
   file: File = null as any; 
 
-  constructor(private route: ActivatedRoute, private timelineService: TimelineService, private router: Router, public fb: FormBuilder,
-    private http: HttpClient) {}
+  myDate = new Date();
+
+  constructor(private datePipe: DatePipe, private route: ActivatedRoute, private timelineService: TimelineService, private router: Router, public fb: FormBuilder,
+    private http: HttpClient) {
+      
+    }
 
   API: string = "http://localhost:3000/";
 
@@ -41,6 +47,10 @@ export class TimelineContainerComponent implements OnInit {
       texte: [''],
       imageUrl: [null]
     });
+
+   this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
+
+
     
 
     this.refreshPosts();
@@ -92,6 +102,8 @@ export class TimelineContainerComponent implements OnInit {
     });
     this.register.get('imageUrl').updateValueAndValidity();
   };
+
+  
 
   submit() {
     this.id = JSON.parse(localStorage.getItem('id') || '{}');

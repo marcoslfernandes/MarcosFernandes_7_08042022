@@ -1,5 +1,28 @@
 body {
   background-color: rgb(158, 202, 223);
+  padding-bottom: 80px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.comment-boxing a :hover{
+  opacity: 100%;
+  transition: ease;
+}
+
+.comment-boxing{
+  padding-top: 10px;
+  text-align: center;
+  max-width: 350px;
+  position: relative;
+  top: 50px;
+  left: 520px;
+  height: 80px;
+  margin-top: 20px;
+  /* margin-bottom: 100px; */
 }
 
 .container-post {
@@ -17,6 +40,12 @@ body {
 
 }
 
+
+
+/* .teste{
+  border: solid black;
+} */
+
 img {
   height: 300px;
   width: 300px;
@@ -30,15 +59,6 @@ img {
   padding-bottom: 30px;
 }
 
-a{
-  text-decoration: none;
-  color: rgb(100, 154, 179);
-  font-weight: bold;
-}
-
-a :hover{
-  color: rgb(205, 136, 136);
-}
 
 .photo-profil{
   height: 30px;
@@ -70,17 +90,17 @@ a :hover{
   font-size: 12px;
 }
 
-.comment-box {
-  cursor: pointer;
+/* .comment-box {
+ 
   text-align: center;
   max-width: 350px;
   position: relative;
   top: 50px;
   left: 520px;
   height: 80px;
-  margin-top: 50px;
+  margin-top: 100px;
   margin-bottom: 30px;
-}
+} */
 
 @media screen and (max-width: 820px) {
   .comment-box {
@@ -95,7 +115,7 @@ a :hover{
 }
 
 
-.comment-box a {
+/* .comment-box a {
   text-decoration: none;
   color: black;
 }
@@ -103,7 +123,7 @@ a :hover{
 .comment-box :hover {
   opacity: 100%;
 
-}
+} */
 
 
 
@@ -126,8 +146,8 @@ h3 {
 
 #comment-button {
   position: relative;
-  top: 280px;
-  left: 660px;
+  top: 240px;
+  left: 780px;
 }
 
 @media screen and (max-width: 820px) {
@@ -156,8 +176,7 @@ form {
 
 
 
-h4 {
-
+.texte-comment{
   font-size: 14px;
   position: relative;
   max-width: 350px;
@@ -167,13 +186,11 @@ h4 {
   padding: 20px;
   border-radius: 15px;
   opacity: 70%;
-
 }
-
 
 #comment {
   position: relative;
-  top: 300px;
+  top: 280px;
   left: 505px;
   width: 400px;
   height: 50px;
@@ -197,7 +214,7 @@ button {
   background-color: rgb(205, 136, 136);
   position: relative;
   left: 680px;
-  top: 100px;
+  top: 30px;
   font-size: 25px;
   border-radius: 50%;
   padding-right: 10px;
@@ -228,9 +245,6 @@ button {
   top: 25px;
 }
 
-a {
-  text-decoration: none;
-}
 
 .config {
   position: relative;
@@ -240,17 +254,11 @@ a {
   padding-right: 20px;
 }
 
-.parametres a {
-  color: black;
-}
 
 #post_id {
   visibility: hidden;
 }
 
-.parametres a :hover {
-  color: #FFF;
-}
 
 .auteur {
   font-size: 14px;

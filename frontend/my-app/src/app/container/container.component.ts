@@ -34,15 +34,16 @@ export class ContainerComponent implements OnInit {
   }
 
   collection() {
+      if(this.register.invalid){
+        alert("Veuilleuz remplir tous les champs")
+      } else{
     this.inscriptionService.createNewUser(this.register.value).subscribe(() => {
       console.log("Nouvel utilisateur créé")
-      if (this.register.valid) {
+    
+     
         this.router.navigate(['/']);
-      } if(this.register.value.lenght == ""){
-        alert("Name must be filled out");
-        
-      }
-    })
+      
+    })}
   }
 
   erreurMessage(){
