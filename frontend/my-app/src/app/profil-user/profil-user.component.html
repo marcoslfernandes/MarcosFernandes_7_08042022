@@ -13,5 +13,7 @@
         <div class="images"><img [src]="post.imageUrl" style="display: none" onload="this.style.display=''" alt=""></div>
     </div>
     <div *ngIf="visibility()" class="anime"><button class="anime2" (click)="deleteUserQuestion()">Supprimer cet
-        utilisateur</button></div>
+        utilisateur</button>
+    </div>
+    <app-footer></app-footer>
 </body>

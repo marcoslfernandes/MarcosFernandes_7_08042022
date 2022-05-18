@@ -1,16 +1,28 @@
 body {
   background-color: rgb(158, 202, 223);
-  padding-bottom: 80px;
+  /* padding-bottom: 80px; */
 }
 
 a{
   text-decoration: none;
-  color: black;
+
+}
+
+.profil-auteur a{
+  color: rgb(100, 154, 179);
+}
+
+a :hover{
+  color: rgb(205, 136, 136);
 }
 
 .comment-boxing a :hover{
   opacity: 100%;
   transition: ease;
+}
+
+.comment-boxing a{
+ color: black;
 }
 
 .comment-boxing{
@@ -90,6 +102,7 @@ img {
   font-size: 12px;
 }
 
+
 /* .comment-box {
  
   text-align: center;
@@ -103,13 +116,13 @@ img {
 } */
 
 @media screen and (max-width: 820px) {
-  .comment-box {
+  .comment-boxing {
     left: 230px;
   }
 }
 
 @media screen and (max-width: 414px) {
-  .comment-box {
+  .comment-boxing {
     left: 30px;
   }
 }
@@ -152,7 +165,14 @@ h3 {
 
 @media screen and (max-width: 820px) {
   #comment-button {
-    left: 650px;
+    left: 780px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  #comment-button {
+    left: 520px;
+    top: 300px;
   }
 }
 

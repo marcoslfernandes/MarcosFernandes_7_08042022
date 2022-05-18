@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
+import { Pipe } from '@angular/core';
 
 @Component({
   selector: 'app-posts',
@@ -32,7 +33,7 @@ export class PostsComponent implements OnInit {
   idnumber: any;
   admin: any;
   imageUrl: any;
-  time: any;
+  time?: Date;
   photo: any;
 
   ngOnInit(): void {

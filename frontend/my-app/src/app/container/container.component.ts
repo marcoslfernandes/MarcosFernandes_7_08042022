@@ -31,11 +31,14 @@ export class ContainerComponent implements OnInit {
     this.inscriptionService.getAllUsers().subscribe((users) => {
       console.log(users);
     });
+
+    this.loggedIn();
+
   }
 
   collection() {
       if(this.register.invalid){
-        alert("Veuilleuz remplir tous les champs")
+        alert("Veuillez remplir tous les champs")
       } else{
     this.inscriptionService.createNewUser(this.register.value).subscribe(() => {
       console.log("Nouvel utilisateur créé")
@@ -46,12 +49,13 @@ export class ContainerComponent implements OnInit {
     })}
   }
 
-  erreurMessage(){
-    if (this.register.invalid){
-        return true
-    } else {
-      return false
+  loggedIn() {
+    let val = localStorage.getItem('isUserLoggedIn');
+    if (val != null && val == "true") {
+      this.router.navigate(['/timeline'])
     }
-  }
+  };
+
+ 
 
 }

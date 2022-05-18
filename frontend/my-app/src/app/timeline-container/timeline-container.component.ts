@@ -51,7 +51,7 @@ export class TimelineContainerComponent implements OnInit {
    this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
 
 
-    
+   
 
     this.refreshPosts();
 
@@ -121,6 +121,8 @@ export class TimelineContainerComponent implements OnInit {
     localStorage.clear()
     this.router.navigate(['/'])
   };
+
+
 
 
 
