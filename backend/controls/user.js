@@ -3,6 +3,7 @@ const User = sequelize.User;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const passwordSchema = require('../models/validator-password');
+require('dotenv').config();
 
 exports.signup = async (req, res, next) => {
   const hash = await bcrypt.hash(req.body.password, 10)
@@ -42,7 +43,7 @@ exports.login = (req, res, next) => {
           res.status(200).json({
             id: user.id,
             admin: user.admin,
-            token: jwt.sign({ userId: user.id }, 'RANDOM_TOKEN_SECRET', {
+            token: jwt.sign({ userId: user.id }, process.env.TOKEN, {
               expiresIn: "24h",
             })
           });

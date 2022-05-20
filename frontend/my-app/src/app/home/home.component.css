@@ -5,6 +5,11 @@
     overflow: hidden;
 }
 
+img{
+    position: relative;
+    left: 100px;
+}
+
 body{
     background-image: url('cowork.jpg');
     background-position: center;

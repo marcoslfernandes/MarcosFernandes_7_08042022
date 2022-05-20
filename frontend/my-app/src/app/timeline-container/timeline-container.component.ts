@@ -123,9 +123,6 @@ export class TimelineContainerComponent implements OnInit {
   };
 
 
-
-
-
   faTools = faTools;
   faTrash = faTrash;
   faKey = faKey;

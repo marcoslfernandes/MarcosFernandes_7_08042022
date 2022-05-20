@@ -136,7 +136,7 @@ h3 {
 
 app-footer{
     position: relative;
-    top: 300px;
+    top: 400px;
 }
 
 @media screen and (max-width: 820px) {

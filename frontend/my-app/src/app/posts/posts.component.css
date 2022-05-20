@@ -37,6 +37,11 @@ a :hover{
   /* margin-bottom: 100px; */
 }
 
+app-footer{
+  position: relative;
+  top: 200px;
+}
+
 .container-post {
   margin-left: 35%;
   text-align: center;

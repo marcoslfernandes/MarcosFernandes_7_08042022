@@ -29,6 +29,7 @@ import { FooterComponent } from './footer/footer.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { FooterComponent } from './footer/footer.component';
     PostsComponent,
     CommentsComponent,
     FooterComponent,
+    
    
 
    
